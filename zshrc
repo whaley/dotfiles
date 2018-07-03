@@ -121,3 +121,7 @@ export EDITOR=vim
 #Script for running asdf
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+#Set git global config
+git config --global core.excludesfile ~/.gitignore_global
+git config --global user.name "Jason Whaley"
