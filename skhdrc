@@ -1,4 +1,3 @@
-
 # ############################################################### #
 # YABAI
 # ############################################################### #
@@ -87,7 +86,7 @@ hyper - 0x1B    : yabai -m window --resize left:50:0 --resize right:-50:0 --resi
 # ####################### #
 
 # balance size of windows
-meh - return : yabai -m space --balance
+hyper - return : yabai -m space --balance
 
 # restart yabai
 meh - escape : yabai --restart-service
@@ -172,6 +171,8 @@ meh - escape : yabai --restart-service
 #shift + alt - v		: open "/Applications/Vitamin-r 4.app"
 
 
+
+
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
@@ -243,4 +244,5 @@ meh - escape : yabai --restart-service
 #               prepend '\' at the end of the previous line.
 #
 #               an EOL character signifies the end of the bind.
+
 
