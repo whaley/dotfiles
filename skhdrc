@@ -22,8 +22,7 @@ meh - f         : yabai -m window --toggle zoom-fullscreen
 
 
 # Focus on next display
-# 29 == ;
-# meh - space	: $HOME/bin/cycle_display.sh
+meh - space	: $HOME/bin/cycle_display.sh
 
 
 # ####################### #
@@ -40,10 +39,12 @@ hyper - f	: yabai -m window --warp east
 hyper - e	: yabai -m window --warp north
 
 # Move to next display
-# hyper - space : yabai -m window --display recent && yabai -m display --focus recent
+hyper - space 	: yabai -m window --display recent && yabai -m display --focus recent
+
+
 
 # ####################### #
-# Spaces
+# Spaces/Desktops
 # ####################### #
 
 #Note: I'm using MacOS System Settings bindings to focus on a space... Ctrl - N, or Ctrl - left/right
@@ -63,6 +64,20 @@ ctrl + cmd - 0      : yabai -m window --space 10 --focus
 ctrl + cmd - left   : yabai -m window --space prev --focus
 ctrl + cmd - right  : yabai -m window --space next --focus
 
+
+# ####################### #
+# Displays/Monitors
+# ####################### #
+
+# focus on display
+meh - 1     : yabai -m display --focus 1
+meh - 2     : yabai -m display --focus 2
+meh - 3     : yabai -m display --focus 3
+
+# send window to monitor and follow focus
+hyper - 1   : yabai -m window --display 1 ; yabai -m display --focus 1 ; #yabai -m window --focus first
+hyper - 2   : yabai -m window --display 2 ; yabai -m display --focus 2 ; #yabai -m window --focus first
+hyper - 3   : yabai -m window --display 3 ; yabai -m display --focus 3 ; #yabai -m window --focus first
 
 # ####################### #
 # Manage Splits and Sizes
@@ -244,5 +259,3 @@ meh - escape : yabai --restart-service
 #               prepend '\' at the end of the previous line.
 #
 #               an EOL character signifies the end of the bind.
-
-
