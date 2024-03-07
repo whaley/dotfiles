@@ -22,7 +22,7 @@ meh - f         : yabai -m window --toggle zoom-fullscreen
 
 
 # Focus on next display
-# meh - space	: $HOME/bin/cycle_display.sh
+meh - space	: $HOME/bin/cycle_display.sh
 
 
 # ####################### #
