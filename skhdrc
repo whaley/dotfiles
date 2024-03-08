@@ -61,8 +61,8 @@ ctrl + cmd - 8      : yabai -m window --space 8  --focus
 ctrl + cmd - 9      : yabai -m window --space 9  --focus
 ctrl + cmd - 0      : yabai -m window --space 10 --focus
 
-ctrl + cmd - left   : yabai -m window --space prev --focus
-ctrl + cmd - right  : yabai -m window --space next --focus
+# ctrl + cmd - left   : yabai -m window --space prev --focus
+# ctrl + cmd - right  : yabai -m window --space next --focus
 
 
 # ####################### #
@@ -87,21 +87,23 @@ ctrl + cmd - right  : yabai -m window --space next --focus
 # 0x27 == '
 hyper - 0x27   	: yabai -m window --toggle split
 
-# Make window bigger - all directions at once
-# 0x18 == =
-hyper - 0x18    : yabai -m window --resize left:-100:0 --resize right:100:0 --resize bottom:0:100 --resize top:0:-100
-hyper - left    : yabai -m window --resize left:-100:0
-hyper - right   : yabai -m window --resize right:100:0
-hyper - up      : yabai -m window --resize top:0:-100
-hyper - down    : yabai -m window --resize bottom:0:100
+# Increase / Decrease Window Sizes
+
+# Make Window Bigger On All Sides: 
+# 0x18 is '=', used since it shifts to +
+hyper - 0x18    : yabai -m window --resize left:-50:0 --resize right:50:0 --resize bottom:0:40 --resize top:0:-40
 
 # Make window smaller
 # 0x1B == -
-hyper - 0x1B    : yabai -m window --resize left:100:0 --resize right:-100:0 --resize bottom:0:-100 --resize top:0:100
-# meh - left      : yabai -m window --resize left:100:0
-# meh - right     : yabai -m window --resize right:-100:0
-# meh - up        : yabai -m window --resize bottom:0:-100
-# meh - down      : yabai -m window --resize top:0:100
+hyper - 0x1B   : yabai -m window --resize left:50:0 --resize right:-50:0 --resize bottom:0:-40 --resize top:0:40
+
+# Resize in a direction (gets wonky if window isn't on the edge of screen)
+hyper - 0x27    : yabai -m window --resize left:-100:0 --resize right:100:0 --resize bottom:0:100 --resize top:0:-100
+hyper - left    : yabai -m window --resize left:-100:0 --resize right:-100:0
+hyper - right   : yabai -m window --resize right:100:0 --resize left:100:0
+hyper - up      : yabai -m window --resize top:0:-80 --resize bottom:0:-80
+hyper - down    : yabai -m window --resize bottom:0:80 --resize top:0:80
+
 
 
 # ####################### #
