@@ -9,7 +9,7 @@
 #
 # yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # sudo yabai --load-sa
-#
+
 
 # global settings
 yabai -m config                                 \
@@ -35,16 +35,21 @@ yabai -m config                                 \
     left_padding                 20             \
     right_padding                20             \
     window_gap                   40             \
-    layout                       bsp		\
-    mouse_modifier               cmd		\
+    layout                       bsp		    \
+    mouse_modifier               cmd		    \
     mouse_action1                resize         \
     mouse_action2                swap           \
     mouse_drop_action            swap
-
 echo "yabai configuration loaded.."
 
+
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Spotify$" manage=off
+yabai -m rule --add app="^DI.FM$" manage=off
+yabai -m rule --add app="^Stickies$" manage=off
+echo "Ignoring Apps: 'System Settings', 'DI.FM', and 'Spotify'"
+
+
 borders active_color=0xffe149a7  width=30.0 hidpi=on &
-
-echo "loaded borders.."
-
+echo "Loaded Janky Borders"
 
