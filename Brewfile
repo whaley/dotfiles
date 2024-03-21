@@ -17,6 +17,7 @@ brew "zlib"
 brew "felixkratz/formulae/borders"
 brew "koekeishiya/formulae/skhd", args: ["HEAD"]
 brew "koekeishiya/formulae/yabai"
+cask "alfred"
 cask "eloston-chromium"
 cask "github"
 cask "iterm2"
