@@ -13,7 +13,7 @@
 
 # global settings
 yabai -m config                                 \
-    mouse_follows_focus          on		\
+    mouse_follows_focus          on		        \
     focus_follows_mouse          off            \
     window_origin_display        default        \
     window_placement             second_child   \
@@ -30,26 +30,22 @@ yabai -m config                                 \
     split_ratio                  0.5            \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  20             \
-    bottom_padding               20             \
-    left_padding                 20             \
-    right_padding                20             \
-    window_gap                   40             \
+    top_padding                  10             \
+    bottom_padding               10             \
+    left_padding                 10             \
+    right_padding                10             \
+    window_gap                   20             \
     layout                       bsp		    \
     mouse_modifier               cmd		    \
     mouse_action1                resize         \
-    mouse_action2                swap           \
     mouse_drop_action            swap
-echo "yabai configuration loaded.."
 
 
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^DI.FM$" manage=off
 yabai -m rule --add app="^Stickies$" manage=off
-echo "Ignoring Apps: 'System Settings', 'DI.FM', and 'Spotify'"
+yabai -m rule --add app="^Vitamin.*R.*$" manage=off
+yabai -m rule --add app="^Time.*Out$" manage=off
 
-
-borders active_color=0xffe149a7  width=30.0 hidpi=on &
-echo "Loaded Janky Borders"
-
+borders active_color=0xffe149a7  width=10.0 hidpi=on &
