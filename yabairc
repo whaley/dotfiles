@@ -48,4 +48,4 @@ yabai -m rule --add app="^Stickies$" manage=off
 yabai -m rule --add app="^Vitamin.*R.*$" manage=off
 yabai -m rule --add app="^Time.*Out$" manage=off
 
-borders active_color=0xffe149a7  width=10.0 hidpi=on &
+borders active_color=0xffe149a7  width=20.0 hidpi=on &
