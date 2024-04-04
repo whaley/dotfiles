@@ -48,4 +48,7 @@ yabai -m rule --add app="^Stickies$" manage=off
 yabai -m rule --add app="^Vitamin.*R.*$" manage=off
 yabai -m rule --add app="^Time.*Out$" manage=off
 
+#Treating the desktop as a 9x16 grid, put chats on the middle of the far right of the screen
+yabai -m rule --add app="^Workplace Chat$" title="^Workplace Chat$"  grid=9:16:13:2:3:5 manage=off
+
 borders active_color=0xffe149a7  width=20.0 hidpi=on &
