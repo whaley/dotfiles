@@ -50,8 +50,11 @@ yabai -m rule --add app="^Vitamin.*R.*$" manage="off"
 
 # Music Apps are always full screen
 spotify_label="fullscreen-spotify"
-yabai -m rule   --add label="${spotify_label}" app="^Spotify$" manage="off" natiite-fullscreen="on"
+yabai -m rule   --add label="${spotify_label}" app="^Spotify$" manage="off" native-fullscreen="on"
 yabai -m signal --add event="window_focused"   app="^Spotify$" action="yabai -m rule --apply ${spotify_label}"
 
+# Make everything else full screen?
+yabai -m rule   --add label="full-screen-everything" app=".*" manage="off" native-fullscreen="on"
+
 # Janky Borders
-borders active_color=0xffe149a7  width="${border_padding}" hidpi=on &
+# borders active_color=0xffe149a7  width="${border_padding}" hidpi=on &
