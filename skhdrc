@@ -5,41 +5,48 @@
 # ####################### #
 # Focus
 # ####################### #
-meh - k		    : yabai -m window --focus south
-meh - j		    : yabai -m window --focus west
-meh - l		    : yabai -m window --focus east
-meh - i		    : yabai -m window --focus north
-
-# Focus next
-meh - left	    : yabai -m window --focus prev
-meh - right	    : yabai -m window --focus next
-
-# Focus first, in case we lose focus (e.g. minimizing)
-meh - return    : yabai -m window --focus first
-
-# Fullscreen
-meh - f         : yabai -m window --toggle zoom-fullscreen
-
 
 # Focus on next display
 meh - space	: $HOME/bin/cycle_display.sh
 
 
+# Note: the remainder of these are commented out while I experiment with a native full screen environment for virtually all apps
+
+# # Directional for windows
+# meh - k		    : yabai -m window --focus south
+# meh - j		    : yabai -m window --focus west
+# meh - l		    : yabai -m window --focus east
+# meh - i		    : yabai -m window --focus north
+
+# # Focus next in order
+# meh - left	    : yabai -m window --focus prev
+# meh - right	    : yabai -m window --focus next
+
+# # Focus first, in case we lose focus (e.g. minimizing)
+# meh - return    : yabai -m window --focus first
+
+# # Fullscreen
+# meh - f         : yabai -m window --toggle zoom-fullscreen
+
+
+
+
 # ####################### #
 # Swap and Warp
 # ####################### #
-hyper - k	: yabai -m window --swap south
-hyper - j	: yabai -m window --swap west
-hyper - l	: yabai -m window --swap east
-hyper - i	: yabai -m window --swap north
 
-hyper - d	: yabai -m window --warp south
-hyper - s	: yabai -m window --warp west
-hyper - f	: yabai -m window --warp east
-hyper - e	: yabai -m window --warp north
+# hyper - k	: yabai -m window --swap south
+# hyper - j	: yabai -m window --swap west
+# hyper - l	: yabai -m window --swap east
+# hyper - i	: yabai -m window --swap north
 
-# Move to next display
-hyper - space 	: yabai -m window --display recent && yabai -m display --focus recent
+# hyper - d	: yabai -m window --warp south
+# hyper - s	: yabai -m window --warp west
+# hyper - f	: yabai -m window --warp east
+# hyper - e	: yabai -m window --warp north
+
+# # Move to next display
+# hyper - space 	: yabai -m window --display recent && yabai -m display --focus recent
 
 
 
@@ -50,16 +57,17 @@ hyper - space 	: yabai -m window --display recent && yabai -m display --focus re
 #Note: I'm using MacOS System Settings bindings to focus on a space... Ctrl - N, or Ctrl - left/right
 #Moving a window to another space is done with ctrl + cmd - n/left/right
 #These are for moving windows only
-ctrl + cmd - 1      : yabai -m window --space 1  --focus
-ctrl + cmd - 2      : yabai -m window --space 2  --focus
-ctrl + cmd - 3      : yabai -m window --space 3  --focus
-ctrl + cmd - 4      : yabai -m window --space 4  --focus
-ctrl + cmd - 5      : yabai -m window --space 5  --focus
-ctrl + cmd - 6      : yabai -m window --space 6  --focus
-ctrl + cmd - 7      : yabai -m window --space 7  --focus
-ctrl + cmd - 8      : yabai -m window --space 8  --focus
-ctrl + cmd - 9      : yabai -m window --space 9  --focus
-ctrl + cmd - 0      : yabai -m window --space 10 --focus
+
+# ctrl + cmd - 1      : yabai -m window --space 1  --focus
+# ctrl + cmd - 2      : yabai -m window --space 2  --focus
+# ctrl + cmd - 3      : yabai -m window --space 3  --focus
+# ctrl + cmd - 4      : yabai -m window --space 4  --focus
+# ctrl + cmd - 5      : yabai -m window --space 5  --focus
+# ctrl + cmd - 6      : yabai -m window --space 6  --focus
+# ctrl + cmd - 7      : yabai -m window --space 7  --focus
+# ctrl + cmd - 8      : yabai -m window --space 8  --focus
+# ctrl + cmd - 9      : yabai -m window --space 9  --focus
+# ctrl + cmd - 0      : yabai -m window --space 10 --focus
 
 # ctrl + cmd - left   : yabai -m window --space prev --focus
 # ctrl + cmd - right  : yabai -m window --space next --focus
@@ -70,9 +78,9 @@ ctrl + cmd - 0      : yabai -m window --space 10 --focus
 # ####################### #
 
 # focus on display
-# meh - 1     : yabai -m display --focus 1
-# meh - 2     : yabai -m display --focus 2
-# meh - 3     : yabai -m display --focus 3
+meh - 1     : yabai -m display --focus 1
+meh - 2     : yabai -m display --focus 2
+meh - 3     : yabai -m display --focus 3
 
 # send window to monitor and follow focus
 # hyper - 1   : yabai -m window --display 1 ; yabai -m display --focus 1 ; #yabai -m window --focus first
@@ -83,26 +91,26 @@ ctrl + cmd - 0      : yabai -m window --space 10 --focus
 # Manage Splits and Sizes
 # ####################### #
 
-# toggle window split type between vertical and horizontal
-# 0x27 == '
-hyper - 0x27   	: yabai -m window --toggle split
+# # toggle window split type between vertical and horizontal
+# # 0x27 == '
+# hyper - 0x27   	: yabai -m window --toggle split
 
-# Increase / Decrease Window Sizes
+# # Increase / Decrease Window Sizes
 
-# Make Window Bigger On All Sides: 
-# 0x18 is '=', used since it shifts to +
-hyper - 0x18    : yabai -m window --resize left:-50:0 --resize right:50:0 --resize bottom:0:40 --resize top:0:-40
+# # Make Window Bigger On All Sides:
+# # 0x18 is '=', used since it shifts to +
+# hyper - 0x18    : yabai -m window --resize left:-50:0 --resize right:50:0 --resize bottom:0:40 --resize top:0:-40
 
-# Make window smaller
-# 0x1B == -
-hyper - 0x1B   : yabai -m window --resize left:50:0 --resize right:-50:0 --resize bottom:0:-40 --resize top:0:40
+# # Make window smaller
+# # 0x1B == -
+# hyper - 0x1B   : yabai -m window --resize left:50:0 --resize right:-50:0 --resize bottom:0:-40 --resize top:0:40
 
-# Resize in a direction (gets wonky if window isn't on the edge of screen)
-hyper - 0x27    : yabai -m window --resize left:-100:0 --resize right:100:0 --resize bottom:0:100 --resize top:0:-100
-hyper - left    : yabai -m window --resize left:-100:0 --resize right:-100:0
-hyper - right   : yabai -m window --resize right:100:0 --resize left:100:0
-hyper - up      : yabai -m window --resize top:0:-80 --resize bottom:0:-80
-hyper - down    : yabai -m window --resize bottom:0:80 --resize top:0:80
+# # Resize in a direction (gets wonky if window isn't on the edge of screen)
+# hyper - 0x27    : yabai -m window --resize left:-100:0 --resize right:100:0 --resize bottom:0:100 --resize top:0:-100
+# hyper - left    : yabai -m window --resize left:-100:0 --resize right:-100:0
+# hyper - right   : yabai -m window --resize right:100:0 --resize left:100:0
+# hyper - up      : yabai -m window --resize top:0:-80 --resize bottom:0:-80
+# hyper - down    : yabai -m window --resize bottom:0:80 --resize top:0:80
 
 
 
@@ -111,7 +119,7 @@ hyper - down    : yabai -m window --resize bottom:0:80 --resize top:0:80
 # ####################### #
 
 # balance size of windows
-hyper - return : yabai -m space --balance
+# hyper - return : yabai -m space --balance
 
 # restart yabai
 meh - escape : yabai --restart-service
