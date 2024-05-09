@@ -10,12 +10,12 @@
 # yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # sudo yabai --load-sa
 
-border_padding=30
+border_padding=20
 
 # global settings
 
 yabai -m config                                     \
-    mouse_follows_focus          on                 \
+    mouse_follows_focus          off                \
     focus_follows_mouse          off                \
     window_origin_display        default            \
     window_placement             second_child       \
@@ -45,16 +45,23 @@ yabai -m config                                     \
 yabai -m rule --add app="^Calculator$" manage="off"
 yabai -m rule --add app="^Stickies$" manage="off"
 yabai -m rule --add app="^System Settings$" manage="off"
-yabai -m rule --add app="^Time.*Out$" manage="off"
-yabai -m rule --add app="^Vitamin.*R.*$" manage="off"
+yabai -m rule --add app="^.*Time Out$" manage="off"
+yabai -m rule --add app="^Vitamin.*R$" manage="off"
+yabai -m rule --add app="^Managed Software Center$" manage="off"
+yabai -m rule --add app="^Finder$" manage="off"
+
 
 # Music Apps are always full screen
-spotify_label="fullscreen-spotify"
-yabai -m rule   --add label="${spotify_label}" app="^Spotify$" manage="off" native-fullscreen="on"
-yabai -m signal --add event="window_focused"   app="^Spotify$" action="yabai -m rule --apply ${spotify_label}"
+# spotify_label="fullscreen-spotify"
+# yabai -m rule   --add label="${spotify_label}" app="^Spotify$" manage="off" native-fullscreen="on"
+# yabai -m signal --add event="window_focused"   app="^Spotify$" action="yabai -m rule --apply ${spotify_label}"
+
+# di_label="digitally-imported"
+# yabai -m rule   --add label="${di_label}"      title="^.*digitally.*imported.*$" manage="off" native-fullscreen="on"
+# yabai -m signal --add event="window_focused"   title="^.*digitally.*imported.*$" action="yabai -m rule --apply ${di_label}"
 
 # Make everything else full screen?
-yabai -m rule   --add label="full-screen-everything" app=".*" manage="off" native-fullscreen="on"
+# yabai -m rule   --add label="full-screen-everything" app=".*" manage="off" native-fullscreen="on"
 
 # Janky Borders
-# borders active_color=0xffe149a7  width="${border_padding}" hidpi=on &
+borders active_color=0xffe149a7  width="${border_padding}" hidpi=on &
