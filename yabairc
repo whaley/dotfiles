@@ -50,6 +50,9 @@ yabai -m rule --add app="^Vitamin.*R$" manage="off"
 yabai -m rule --add app="^Managed Software Center$" manage="off"
 yabai -m rule --add app="^Finder$" manage="off"
 
+yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus first"
+yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus first"
+
 
 # Music Apps are always full screen
 # spotify_label="fullscreen-spotify"
