@@ -56,19 +56,19 @@ hyper - space 	: yabai -m window --display recent && yabai -m display --focus re
 #Moving a window to another space is done with ctrl + cmd - n/left/right
 #These are for moving windows only
 
-ctrl + cmd - 1      : yabai -m window --space 1  --focus
-ctrl + cmd - 2      : yabai -m window --space 2  --focus
-ctrl + cmd - 3      : yabai -m window --space 3  --focus
-ctrl + cmd - 4      : yabai -m window --space 4  --focus
-ctrl + cmd - 5      : yabai -m window --space 5  --focus
-ctrl + cmd - 6      : yabai -m window --space 6  --focus
-ctrl + cmd - 7      : yabai -m window --space 7  --focus
-ctrl + cmd - 8      : yabai -m window --space 8  --focus
-ctrl + cmd - 9      : yabai -m window --space 9  --focus
-ctrl + cmd - 0      : yabai -m window --space 10 --focus
+# ctrl + cmd - 1      : yabai -m window --space 1  --focus
+# ctrl + cmd - 2      : yabai -m window --space 2  --focus
+# ctrl + cmd - 3      : yabai -m window --space 3  --focus
+# ctrl + cmd - 4      : yabai -m window --space 4  --focus
+# ctrl + cmd - 5      : yabai -m window --space 5  --focus
+# ctrl + cmd - 6      : yabai -m window --space 6  --focus
+# ctrl + cmd - 7      : yabai -m window --space 7  --focus
+# ctrl + cmd - 8      : yabai -m window --space 8  --focus
+# ctrl + cmd - 9      : yabai -m window --space 9  --focus
+# ctrl + cmd - 0      : yabai -m window --space 10 --focus
 
-ctrl + cmd - left   : yabai -m window --space prev --focus
-ctrl + cmd - right  : yabai -m window --space next --focus
+# ctrl + cmd - left   : yabai -m window --space prev --focus
+# ctrl + cmd - right  : yabai -m window --space next --focus
 
 
 # ####################### #
