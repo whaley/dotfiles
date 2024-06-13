@@ -10,13 +10,31 @@
 # yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # sudo yabai --load-sa
 
+###############################################################################
+# Rules and Signals (setup before global config)
+###############################################################################
+
+# Make certain apps unmanaged/floating
+yabai -m rule --add app="Calculator" manage="off"
+yabai -m rule --add app="Stickies" manage="off"
+yabai -m rule --add app="System Settings" manage="off"
+yabai -m rule --add app="Time Out" manage="off"
+yabai -m rule --add app="Vitamin R" manage="off"
+yabai -m rule --add app="Managed Software Center" manage="off"
+yabai -m rule --add app="Finder" manage="off"
+
+# Switch focus to first window after minimizing or destroying
+# yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus first"
+# yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus first"
+
+
+###############################################################################
+# Global Settings
+###############################################################################
 border_padding=20
-
-# global settings
-
 yabai -m config                                     \
-    mouse_follows_focus          off                \
-    focus_follows_mouse          off                \
+    mouse_follows_focus          on                 \
+    focus_follows_mouse          on                 \
     window_origin_display        default            \
     window_placement             second_child       \
     window_zoom_persist          on                 \
@@ -40,31 +58,6 @@ yabai -m config                                     \
     mouse_modifier               cmd                \
     mouse_action1                resize             \
     mouse_drop_action            swap
-
-# Make certain apps unmanaged/floating
-yabai -m rule --add app="^Calculator$" manage="off"
-yabai -m rule --add app="^Stickies$" manage="off"
-yabai -m rule --add app="^System Settings$" manage="off"
-yabai -m rule --add app="^.*Time Out$" manage="off"
-yabai -m rule --add app="^Vitamin.*R$" manage="off"
-yabai -m rule --add app="^Managed Software Center$" manage="off"
-yabai -m rule --add app="^Finder$" manage="off"
-
-yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus first"
-yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus first"
-
-
-# Music Apps are always full screen
-# spotify_label="fullscreen-spotify"
-# yabai -m rule   --add label="${spotify_label}" app="^Spotify$" manage="off" native-fullscreen="on"
-# yabai -m signal --add event="window_focused"   app="^Spotify$" action="yabai -m rule --apply ${spotify_label}"
-
-# di_label="digitally-imported"
-# yabai -m rule   --add label="${di_label}"      title="^.*digitally.*imported.*$" manage="off" native-fullscreen="on"
-# yabai -m signal --add event="window_focused"   title="^.*digitally.*imported.*$" action="yabai -m rule --apply ${di_label}"
-
-# Make everything else full screen?
-# yabai -m rule   --add label="full-screen-everything" app=".*" manage="off" native-fullscreen="on"
 
 # Janky Borders
 borders active_color=0xffe149a7  width="${border_padding}" hidpi=on &
