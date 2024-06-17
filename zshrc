@@ -53,7 +53,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew colorize cp dircycle fzf git gitignore starship)
+plugins=(bgnotify brew fzf git gitignore starship)
 
 # User configuration
 
