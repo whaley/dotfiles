@@ -1,3 +1,6 @@
+# Setup Path
+export PATH="${PATH}:${HOME}/homebrew/bin"
+
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -5,7 +8,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="avit"
+# ZSH_THEME="avit"  ##### Note: theme is the starship prompt, which is loaded as a plugin
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,22 +53,14 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew colorize cp dircycle docker docker-compose git gitignore go gradle mvn osx sbt scala vagrant z)
+plugins=(brew colorize cp dircycle fzf git gitignore starship)
 
 # User configuration
 
 #Add $HOME/.zfunc to the fpath for custom zsh functions
-fpath=( ~/.zfunc "${fpath[@]}" )
-
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="${HOME}/bin:${HOME}/.asdf/shims:${PATH}"
-
-export MANPATH="/usr/local/man:$MANPATH"
+#fpath=( ~/.zfunc "${fpath[@]}" )
 
 source $ZSH/oh-my-zsh.sh
-
-#Use aws autocompletion
-source /usr/local/share/zsh/site-functions/_aws
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -86,42 +82,35 @@ source /usr/local/share/zsh/site-functions/_aws
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
 # Example aliases
 
-#Aliases for New Commands
-alias dateutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
-alias flushcache="dscacheutil -flushcache"
-alias loadavg="uptime | cut -d':' -f4- | sed s/,//g"
-
-#Docker Commands
-alias ctop="docker run -ti --name ctop --rm -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
-
 #Aliases (Overrides)
-alias ack="nocorrect ack --color"
-alias grep="nocorrect egrep --color=always"
 alias less="less -r"
 alias ln="ln -ni"
 alias ls="ls -Gh"
 alias mkdir="nocorrect mkdir -p"
 
+
 #Extra Git
 alias gmod="git merge origin/develop --no-ff"
 alias grbd="git rebase develop"
 
+#Homebrew
+alias bubu="brew update && brew upgrade"
+
+#Misc
+alias dateutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
+alias loadavg="uptime | cut -d':' -f4- | sed s/,//g"
+
+
+
+# Other utility functions and environmental setup.
+
 #OSX
-if [[ "$(uname)" == "Darwin" ]]
-then
-  #On OSX, actually repeat a key when holding it down instead of showing alternative characters	
-  defaults write -g ApplePressAndHoldEnabled 0 
-fi
+# if [[ "$(uname)" == "Darwin" ]]
+# then
+#   #On OSX, actually repeat a key when holding it down instead of showing alternative characters	
+#   defaults write -g ApplePressAndHoldEnabled 0 
+# fi
 
-export EDITOR=vim
-
-#Script for running asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
-#Set git global config
-git config --global core.excludesfile ~/.gitignore_global
-git config --global user.name "Jason Whaley"
