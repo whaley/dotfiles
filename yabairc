@@ -48,7 +48,7 @@ yabai -m config                                     \
 #####
 # Switch focus to first window after minimizing or destroying
 ####
-yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent"
+# yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent"
 yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent"
 
 #####
