@@ -55,6 +55,7 @@ yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m windo
 # Make certain apps unmanaged/floating.  Add app name to the unmanaged_apps array
 ####
 unmanaged_apps=(
+    "Calculator"
     "Finder"
     "Managed Software Center"
     "Music"
