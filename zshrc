@@ -1,5 +1,5 @@
 # Setup Path
-export PATH="${PATH}:${HOME}/homebrew/bin"
+export PATH="${HOME}/bin:${HOME}/homebrew/bin:${PATH}:"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
