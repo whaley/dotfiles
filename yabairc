@@ -12,7 +12,7 @@
 ###############################################################################
 # Global Settings
 ###############################################################################
-border_padding=20
+border_padding=40
 yabai -m config                                     \
     mouse_follows_focus          on                 \
     focus_follows_mouse          on                 \
