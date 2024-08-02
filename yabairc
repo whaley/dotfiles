@@ -12,7 +12,8 @@
 ###############################################################################
 # Global Settings
 ###############################################################################
-border_padding=40
+window_gap=5
+border_padding=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
     focus_follows_mouse          on                 \
@@ -34,7 +35,7 @@ yabai -m config                                     \
     bottom_padding               ${border_padding}  \
     left_padding                 ${border_padding}  \
     right_padding                ${border_padding}  \
-    window_gap                   ${border_padding}  \
+    window_gap                   ${window_gap}      \
     layout                       bsp                \
     mouse_modifier               cmd                \
     mouse_action1                resize             \
