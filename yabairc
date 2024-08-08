@@ -16,11 +16,10 @@ window_gap=5
 border_padding=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
-    focus_follows_mouse          on                 \
+    focus_follows_mouse          autoraise          \
     window_origin_display        default            \
     window_placement             second_child       \
     window_zoom_persist          on                 \
-    window_topmost               off                \
     window_shadow                on                 \
     window_animation_duration    1.0                \
     window_opacity_duration      0.0                \
@@ -28,7 +27,7 @@ yabai -m config                                     \
     normal_window_opacity        0.90               \
     window_opacity               on                 \
     insert_feedback_color        0xffd75f5f         \
-    split_ratio                  0.5                \
+    split_ratio                  0.6                \
     split_type                   auto               \
     auto_balance                 off                \
     top_padding                  ${border_padding}  \
