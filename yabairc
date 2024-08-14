@@ -13,6 +13,7 @@
 # Global Settings
 ###############################################################################
 window_gap=5
+# border_padding=$(($window_gap*2))
 border_padding=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
@@ -30,10 +31,10 @@ yabai -m config                                     \
     split_ratio                  0.6                \
     split_type                   auto               \
     auto_balance                 off                \
-    top_padding                  ${border_padding}  \
-    bottom_padding               ${border_padding}  \
-    left_padding                 ${border_padding}  \
-    right_padding                ${border_padding}  \
+    top_padding                  ${window_gap}      \
+    bottom_padding               ${window_gap}      \
+    left_padding                 ${window_gap}      \
+    right_padding                ${window_gap}      \
     window_gap                   ${window_gap}      \
     layout                       bsp                \
     mouse_modifier               cmd                \
