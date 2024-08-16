@@ -35,11 +35,14 @@ hyper - k	    : yabai -m window --swap south
 hyper - j	    : yabai -m window --swap west
 hyper - l	    : yabai -m window --swap east
 hyper - i	    : yabai -m window --swap north
+hyper - m       : yabai -m window --swap largest
 
 hyper - d	    : yabai -m window --warp south
 hyper - s	    : yabai -m window --warp west
 hyper - f	    : yabai -m window --warp east
 hyper - e	    : yabai -m window --warp north
+hyper - b	    : yabai -m window --warp largest
+
 
 # Move to next display
 hyper - space 	: yabai -m window --display recent && yabai -m display --focus recent

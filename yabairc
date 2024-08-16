@@ -64,7 +64,7 @@ unmanaged_apps=(
     "Stickies"
     "System Settings"
     "Time Out"
-    "Vitamin R"
+    # "Vitamin R"
 )
 
 make_app_unmanaged() {
