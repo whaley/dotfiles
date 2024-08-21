@@ -13,7 +13,6 @@
 # Global Settings
 ###############################################################################
 window_gap=5
-# border_padding=$(($window_gap*2))
 border_padding=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
@@ -64,7 +63,6 @@ unmanaged_apps=(
     "Stickies"
     "System Settings"
     "Time Out"
-    # "Vitamin R"
 )
 
 make_app_unmanaged() {
