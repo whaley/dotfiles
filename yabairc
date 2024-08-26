@@ -16,7 +16,7 @@ window_gap=5
 border_padding=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
-    focus_follows_mouse          autoraise          \
+    focus_follows_mouse          autofocus          \
     window_origin_display        default            \
     window_placement             second_child       \
     window_zoom_persist          on                 \
