@@ -12,7 +12,7 @@
 ###############################################################################
 # Global Settings
 ###############################################################################
-window_gap=5
+window_gap=50
 border_padding=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
@@ -81,4 +81,4 @@ done
 ###############################################################################
 # Janky Borders
 ###############################################################################
-borders active_color=0xffe149a7  width="${border_padding}" hidpi=on &
+borders active_color=0xffe149a7  width="10" hidpi=on &
