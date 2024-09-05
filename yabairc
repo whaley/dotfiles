@@ -82,4 +82,4 @@ done
 ###############################################################################
 # Janky Borders
 ###############################################################################
-borders active_color=0xffe149a7  width="10" hidpi=on &
+borders active_color=0xffe149a7  width="${window_gap}" hidpi=on &
