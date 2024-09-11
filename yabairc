@@ -13,10 +13,10 @@
 # Global Settings
 ###############################################################################
 window_gap=50
-border_padding=$(($window_gap*2))
+janky_border_width=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
-    focus_follows_mouse          autofocus          \
+    focus_follows_mouse          off                \
     window_origin_display        default            \
     window_placement             second_child       \
     window_zoom_persist          on                 \
@@ -45,15 +45,20 @@ yabai -m config                                     \
 # Rules and Signals
 ###############################################################################
 
-#####
+##########
 # Switch focus to first window after minimizing or destroying
-####
+##########
+# TODO: Delete all rules in effect so this effectively wipes the config clean
+
+##########
+# Switch focus to first window after minimizing or destroying
+##########
 # yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent"
 yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent"
 
-#####
+##########
 # Make certain apps unmanaged/floating.  Add app name to the unmanaged_apps array
-####
+##########
 unmanaged_apps=(
     "Calculator"
     "Cisco Secure Client"
@@ -82,4 +87,4 @@ done
 ###############################################################################
 # Janky Borders
 ###############################################################################
-borders active_color=0xffe149a7  width="${window_gap}" hidpi=on &
+borders active_color=0xffe149a7  width="${janky_border_width}" hidpi=on &
