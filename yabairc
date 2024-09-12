@@ -53,7 +53,7 @@ yabai -m config                                     \
 ##########
 # Switch focus to first window after minimizing or destroying
 ##########
-# yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent"
+yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent"
 yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent"
 
 ##########
@@ -62,6 +62,7 @@ yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m windo
 unmanaged_apps=(
     "Calculator"
     "Cisco Secure Client"
+    "DI.FM"
     "Finder"
     "Managed Software Center"
     "Music"
