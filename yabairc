@@ -46,18 +46,27 @@ yabai -m config                                     \
 ###############################################################################
 
 ##########
-# Switch focus to first window after minimizing or destroying
+# Delete existing rules and signals before adding what's in the file, in case this is loaded without a yabai restart
 ##########
-# TODO: Delete all rules in effect so this effectively wipes the config clean
+rule_label = $(yabai -m rule --list | jq 'map(.label) | @sh' | sed s/\"//g)
+for rule_label in rule_labels; do
+    yabai -m rule -remove "${rule_label}"
+done
+
+signal_label = $(yabai -m signal --list | jq 'map(.label) | @sh' | sed s/\"//g)
+for signal_label in signal_labels; do
+    yabai -m rule -remove "${signal_label}"
+done
+
 
 ##########
 # Switch focus to first window after minimizing or destroying
 ##########
-yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent"
-yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent"
+yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent" label="any_window_destroyed"  
+yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent" label="any_window_minimized"  
 
 ##########
-# Make certain apps unmanaged/floating.  Add app name to the unmanaged_apps array
+# Make certain apps unmanaged/floating.
 ##########
 unmanaged_apps=(
     "Calculator"
@@ -74,10 +83,10 @@ unmanaged_apps=(
 
 make_app_unmanaged() {
   app="${1}"
-  label="unmanage_${app}"
+  rule_label="unmanage_${app}"
   yabai -m rule   --add app="${app}" manage="off" label="${label}"
-  yabai -m signal --add app="${app}" event="window_created"  action="yabai -m rule --apply ${label}"
-  yabai -m signal --add app="${app}" event="window_focused"  action="yabai -m rule --apply ${label}"
+  yabai -m signal --add app="${app}" event="window_created"  action="yabai -m rule --apply ${rule_label}" label="${app}_window_created" 
+  yabai -m signal --add app="${app}" event="window_focused"  action="yabai -m rule --apply ${rule_label}" label="${app}_window_created"
 }
 
 for app in "${unmanaged_apps[@]}"; do
