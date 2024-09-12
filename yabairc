@@ -13,7 +13,7 @@
 # Global Settings
 ###############################################################################
 window_gap=50
-janky_border_width=$(($window_gap*2))
+janky_border_width=$(($window_gap/5))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
     focus_follows_mouse          off                \
