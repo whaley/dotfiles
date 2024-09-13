@@ -29,7 +29,7 @@ yabai -m config                                     \
     insert_feedback_color        0xffd75f5f         \
     split_ratio                  0.5                \
     split_type                   auto               \
-    auto_balance                 off                \
+    auto_balance                 on                 \
     top_padding                  ${window_gap}      \
     bottom_padding               ${window_gap}      \
     left_padding                 ${window_gap}      \
