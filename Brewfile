@@ -13,6 +13,7 @@ brew "koekeishiya/formulae/skhd", args: ["HEAD"]
 brew "koekeishiya/formulae/yabai"
 brew "mosh"
 brew "openssl@3"
+brew "pyenv"
 brew "readline"
 brew "ripgrep"
 brew "sapling"
