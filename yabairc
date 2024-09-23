@@ -12,8 +12,8 @@
 ###############################################################################
 # Global Settings
 ###############################################################################
-window_gap=50
-janky_border_width=$(($window_gap/5))
+window_gap=5
+janky_border_width=$(($window_gap*2))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
     focus_follows_mouse          off                \
@@ -46,24 +46,10 @@ yabai -m config                                     \
 ###############################################################################
 
 ##########
-# Delete existing rules and signals before adding what's in the file, in case this is loaded without a yabai restart
-##########
-rule_label = $(yabai -m rule --list | jq 'map(.label) | @sh' | sed s/\"//g)
-for rule_label in rule_labels; do
-    yabai -m rule -remove "${rule_label}"
-done
-
-signal_label = $(yabai -m signal --list | jq 'map(.label) | @sh' | sed s/\"//g)
-for signal_label in signal_labels; do
-    yabai -m rule -remove "${signal_label}"
-done
-
-
-##########
 # Switch focus to first window after minimizing or destroying
 ##########
-yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent" label="any_window_destroyed"  
-yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent" label="any_window_minimized"  
+yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent" label="any_window_destroyed"
+yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent" label="any_window_minimized"
 
 ##########
 # Make certain apps unmanaged/floating.
@@ -85,8 +71,8 @@ make_app_unmanaged() {
   app="${1}"
   rule_label="unmanage_${app}"
   yabai -m rule   --add app="${app}" manage="off" label="${label}"
-  yabai -m signal --add app="${app}" event="window_created"  action="yabai -m rule --apply ${rule_label}" label="${app}_window_created" 
-  yabai -m signal --add app="${app}" event="window_focused"  action="yabai -m rule --apply ${rule_label}" label="${app}_window_created"
+  yabai -m signal --add app="${app}" event="window_created"  action="yabai -m rule --apply ${rule_label}"
+  yabai -m signal --add app="${app}" event="window_focused"  action="yabai -m rule --apply ${rule_label}"
 }
 
 for app in "${unmanaged_apps[@]}"; do
