@@ -1,0 +1,113 @@
+/*{
+	"type": "action",
+	"targets": ["omnifocus"],
+	"author": "Otto Automator",
+	"identifier": "com.omni-automation.of.markdown-link-for-object",
+	"version": "1.0",
+	"description": "This plug-in generates a link, in markdown format, to the selected tag, folder, project, or task, and places the link on the clipboard. TIP: Hold down Shift key when running plug-in to summon preferences dialog.",
+	"label": "Markdown Link for Object",
+	"shortLabel": "Markdown Link for Object",
+	"paletteLabel": "Markdown Link for Object",
+	"image": "link.badge.plus"
+}*/
+(() => {
+	function playSystemAlert(alertFilename){
+		if(!alertFilename.endsWith(".aiff")){
+			alertFilename = alertFilename + ".aiff"
+		}
+		alertFilename = alertFilename.charAt(0).toUpperCase() + alertFilename.slice(1)
+		sysSoundsFldr = URL.fromString("/System/Library/Sounds/") 
+		urlComps = URL.Components.fromURL(sysSoundsFldr, false)
+		urlComps.path = alertFilename
+		soundFileURL = urlComps.urlRelativeTo(sysSoundsFldr)
+		audioAlert = new Audio.Alert(soundFileURL)
+		Audio.playAlert(audioAlert)
+	}
+	
+	var preferences = new Preferences() // NO ID = PLUG-IN ID
+	var soundNames = ["Basso",
+"Blow", "Bottle", "Frog", "Funk", "Glass", "Hero", "Morse", "Ping", "Pop", "Purr", "Sosumi", "Submarine", "Tink"]
+
+	const action = new PlugIn.Action(async function(selection, sender){
+		try {
+			storedBoolean = preferences.readBoolean("shouldPlaySound")
+			if(storedBoolean === null){
+				preferences.write("shouldPlaySound", shouldPlaySound)
+				var shouldPlaySound = false
+			} else {
+				var shouldPlaySound = storedBoolean
+			}
+			
+			storedSoundIndx = preferences.readNumber("confirmationSoundIndx")
+			if(storedSoundIndx === null){
+				preferences.write("confirmationSoundIndx", 5)
+				var storedSoundIndx = 5
+				var confirmationSound = "Glass"
+			} else {
+				var confirmationSound = soundNames[storedSoundIndx]
+			}
+			
+			if(app.shiftKeyDown){
+				checkSwitchField = new Form.Field.Checkbox(
+					"shouldPlaySound",
+					"Play sound when creating the Markdown link",
+					shouldPlaySound
+				)
+				
+				soundsOptionsMenu = new Form.Field.Option(
+					"confirmationSoundIndx", 
+					"Confirmation Sound", 
+					[0,1,2,3,4,5,6,7,8,9,10,11,12,13], 
+					soundNames, 
+					storedSoundIndx
+				)
+				
+				inputForm = new Form()
+				inputForm.addField(soundsOptionsMenu)
+				inputForm.addField(checkSwitchField)
+				
+				formPrompt = "Plug-in Options:"
+				buttonTitle = "Continue"
+				formObject = await inputForm.show(formPrompt, buttonTitle)
+
+				booleanValue = formObject.values['shouldPlaySound']
+				preferences.write("shouldPlaySound", booleanValue)
+				var shouldPlaySound = booleanValue
+				
+				indx = formObject.values['confirmationSoundIndx']
+				preferences.write("confirmationSoundIndx", indx)
+				var confirmationSound = soundNames[indx]
+			}
+		
+			selectedItem = selection.databaseObjects[0]
+
+			if (selectedItem instanceof Folder){
+				var objType = "folder"
+			} else if (selectedItem instanceof Tag){
+				var objType = "tag"
+			} else {
+				var objType = "task"
+			}
+
+			ID = selectedItem.id.primaryKey
+			urlStr = `omnifocus:///${objType}/${ID}`
+			markdownLink = `[${selectedItem.name}](${urlStr})`
+			Pasteboard.general.string = markdownLink
+
+			if(shouldPlaySound && Device.current.mac){playSystemAlert(confirmationSound)}
+		}
+		catch(err){
+			if(!err.causedByUserCancelling){
+				console.error(err.name, err.message)
+				new Alert(err.name, err.message).show()
+			}
+		}
+	});
+
+	action.validate = function(selection, sender){
+		// selection options: tasks, projects, folders, tags, databaseObjects, allObjects
+		return (selection.databaseObjects.length === 1)
+	};
+	
+	return action;
+})();
