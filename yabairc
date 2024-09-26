@@ -20,7 +20,7 @@ yabai -m config                                     \
     window_origin_display        default            \
     window_placement             second_child       \
     window_zoom_persist          on                 \
-    window_shadow                off                 \
+    window_shadow                off                \
     window_opacity_duration      0.0                \
     active_window_opacity        1.0                \
     normal_window_opacity        0.90               \
@@ -82,4 +82,11 @@ done
 ###############################################################################
 # Janky Borders
 ###############################################################################
-borders active_color=0xffe149a7  width="${janky_border_width}" hidpi=on &
+border_options=(
+    style=round
+    width="${janky_border_width}"
+    hidpi=on
+    active_color=0xffBFA075
+    inactive_color=0xff492D79
+)
+borders "${border_options[@]}" &
