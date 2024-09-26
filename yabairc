@@ -70,7 +70,7 @@ unmanaged_apps=(
 make_app_unmanaged() {
   app="${1}"
   rule_label="unmanage_${app}"
-  yabai -m rule   --add app="${app}" manage="off" label="${label}"
+  yabai -m rule   --add app="${app}" manage="off" label="${rule_label}"
   yabai -m signal --add app="${app}" event="window_created"  action="yabai -m rule --apply ${rule_label}"
   yabai -m signal --add app="${app}" event="window_focused"  action="yabai -m rule --apply ${rule_label}"
 }
