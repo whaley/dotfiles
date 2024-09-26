@@ -12,8 +12,9 @@
 ###############################################################################
 # Global Settings
 ###############################################################################
-window_gap=5
-janky_border_width=$(($window_gap*2))
+window_gap=15
+# janky_border_width=$(($window_gap*2))
+janky_border_width=$(($window_gap+1))
 yabai -m config                                     \
     mouse_follows_focus          on                 \
     focus_follows_mouse          off                \
@@ -83,7 +84,7 @@ done
 # Janky Borders
 ###############################################################################
 border_options=(
-    style=round
+    style=round 
     width="${janky_border_width}"
     hidpi=on
     active_color=0xffBFA075
