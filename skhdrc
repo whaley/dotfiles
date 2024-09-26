@@ -6,26 +6,21 @@
 # Focus
 # ####################### #
 
-# Focus on next display
-meh - space	    : $HOME/bin/cycle_display.sh
-
-
-# # Directional for windows
+# Directional for windows
 meh - k         : yabai -m window --focus south
 meh - j		    : yabai -m window --focus west
 meh - l		    : yabai -m window --focus east
 meh - i		    : yabai -m window --focus north
 
-# # Focus next in order
+# Focus next in order
 meh - left	    : yabai -m window --focus prev
 meh - right	    : yabai -m window --focus next
 
-# # Focus first, in case we lose focus (e.g. minimizing)
+# Focus first, in case we lose focus (e.g. minimizing)
 meh - return    : yabai -m window --focus first
 
-# # Fullscreen
+# Fullscreen
 meh - f         : yabai -m window --toggle zoom-fullscreen
-
 
 # ####################### #
 # Swap and Warp
@@ -44,26 +39,68 @@ hyper - e	    : yabai -m window --warp north
 hyper - b	    : yabai -m window --warp largest
 
 
-# Move to next display
-hyper - space 	: yabai -m window --display recent && yabai -m display --focus recent
-
 # ####################### #
 # Minimizing and Unminimizing
 # ####################### #
 meh - m         : $HOME/bin/minimize_non_focused.sh
+
+
+# ####################### #
+# Manage Splits and Sizes
+# ####################### #
+
+# # toggle window split type between vertical and horizontal
+# # 0x27 is apostrophe (')
+hyper - 0x27   	: yabai -m window --toggle split
+
+# # Increase / Decrease Window Sizes
+
+# # Make Window Bigger On All Sides:
+# # 0x18 is '=', used since it shifts to +
+hyper - 0x18    : yabai -m window --resize left:-50:0 --resize right:50:0 --resize bottom:0:40 --resize top:0:-40
+
+# # Make window smaller
+# # 0x1B is '-'
+hyper - 0x1B    : yabai -m window --resize left:50:0 --resize right:-50:0 --resize bottom:0:-40 --resize top:0:40
+
+# # Resize in a direction (gets wonky if window isn't on the edge of screen)
+hyper - left    : yabai -m window --resize left:-100:0 --resize right:-100:0
+hyper - right   : yabai -m window --resize right:100:0 --resize left:100:0
+hyper - up      : yabai -m window --resize top:0:-80 --resize bottom:0:-80
+hyper - down    : yabai -m window --resize bottom:0:80 --resize top:0:80
+
+# ####################### #
+# Resets
+# ####################### #
+
+# balance size of windows
+hyper - return : yabai -m space --balance
+
+# restart yabai
+meh - escape : yabai --restart-service
+
+
+# ############################################################### #
+# YABAI Unused
+# ############################################################### #
+
+# Move to next display
+# hyper - space 	: yabai -m window --display recent && yabai -m display --focus recent
+
+# Focus on next display
+# meh - space	    : $HOME/bin/cycle_display.sh
 
 # ####################### #
 # Displays/Monitors
 # ####################### #
 
 # focus on display
-meh - 1         : yabai -m display --focus 1
-meh - 2         : yabai -m display --focus 2
+# meh - 1         : yabai -m display --focus 1
+# meh - 2         : yabai -m display --focus 2
 
 # send window to monitor and follow focus
-hyper - 1       : yabai -m window --display 1 ; yabai -m display --focus 1
-hyper - 2       : yabai -m window --display 2 ; yabai -m display --focus 2
-
+# hyper - 1       : yabai -m window --display 1 ; yabai -m display --focus 1
+# hyper - 2       : yabai -m window --display 2 ; yabai -m display --focus 2
 
 # ####################### #
 # Spaces/Desktops
@@ -87,48 +124,6 @@ hyper - 2       : yabai -m window --display 2 ; yabai -m display --focus 2
 # ctrl + cmd - left   : yabai -m window --space prev --focus
 # ctrl + cmd - right  : yabai -m window --space next --focus
 
-
-# ####################### #
-# Manage Splits and Sizes
-# ####################### #
-
-# # toggle window split type between vertical and horizontal
-# # 0x27 == '
-hyper - 0x27   	: yabai -m window --toggle split
-
-# # Increase / Decrease Window Sizes
-
-# # Make Window Bigger On All Sides:
-# # 0x18 is '=', used since it shifts to +
-hyper - 0x18    : yabai -m window --resize left:-50:0 --resize right:50:0 --resize bottom:0:40 --resize top:0:-40
-
-# # Make window smaller
-# # 0x1B == -
-hyper - 0x1B    : yabai -m window --resize left:50:0 --resize right:-50:0 --resize bottom:0:-40 --resize top:0:40
-
-# # Resize in a direction (gets wonky if window isn't on the edge of screen)
-# hyper - 0x27    : yabai -m window --resize left:-100:0 --resize right:100:0 --resize bottom:0:100 --resize top:0:-100
-hyper - left    : yabai -m window --resize left:-100:0 --resize right:-100:0
-hyper - right   : yabai -m window --resize right:100:0 --resize left:100:0
-hyper - up      : yabai -m window --resize top:0:-80 --resize bottom:0:-80
-hyper - down    : yabai -m window --resize bottom:0:80 --resize top:0:80
-
-
-
-# ####################### #
-# Resets
-# ####################### #
-
-# balance size of windows
-hyper - return : yabai -m space --balance
-
-# restart yabai
-meh - escape : yabai --restart-service
-
-
-# ############################################################### #
-# YABAI Unused
-# ############################################################### #
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 # shift + cmd - n : yabai -m space --create && \
