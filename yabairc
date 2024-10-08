@@ -12,9 +12,12 @@
 ###############################################################################
 # Global Settings
 ###############################################################################
-window_gap=15
+window_gap=40
+padding=$(($window_gap/2))
 # janky_border_width=$(($window_gap*2))
 janky_border_width=$(($window_gap+1))
+
+
 yabai -m config                                     \
     mouse_follows_focus          on                 \
     focus_follows_mouse          off                \
@@ -30,10 +33,10 @@ yabai -m config                                     \
     split_ratio                  0.5                \
     split_type                   auto               \
     auto_balance                 on                 \
-    top_padding                  ${window_gap}      \
-    bottom_padding               ${window_gap}      \
-    left_padding                 ${window_gap}      \
-    right_padding                ${window_gap}      \
+    top_padding                  ${padding}         \
+    bottom_padding               ${padding}         \
+    left_padding                 ${padding}         \
+    right_padding                ${padding}         \
     window_gap                   ${window_gap}      \
     layout                       bsp                \
     mouse_modifier               cmd                \
@@ -48,8 +51,8 @@ yabai -m config                                     \
 ##########
 # Switch focus to first window after minimizing or destroying
 ##########
-yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent" label="any_window_destroyed"
-yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent" label="any_window_minimized"
+# yabai -m signal --add event="window_destroyed"  app=".*"  action="yabai -m window --focus recent" label="any_window_destroyed"
+# yabai -m signal --add event="window_minimized"  app=".*"  action="yabai -m window --focus recent" label="any_window_minimized"
 
 ##########
 # Make certain apps unmanaged/floating.
@@ -84,10 +87,10 @@ done
 # Janky Borders
 ###############################################################################
 border_options=(
-    style=round 
+    style=round
     width="${janky_border_width}"
-    hidpi=on
-    active_color=0xffBFA075
-    inactive_color=0xff492D79
+    hidpi=off
+    active_color=0xffe149a7
+    # inactive_color=0xff492D79
 )
 borders "${border_options[@]}" &
