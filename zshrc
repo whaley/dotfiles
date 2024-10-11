@@ -57,8 +57,8 @@ plugins=(bgnotify brew fzf git gitignore starship z)
 
 # User configuration
 
-#Add $HOME/.zfunc to the fpath for custom zsh functions
-#fpath=( ~/.zfunc "${fpath[@]}" )
+#Add Autocomplete for any brew installed packages
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,9 +95,6 @@ alias mkdir="nocorrect mkdir -p"
 #Extra Git
 alias gmod="git merge origin/develop --no-ff"
 alias grbd="git rebase develop"
-
-#Homebrew
-alias bubu="brew update && brew upgrade"
 
 #Misc
 alias dateutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
