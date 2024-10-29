@@ -10,8 +10,6 @@ brew "gh"
 brew "git-delta"
 brew "jnv"
 brew "jq"
-brew "koekeishiya/formulae/skhd", args: ["HEAD"]
-brew "koekeishiya/formulae/yabai"
 brew "mosh"
 brew "newsboat"
 brew "openssl@3"
