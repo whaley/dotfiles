@@ -117,8 +117,8 @@ cmd-ctrl-alt-shift-i = 'move up'
 cmd-ctrl-alt-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-minus = 'resize smart -50'
-ctrl-alt-shift-equal = 'resize smart +50'
+ctrl-alt-shift-cmd-minus = 'resize smart -50'
+ctrl-alt-shift-cmd-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-alt-shift--1 = 'workspace 1'
