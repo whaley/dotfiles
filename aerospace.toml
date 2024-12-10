@@ -73,7 +73,7 @@ outer.right =      0
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 
-# All possible keys:
+# All possible keys
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
 # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
@@ -117,8 +117,8 @@ cmd-ctrl-alt-shift-i = 'move up'
 cmd-ctrl-alt-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-cmd-minus = 'resize smart -50'
-ctrl-alt-shift-cmd-equal = 'resize smart +50'
+ctrl-alt-shift-cmd-minus = 'resize smart -100'
+ctrl-alt-shift-cmd-equal = 'resize smart +100'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-alt-shift-enter    = 'workspace Home'
