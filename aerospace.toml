@@ -188,3 +188,6 @@ tell application "iTerm"
 end tell
 '
 ''', 'mode main']
+
+# Open Obsidian
+o = ['exec-and-forget open /Applications/Obsidian.app', 'mode main']
