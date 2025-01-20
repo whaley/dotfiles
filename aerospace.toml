@@ -190,4 +190,4 @@ end tell
 ''', 'mode main']
 
 # Open Obsidian
-o = ['exec-and-forget open /Applications/Obsidian.app', 'mode main']
+o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
