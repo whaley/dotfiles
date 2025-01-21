@@ -172,16 +172,23 @@ l = ['join-with right', 'mode main']
 [mode.open.binding]
 esc = 'mode main'
 
-# Chrome
+# Chrome if it's available (e.g. work machine) or Chromium
 c = ['''exec-and-forget osascript -e '
-tell application "/Applications/Chromium.app"
-    make new window
-    activate
+try
+	tell application "Finder" to get application file id "com.google.Chrome"
+	set chrome to "Chrome"
+on error
+	set chrome to "Chromium"
+end try
+
+tell application chrome
+	make new window
+	activate
 end tell
 '
 ''', 'mode main']
 
-# New iTerm Window
+# Open iTerm if needed, or create new window
 t =  ['''exec-and-forget osascript -e '
 if application "iTerm" is running then
 	tell application "iTerm"
@@ -196,5 +203,7 @@ end if
 ''', 'mode main']
 
 # Open Obsidian
-# use a script here since Obsidian doesn't support apple
+#   use an external  script here since Obsidian doesn't
+#   1) support applescript since it's Electron :(
+#   2) kind of only works within a single window anyway
 o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
