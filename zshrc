@@ -107,7 +107,6 @@ alias loadavg="uptime | cut -d':' -f4- | sed s/,//g"
 #OSX
 # if [[ "$(uname)" == "Darwin" ]]
 # then
-#   #On OSX, actually repeat a key when holding it down instead of showing alternative characters	
-#   defaults write -g ApplePressAndHoldEnabled 0 
+#   #On OSX, actually repeat a key when holding it down instead of showing alternative characters
+#   defaults write -g ApplePressAndHoldEnabled 0
 # fi
-

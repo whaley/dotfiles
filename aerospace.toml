@@ -183,11 +183,18 @@ end tell
 
 # New iTerm Window
 t =  ['''exec-and-forget osascript -e '
-tell application "iTerm"
-	set newWindow to (create window with default profile)
-end tell
+if application "iTerm" is running then
+	tell application "iTerm"
+		set newWindow to (create window with default profile)
+	end tell
+else
+	tell application "iTerm"
+		activate
+	end tell
+end if
 '
 ''', 'mode main']
 
 # Open Obsidian
+# use a script here since Obsidian doesn't support apple
 o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
