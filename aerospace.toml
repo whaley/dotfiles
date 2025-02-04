@@ -157,15 +157,18 @@ ctrl-alt-shift-cmd-right    = 'move-node-to-workspace --focus-follows-window --w
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 ctrl-alt-shift-semicolon = 'mode service'
 ctrl-alt-shift-o = 'mode open'
+ctrl-alt-shift-w = 'mode warp'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['fullscreen', 'mode main'] # Toggle between floating and tiling layout
+f = ['fullscreen', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 
+
+[mode.warpwl.binding]
 j = ['join-with left', 'mode main']
 k = ['join-with down', 'mode main']
 i = ['join-with up', 'mode main']
