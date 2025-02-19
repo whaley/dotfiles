@@ -125,11 +125,9 @@ ctrl-alt-shift-cmd-minus = 'resize smart -100'
 ctrl-alt-shift-cmd-equal = 'resize smart +100'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-alt-shift-enter    = 'workspace Home'
 ctrl-alt-shift-a        = 'workspace A'
 ctrl-alt-shift-b        = 'workspace B'
 ctrl-alt-shift-c        = 'workspace C'
-ctrl-alt-shift-d        = 'workspace Dev'
 ctrl-alt-shift-m        = 'workspace Music'
 
 ctrl-alt-shift-left     = 'workspace --wrap-around prev'
@@ -140,11 +138,9 @@ ctrl-alt-shift-tab      = 'workspace-back-and-forth'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-ctrl-alt-shift-cmd-enter    = 'move-node-to-workspace Home'
 ctrl-alt-shift-cmd-a        = 'move-node-to-workspace A'
 ctrl-alt-shift-cmd-b        = 'move-node-to-workspace B'
 ctrl-alt-shift-cmd-c        = 'move-node-to-workspace C'
-ctrl-alt-shift-cmd-d        = 'move-node-to-workspace Dev'
 ctrl-alt-shift-cmd-m        = 'move-node-to-workspace Music'
 
 ctrl-alt-shift-cmd-left     = 'move-node-to-workspace --focus-follows-window --wrap-around prev'
