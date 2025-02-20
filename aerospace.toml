@@ -164,11 +164,16 @@ f = ['fullscreen', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 
 
-[mode.warpwl.binding]
+[mode.warp.binding]
+esc = 'mode main'
+
 j = ['join-with left', 'mode main']
 k = ['join-with down', 'mode main']
 i = ['join-with up', 'mode main']
 l = ['join-with right', 'mode main']
+
+
+
 
 [mode.open.binding]
 esc = 'mode main'
