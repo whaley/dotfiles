@@ -208,8 +208,10 @@ end if
 '
 ''', 'mode main']
 
-# Open Obsidian
-#   use an external  script here since Obsidian doesn't
-#   1) support applescript since it's Electron :(
-#   2) kind of only works within a single window anyway
+# Apps with only a single window or can't otherwise support applscript
+
+# Obsidian
 o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
+
+# Workplace PWA
+w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workplace_to_current_workspace.py', 'mode main']
