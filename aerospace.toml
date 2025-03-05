@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-	'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xffe149a7 inactive_color=0xff494d64 width=5.0'
+    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xffe149a7 width=25.0'
 ]
 
 # Start AeroSpace at login
@@ -62,12 +62,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal 		= 5
-inner.vertical 			= 5
-outer.left 				= 5
-outer.bottom 			= 5
-outer.top 				= 5
-outer.right 			= 5
+inner.horizontal 		= 25
+inner.vertical 			= 25
+outer.left 				= 25
+outer.bottom 			= 25
+outer.top 				= 25
+outer.right 			= 25
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -197,15 +197,15 @@ esc 						= 'mode main'
 # Chrome if it's available (e.g. work machine) or Chromium
 c = ['''exec-and-forget osascript -e '
 try
-	tell application "Finder" to get application file id "com.google.Chrome"
-	set chrome to "Chrome"
+    tell application "Finder" to get application file id "com.google.Chrome"
+    set chrome to "Chrome"
 on error
-	set chrome to "Chromium"
+    set chrome to "Chromium"
 end try
 
 tell application chrome
-	make new window
-	activate
+    make new window
+    activate
 end tell
 '
 ''', 'mode main']
@@ -213,13 +213,13 @@ end tell
 # Open iTerm if needed, or create new window
 t =  ['''exec-and-forget osascript -e '
 if application "iTerm" is running then
-	tell application "iTerm"
-		set newWindow to (create window with default profile)
-	end tell
+    tell application "iTerm"
+        set newWindow to (create window with default profile)
+    end tell
 else
-	tell application "iTerm"
-		activate
-	end tell
+    tell application "iTerm"
+        activate
+    end tell
 end if
 '
 ''', 'mode main']
