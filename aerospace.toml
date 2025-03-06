@@ -194,19 +194,18 @@ l 							= ['join-with right', 'mode main']
 [mode.open.binding]
 esc 						= 'mode main'
 
-# Chrome if it's available (e.g. work machine) or Chromium
-c = ['''exec-and-forget osascript -e '
+# Browser: Chrome if it's available (e.g. work machine) or Orion (e.g. Personal machine)
+b = ['''exec-and-forget osascript -e '
 try
-    tell application "Finder" to get application file id "com.google.Chrome"
-    set chrome to "Chrome"
+    tell application "Chrome"
+        make new window
+            activate
+    end tell
 on error
-    set chrome to "Chromium"
+    tell application "Orion"
+        make new document
+    end tell
 end try
-
-tell application chrome
-    make new window
-    activate
-end tell
 '
 ''', 'mode main']
 
@@ -225,7 +224,7 @@ end if
 ''', 'mode main']
 
 
-# Apps with only a single window or can't otherwise support applscript
+# Apps with only a single window or can't otherwise support applescript
 # Obsidian
 o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
 
