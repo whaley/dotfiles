@@ -194,16 +194,17 @@ l 							= ['join-with right', 'mode main']
 [mode.open.binding]
 esc 						= 'mode main'
 
-# Browser: Chrome if it's available (e.g. work machine) or Orion (e.g. Personal machine)
+# Browser: Chrome if it's available (e.g. work machine) or Chromium (e.g. personal machine)
 b = ['''exec-and-forget osascript -e '
 try
     tell application "Chrome"
         make new window
-            activate
+        activate
     end tell
 on error
-    tell application "Orion"
-        make new document
+    tell application "Chromium"
+        make new window
+        activate
     end tell
 end try
 '
