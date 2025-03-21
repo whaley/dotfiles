@@ -17,13 +17,13 @@ after-startup-command = [
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers 						= true
-enable-normalization-opposite-orientation-for-nested-containers = true
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 50
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -62,12 +62,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal 		= 25
-inner.vertical 			= 25
-outer.left 				= 25
-outer.bottom 			= 25
-outer.top 				= 25
-outer.right 			= 25
+inner.horizontal    = 25
+inner.vertical      = 25
+outer.left          = 25
+outer.bottom        = 25
+outer.top           = 25
+outer.right         = 25
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -100,46 +100,45 @@ outer.right 			= 25
 # '''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-ctrl-alt-shift-slash 		= 'layout tiles horizontal vertical'
-ctrl-alt-shift-comma 		= 'layout accordion horizontal vertical'
-
-ctrl-alt-shift-f     		= 'layout floating tiling'  #toggle float/ for a window
+ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
+ctrl-alt-shift-comma        = 'layout accordion horizontal vertical'
+ctrl-alt-shift-f            = 'layout floating tiling'  #toggle float/ for a window
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
-ctrl-alt-shift-esc 			= 'balance-sizes'
+ctrl-alt-shift-esc          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-alt-shift-j 			= 'focus left'
-ctrl-alt-shift-k 			= 'focus down'
-ctrl-alt-shift-i 			= 'focus up'
-ctrl-alt-shift-l 			= 'focus right'
+ctrl-alt-shift-j            = 'focus left'
+ctrl-alt-shift-k            = 'focus down'
+ctrl-alt-shift-i            = 'focus up'
+ctrl-alt-shift-l            = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-ctrl-alt-shift-j 		= 'move left'
-cmd-ctrl-alt-shift-k 		= 'move down'
-cmd-ctrl-alt-shift-i 		= 'move up'
-cmd-ctrl-alt-shift-l 		= 'move right'
+cmd-ctrl-alt-shift-j        = 'move left'
+cmd-ctrl-alt-shift-k        = 'move down'
+cmd-ctrl-alt-shift-i        = 'move up'
+cmd-ctrl-alt-shift-l        = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-cmd-minus 	= 'resize smart -100'
-ctrl-alt-shift-cmd-equal 	= 'resize smart +100'
+ctrl-alt-shift-cmd-minus    = 'resize smart -100'
+ctrl-alt-shift-cmd-equal    = 'resize smart +100'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-alt-shift-1        	= 'workspace 1'
-ctrl-alt-shift-2        	= 'workspace 2'
-ctrl-alt-shift-3        	= 'workspace 3'
-ctrl-alt-shift-4        	= 'workspace 4'
-ctrl-alt-shift-5        	= 'workspace 5'
-ctrl-alt-shift-m        	= 'workspace Music'
+ctrl-alt-shift-1            = 'workspace 1'
+ctrl-alt-shift-2            = 'workspace 2'
+ctrl-alt-shift-3            = 'workspace 3'
+ctrl-alt-shift-4            = 'workspace 4'
+ctrl-alt-shift-5            = 'workspace 5'
+ctrl-alt-shift-m            = 'workspace Music'
 
-ctrl-alt-shift-left     	= 'workspace --wrap-around prev'
-ctrl-alt-shift-right    	= 'workspace --wrap-around next'
+ctrl-alt-shift-left         = 'workspace --wrap-around prev'
+ctrl-alt-shift-right        = 'workspace --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-ctrl-alt-shift-tab      	= 'workspace-back-and-forth'
+ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-cmd-ctrl-alt-shift-1    	= 'move-node-to-workspace 1'
+cmd-ctrl-alt-shift-1        = 'move-node-to-workspace 1'
 cmd-ctrl-alt-shift-2        = 'move-node-to-workspace 2'
 cmd-ctrl-alt-shift-3        = 'move-node-to-workspace 3'
 cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4'
@@ -158,9 +157,9 @@ ctrl-alt-shift-cmd-right    = 'move-node-to-workspace --focus-follows-window --w
 ###############################################################################
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-alt-shift-semicolon 	= 'mode service'
-ctrl-alt-shift-o 			= 'mode open'
-ctrl-alt-shift-w 			= 'mode warp'
+ctrl-alt-shift-semicolon    = 'mode service'
+ctrl-alt-shift-o            = 'mode open'
+ctrl-alt-shift-w            = 'mode warp'
 
 #######################################
 # Service Mode
@@ -169,30 +168,30 @@ ctrl-alt-shift-w 			= 'mode warp'
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc 						= ['reload-config', 'mode main']
+r           = ['flatten-workspace-tree', 'mode main'] # reset layout
+f           = ['fullscreen', 'mode main']
+backspace   = ['close-all-windows-but-current', 'mode main']
 
-r 							= ['flatten-workspace-tree', 'mode main'] # reset layout
-f 							= ['fullscreen', 'mode main']
-backspace 					= ['close-all-windows-but-current', 'mode main']
+esc         = ['reload-config', 'mode main']
 
 
 #######################################
 # Warp/Join Windows
 #######################################
 [mode.warp.binding]
-esc 						= 'mode main'
+j   = ['join-with left', 'mode main']
+k   = ['join-with down', 'mode main']
+i   = ['join-with up', 'mode main']
+l   = ['join-with right', 'mode main']
 
-j 							= ['join-with left', 'mode main']
-k 							= ['join-with down', 'mode main']
-i 							= ['join-with up', 'mode main']
-l 							= ['join-with right', 'mode main']
+esc = 'mode main'
 
 
 #######################################
 # Open Apps and Windows
 #######################################
 [mode.open.binding]
-esc 						= 'mode main'
+esc                         = 'mode main'
 
 # Browser: Chrome if it's available (e.g. work machine) or Chromium (e.g. personal machine)
 b = ['''exec-and-forget osascript -e '
