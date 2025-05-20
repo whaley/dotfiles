@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xffffffff width=10.0'
+    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xffffffff width=20.0'
 ]
 
 # Start AeroSpace at login
