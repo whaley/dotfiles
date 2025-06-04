@@ -151,21 +151,27 @@ esc                         = 'mode main'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 
 # Workspaces
+c                           = ['workspace chat', 'mode main']
 ctrl-alt-shift-c            = 'workspace chat'
 cmd-ctrl-alt-shift-c        = 'move-node-to-workspace chat --focus-follows-window'
 
+d                           = ['workspace dev', 'mode main']
 ctrl-alt-shift-d            = 'workspace dev'
 cmd-ctrl-alt-shift-d        = 'move-node-to-workspace dev --focus-follows-window'
 
+e                           = ['workspace email', 'mode main']
 ctrl-alt-shift-e            = 'workspace email'
 cmd-ctrl-alt-shift-e        = 'move-node-to-workspace email --focus-follows-window'
 
+h                           = ['workspace home', 'mode main']
 ctrl-alt-shift-h            = 'workspace home'
 cmd-ctrl-alt-shift-h        = 'move-node-to-workspace home --focus-follows-window'
 
+m                           = ['workspace music', 'mode main']
 ctrl-alt-shift-m            = 'workspace music'
 cmd-ctrl-alt-shift-m        = 'move-node-to-workspace music --focus-follows-window'
 
+t                           = ['workspace task', 'mode main']
 ctrl-alt-shift-t            = 'workspace task'
 cmd-ctrl-alt-shift-t        = 'move-node-to-workspace task --focus-follows-window'
 
