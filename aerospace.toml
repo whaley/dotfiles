@@ -177,6 +177,10 @@ t                           = ['workspace task', 'mode main']
 ctrl-alt-shift-t            = 'workspace task'
 cmd-ctrl-alt-shift-t        = 'move-node-to-workspace task --focus-follows-window'
 
+v                           = ['workspace video_call', 'mode main']
+ctrl-alt-shift-v            = 'workspace video_call'
+cmd-ctrl-alt-shift-v        = 'move-node-to-workspace video_call --focus-follows-window'
+
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
