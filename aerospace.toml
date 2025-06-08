@@ -235,6 +235,19 @@ end if
 '
 ''', 'mode main']
 
+# Open Omnifocus in a new window
+# Bit of a hack with keyboard shortcuts since 'make new document window' creates a new tab
+f = ['''exec-and-forget osascript -e '
+tell application "OmniFocus"
+    activate
+    tell application "System Events"
+        tell process "OmniFocus"
+            keystroke "n" using {option down, command down}
+        end tell
+    end tell
+end tell
+'
+''', 'mode main']
 
 # Apps with only a single window or can't otherwise support applescript
 # Obsidian
