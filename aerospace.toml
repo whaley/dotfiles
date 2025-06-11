@@ -147,38 +147,39 @@ ctrl-alt-shift-o            = 'mode open'
 # Workpaces
 #######################################
 [mode.workspaces.binding]
-esc                         = 'mode main'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 
+esc                         = 'mode main'
+
 # Workspaces
-c                           = ['workspace chat', 'mode main']
-ctrl-alt-shift-c            = 'workspace chat'
+c                           = 'workspace chat'
+ctrl-alt-shift-c            = 'move-node-to-workspace chat'
 cmd-ctrl-alt-shift-c        = 'move-node-to-workspace chat --focus-follows-window'
 
-d                           = ['workspace dev', 'mode main']
-ctrl-alt-shift-d            = 'workspace dev'
+d                           = 'workspace dev'
+ctrl-alt-shift-d            = 'move-node-to-workspace dev'
 cmd-ctrl-alt-shift-d        = 'move-node-to-workspace dev --focus-follows-window'
 
-e                           = ['workspace email', 'mode main']
-ctrl-alt-shift-e            = 'workspace email'
+e                           = 'workspace email'
+ctrl-alt-shift-e            = 'move-node-to-workspace email'
 cmd-ctrl-alt-shift-e        = 'move-node-to-workspace email --focus-follows-window'
 
-h                           = ['workspace home', 'mode main']
-ctrl-alt-shift-h            = 'workspace home'
+h                           = 'workspace home'
+ctrl-alt-shift-h            = 'move-node-to-workspace home'
 cmd-ctrl-alt-shift-h        = 'move-node-to-workspace home --focus-follows-window'
 
-m                           = ['workspace music', 'mode main']
-ctrl-alt-shift-m            = 'workspace music'
+m                           = 'workspace music'
+ctrl-alt-shift-m            = 'move-node-to-workspace music'
 cmd-ctrl-alt-shift-m        = 'move-node-to-workspace music --focus-follows-window'
 
-t                           = ['workspace task', 'mode main']
-ctrl-alt-shift-t            = 'workspace task'
+t                           = 'workspace task'
+ctrl-alt-shift-t            = 'move-node-to-workspace task'
 cmd-ctrl-alt-shift-t        = 'move-node-to-workspace task --focus-follows-window'
 
-v                           = ['workspace video_call', 'mode main']
-ctrl-alt-shift-v            = 'workspace video_call'
+v                           = 'workspace video_call'
+ctrl-alt-shift-v            = 'move-node-to-workspace video_call'
 cmd-ctrl-alt-shift-v        = 'move-node-to-workspace video_call --focus-follows-window'
 
 
@@ -191,7 +192,7 @@ ctrl-alt-shift-right        = 'workspace --wrap-around next'
 ctrl-alt-shift-cmd-left     = 'move-node-to-workspace --focus-follows-window --wrap-around prev'
 ctrl-alt-shift-cmd-right    = 'move-node-to-workspace --focus-follows-window --wrap-around next'
 
-# Keep these here for refocusing windows while moving around
+# Keep these here for moving focus between windows for organizing quickly
 ctrl-alt-shift-j            = 'focus left'
 ctrl-alt-shift-k            = 'focus down'
 ctrl-alt-shift-i            = 'focus up'
