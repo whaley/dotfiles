@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xfff6dc6e width=50.0'
+    #'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xfff6dc6e width=50.0'
 ]
 
 # Start AeroSpace at login
@@ -101,7 +101,6 @@ outer.right         = 25
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
-# ctrl-alt-shift-comma        = 'layout accordion horizontal vertical'
 ctrl-alt-shift-f            = 'layout floating tiling' #toggle float for a window
 cmd-ctrl-alt-shift-f        = 'fullscreen' #toggle fullscreen for a window
 cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
@@ -137,6 +136,8 @@ ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
+
+ctrl-alt-shift-cmd-w        = 'close-all-windows-but-current --quit-if-last-window'
 
 ###############################################################################
 # Modes
