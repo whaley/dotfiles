@@ -101,8 +101,8 @@ outer.right         = 25
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
-ctrl-alt-shift-f            = 'layout floating tiling' #toggle float for a window
-cmd-ctrl-alt-shift-f        = 'fullscreen' #toggle fullscreen for a window
+cmd-ctrl-alt-shift-f        = 'layout floating tiling' #toggle float for a window
+ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
 cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
