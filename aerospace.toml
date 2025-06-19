@@ -165,8 +165,8 @@ ctrl-alt-shift-d            = ['move-node-to-workspace dev', 'mode main']
 cmd-ctrl-alt-shift-d        = ['move-node-to-workspace dev --focus-follows-window', 'mode main']
 
 m                           = ['workspace main', 'mode main']
-ctrl-alt-shift-h            = ['move-node-to-workspace main', 'mode main']
-cmd-ctrl-alt-shift-h        = ['move-node-to-workspace main --focus-follows-window', 'mode main']
+ctrl-alt-shift-m            = ['move-node-to-workspace main', 'mode main']
+cmd-ctrl-alt-shift-m        = ['move-node-to-workspace main --focus-follows-window', 'mode main']
 
 t                           = ['workspace task', 'mode main']
 ctrl-alt-shift-t            = ['move-node-to-workspace task', 'mode main']
