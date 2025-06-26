@@ -62,12 +62,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal    = 0
-inner.vertical      = 0
-outer.left          = 0
-outer.bottom        = 0
-outer.top           = 0
-outer.right         = 0
+inner.horizontal    = 20
+inner.vertical      = 20
+outer.left          = 10
+outer.bottom        = 10
+outer.top           = 10
+outer.right         = 10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -260,11 +260,21 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     check-further-callbacks = true
     run = ['move-node-to-workspace video --focus-follows-window']
 
-#Move WorkChat to the chat workspace
+#Move Chats to the chat workspace
 [[on-window-detected]]
-    if.app-id = 'com.google.Chrome.app.hondjlkedhnofcgbhifciodpdjfnonjm'
+    if.app-name-regex-substring = 'workchat'
     check-further-callbacks = true
     run = ['move-node-to-workspace chat --focus-follows-window']
+    'com.tinyspeck.slackmacgap'
+[[on-window-detected]]
+    if.app-id = '"com.tinyspeck.slackmacgap"'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace chat --focus-follows-window']
+[[on-window-detected]]
+    if.app-id = 'com.hnc.Discord'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace chat --focus-follows-window']
+
 
 #Move Messages to the chat workspace, and float it
 [[on-window-detected]]
@@ -281,3 +291,43 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.vscodium'
     check-further-callbacks = true
     run = ['move-node-to-workspace dev --focus-follows-window']
+
+#Move Vitamin-R and Omnifocus to main
+[[on-window-detected]]
+    if.app-id = 'net.publicspace.dist.vitaminr4'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace main --focus-follows-window']
+[[on-window-detected]]
+    if.app-id = 'com.omnigroup.OmniFocus4'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace main --focus-follows-window']
+
+# Float By Default
+[[on-window-detected]]
+    if.app-id = 'com.apple.Music'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'com.electron.brain.fm'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-name-regex-substring = 'di.fm'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'com.1password.1password'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'com.apple.Maps'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'com.apple.Maps'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = '"com.apple.iCal"'
+    check-further-callbacks = true
+    run = ['layout floating']
