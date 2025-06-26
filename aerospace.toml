@@ -248,3 +248,36 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
 
 # Workplace PWA
 w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_workspace.py', 'mode main']
+
+
+###############################################################################
+# Callbacks
+###############################################################################
+
+#Move Zoom and focus to the video workspace
+[[on-window-detected]]
+    if.app-id = 'us.zoom.xos'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace video --focus-follows-window']
+
+#Move WorkChat to the chat workspace
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome.app.hondjlkedhnofcgbhifciodpdjfnonjm'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace chat --focus-follows-window']
+
+#Move Messages to the chat workspace, and float it
+[[on-window-detected]]
+    if.app-id = 'com.apple.MobileSMS'
+    check-further-callbacks = true
+    run = ['layout floating', 'move-node-to-workspace chat --focus-follows-window']
+
+#Move VsCode to the dev workspace
+[[on-window-detected]]
+    if.app-id = 'com.facebook.fbvscode'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace dev --focus-follows-window']
+[[on-window-detected]]
+    if.app-id = 'com.vscodium'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace dev --focus-follows-window']
