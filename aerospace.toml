@@ -265,7 +265,6 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-name-regex-substring = 'workchat'
     check-further-callbacks = true
     run = ['move-node-to-workspace chat --focus-follows-window']
-    'com.tinyspeck.slackmacgap'
 [[on-window-detected]]
     if.app-id = '"com.tinyspeck.slackmacgap"'
     check-further-callbacks = true
@@ -329,5 +328,9 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     run = ['layout floating']
 [[on-window-detected]]
     if.app-id = '"com.apple.iCal"'
+    check-further-callbacks = true
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
     check-further-callbacks = true
     run = ['layout floating']
