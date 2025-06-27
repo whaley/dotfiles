@@ -17,7 +17,7 @@ after-startup-command = [
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
+enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
@@ -266,7 +266,7 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     check-further-callbacks = true
     run = ['move-node-to-workspace chat --focus-follows-window']
 [[on-window-detected]]
-    if.app-id = '"com.tinyspeck.slackmacgap"'
+    if.app-id = 'com.tinyspeck.slackmacgap'
     check-further-callbacks = true
     run = ['move-node-to-workspace chat --focus-follows-window']
 [[on-window-detected]]
@@ -327,7 +327,7 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     check-further-callbacks = true
     run = ['layout floating']
 [[on-window-detected]]
-    if.app-id = '"com.apple.iCal"'
+    if.app-id = 'com.apple.iCal'
     check-further-callbacks = true
     run = ['layout floating']
 [[on-window-detected]]
