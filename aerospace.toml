@@ -334,3 +334,7 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.apple.finder'
     check-further-callbacks = true
     run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'com.dejal.timeout'
+    check-further-callbacks = true
+    run = ['layout floating']
