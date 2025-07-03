@@ -274,10 +274,14 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     check-further-callbacks = true
     run = ['move-node-to-workspace chat --focus-follows-window']
 
-
 #Move Messages to the chat workspace, and float it
 [[on-window-detected]]
     if.app-id = 'com.apple.MobileSMS'
+    check-further-callbacks = true
+    run = ['layout floating', 'move-node-to-workspace chat --focus-follows-window']
+#Move Google Voice PWA to the chat workspace, and float it
+[[on-window-detected]]
+    if.app-name-regex-substring = 'Google Voice'
     check-further-callbacks = true
     run = ['layout floating', 'move-node-to-workspace chat --focus-follows-window']
 
@@ -342,6 +346,7 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.apple.Music'
     check-further-callbacks = true
     run = ['layout floating']
+
 [[on-window-detected]]
     if.app-id = 'com.apple.mail'
     # Don't float the main window, just message windows
