@@ -177,10 +177,6 @@ v                           = ['workspace video', 'mode main']
 ctrl-alt-shift-v            = ['move-node-to-workspace video', 'mode main']
 cmd-ctrl-alt-shift-v        = ['move-node-to-workspace video --focus-follows-window', 'mode main']
 
-right                       = ['move-node-to-workspace --wrap-around --focus-follows-window next']
-left                        = ['move-node-to-workspace --wrap-around --focus-follows-window prev']
-
-
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
@@ -188,7 +184,10 @@ ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
 
-# Keep these here for moving focus between windows for organizing quickly
+cmd-ctrl-alt-shift-right    = 'move-node-to-workspace --wrap-around --focus-follows-window next'
+cmd-ctrl-alt-shift-left     = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
+
+# Keep these here for moving focus between windows for organizing workspace without leaving mode
 ctrl-alt-shift-j            = 'focus left'
 ctrl-alt-shift-k            = 'focus down'
 ctrl-alt-shift-i            = 'focus up'
@@ -354,8 +353,6 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.cisco.secureclient.gui'
     check-further-callbacks = true
     run = ['layout floating']
-
-
 [[on-window-detected]]
     if.app-id = 'com.apple.mail'
     # Don't float the main window, just message windows
@@ -367,4 +364,4 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
 # Fix Orion
 [[on-window-detected]]
     if.app-id = 'com.kagi.kagimacOS'
-    run = [] # Empty run block with no callbacks seems to work
+    run = [] # Empty run block with no callbacks seems to work with phantom windows
