@@ -350,7 +350,6 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.apple.Music'
     check-further-callbacks = true
     run = ['layout floating']
-
 [[on-window-detected]]
     if.app-id = 'com.apple.mail'
     # Don't float the main window, just message windows
@@ -358,3 +357,8 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.window-title-regex-substring = '^(?!.*\d+\smessages).*$'
     check-further-callbacks = true
     run = ['layout floating']
+
+# Fix Orion
+[[on-window-detected]]
+    if.app-id = 'com.kagi.kagimacOS'
+    run = [] # Empty run block with no callbacks seems to work
