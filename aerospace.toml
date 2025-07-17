@@ -110,10 +110,10 @@ cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
 ctrl-alt-shift-esc          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-alt-shift-j            = 'focus left'
-ctrl-alt-shift-k            = 'focus down'
-ctrl-alt-shift-i            = 'focus up'
-ctrl-alt-shift-l            = 'focus right'
+ctrl-alt-shift-j            = 'focus left   --boundaries-action wrap-around-the-workspace'
+ctrl-alt-shift-k            = 'focus down   --boundaries-action wrap-around-the-workspace'
+ctrl-alt-shift-i            = 'focus up     --boundaries-action wrap-around-the-workspace'
+ctrl-alt-shift-l            = 'focus right  --boundaries-action wrap-around-the-workspace'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-ctrl-alt-shift-j        = 'move left'
@@ -127,8 +127,8 @@ cmd-ctrl-alt-shift-down     = 'join-with down'
 cmd-ctrl-alt-shift-up       = 'join-with up'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-minus        = 'resize smart -100'
-ctrl-alt-shift-equal        = 'resize smart +100'
+ctrl-alt-shift-minus        = 'resize smart          -100'
+ctrl-alt-shift-equal        = 'resize smart          +100'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
 
@@ -176,6 +176,10 @@ cmd-ctrl-alt-shift-t        = ['move-node-to-workspace task --focus-follows-wind
 v                           = ['workspace video', 'mode main']
 ctrl-alt-shift-v            = ['move-node-to-workspace video', 'mode main']
 cmd-ctrl-alt-shift-v        = ['move-node-to-workspace video --focus-follows-window', 'mode main']
+
+right                       = ['move-node-to-workspace --wrap-around --focus-follows-window next']
+left                        = ['move-node-to-workspace --wrap-around --focus-follows-window prev']
+
 
 
 # Move between workspaces
@@ -351,6 +355,6 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.apple.mail'
     # Don't float the main window, just message windows
     # Main window title always contains  "N messages" do negative lookahead for this"
-    if.window-title-regex-substring = '^(?!.*\d+\smessages).*$'  
+    if.window-title-regex-substring = '^(?!.*\d+\smessages).*$'
     check-further-callbacks = true
     run = ['layout floating']
