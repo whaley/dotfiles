@@ -100,7 +100,8 @@ alias grbd="git rebase develop"
 alias dateutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
 alias loadavg="uptime | cut -d':' -f4- | sed s/,//g"
 
-
+#iterm2 shell integration
+source ~/.iterm2_shell_integration.zsh
 
 # Other utility functions and environmental setup.
 
