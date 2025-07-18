@@ -157,25 +157,25 @@ ctrl-alt-shift-o            = 'mode open'
 esc                         = 'mode main'
 
 # Workspaces
-b                           = ['workspace break', 'mode main']
-ctrl-alt-shift-b            = ['move-node-to-workspace break', 'mode main']
-cmd-ctrl-alt-shift-b        = ['move-node-to-workspace break --focus-follows-window', 'mode main']
+b                           = 'workspace break'
+ctrl-alt-shift-b            = 'move-node-to-workspace break'
+cmd-ctrl-alt-shift-b        = 'move-node-to-workspace break --focus-follows-window'
 
-d                           = ['workspace dev', 'mode main']
-ctrl-alt-shift-d            = ['move-node-to-workspace dev', 'mode main']
-cmd-ctrl-alt-shift-d        = ['move-node-to-workspace dev --focus-follows-window', 'mode main']
+d                           = 'workspace dev'
+ctrl-alt-shift-d            = 'move-node-to-workspace dev'
+cmd-ctrl-alt-shift-d        = 'move-node-to-workspace dev --focus-follows-window'
 
-m                           = ['workspace main', 'mode main']
-ctrl-alt-shift-m            = ['move-node-to-workspace main', 'mode main']
-cmd-ctrl-alt-shift-m        = ['move-node-to-workspace main --focus-follows-window', 'mode main']
+m                           = 'workspace main'
+ctrl-alt-shift-m            = 'move-node-to-workspace main'
+cmd-ctrl-alt-shift-m        = 'move-node-to-workspace main --focus-follows-window'
 
-t                           = ['workspace task', 'mode main']
-ctrl-alt-shift-t            = ['move-node-to-workspace task', 'mode main']
-cmd-ctrl-alt-shift-t        = ['move-node-to-workspace task --focus-follows-window', 'mode main']
+t                           = 'workspace task'
+ctrl-alt-shift-t            = 'move-node-to-workspace task'
+cmd-ctrl-alt-shift-t        = 'move-node-to-workspace task --focus-follows-window'
 
-v                           = ['workspace video', 'mode main']
-ctrl-alt-shift-v            = ['move-node-to-workspace video', 'mode main']
-cmd-ctrl-alt-shift-v        = ['move-node-to-workspace video --focus-follows-window', 'mode main']
+v                           = 'workspace video'
+ctrl-alt-shift-v            = 'move-node-to-workspace video'
+cmd-ctrl-alt-shift-v        = 'move-node-to-workspace video --focus-follows-window'
 
 
 # Move between workspaces
