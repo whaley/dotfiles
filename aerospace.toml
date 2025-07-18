@@ -281,12 +281,12 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
 [[on-window-detected]]
     if.app-id = 'com.apple.MobileSMS'
     check-further-callbacks = true
-    run = ['layout floating', 'move-node-to-workspace chat --focus-follows-window']
+    run = 'layout floating'#, 'move-node-to-workspace chat --focus-follows-window']
 #Move Google Voice PWA to the chat workspace, and float it
 [[on-window-detected]]
     if.app-name-regex-substring = 'Google Voice'
     check-further-callbacks = true
-    run = ['layout floating', 'move-node-to-workspace chat --focus-follows-window']
+    run = 'layout floating'#, 'move-node-to-workspace chat --focus-follows-window']
 
 #Move VsCode to the dev workspace
 [[on-window-detected]]
