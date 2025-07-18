@@ -157,9 +157,9 @@ ctrl-alt-shift-o            = 'mode open'
 esc                         = 'mode main'
 
 # Workspaces
-c                           = ['workspace chat', 'mode main']
-ctrl-alt-shift-c            = ['move-node-to-workspace chat', 'mode main']
-cmd-ctrl-alt-shift-c        = ['move-node-to-workspace chat --focus-follows-window', 'mode main']
+b                           = ['workspace break', 'mode main']
+ctrl-alt-shift-b            = ['move-node-to-workspace break', 'mode main']
+cmd-ctrl-alt-shift-b        = ['move-node-to-workspace break --focus-follows-window', 'mode main']
 
 d                           = ['workspace dev', 'mode main']
 ctrl-alt-shift-d            = ['move-node-to-workspace dev', 'mode main']
@@ -264,18 +264,18 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     run = ['move-node-to-workspace video --focus-follows-window']
 
 #Move Chats to the chat workspace
-[[on-window-detected]]
-    if.app-name-regex-substring = 'workchat'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace chat --focus-follows-window']
-[[on-window-detected]]
-    if.app-id = 'com.tinyspeck.slackmacgap'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace chat --focus-follows-window']
-[[on-window-detected]]
-    if.app-id = 'com.hnc.Discord'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace chat --focus-follows-window']
+# [[on-window-detected]]
+#     if.app-name-regex-substring = 'workchat'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace chat --focus-follows-window']
+# [[on-window-detected]]
+#     if.app-id = 'com.tinyspeck.slackmacgap'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace chat --focus-follows-window']
+# [[on-window-detected]]
+#     if.app-id = 'com.hnc.Discord'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace chat --focus-follows-window']
 
 #Move Messages to the chat workspace, and float it
 [[on-window-detected]]
