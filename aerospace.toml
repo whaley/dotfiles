@@ -157,14 +157,6 @@ ctrl-alt-shift-o            = 'mode open'
 esc                         = 'mode main'
 
 # Workspaces
-b                           = 'workspace break'
-ctrl-alt-shift-b            = 'move-node-to-workspace break'
-cmd-ctrl-alt-shift-b        = 'move-node-to-workspace break --focus-follows-window'
-
-d                           = 'workspace dev'
-ctrl-alt-shift-d            = 'move-node-to-workspace dev'
-cmd-ctrl-alt-shift-d        = 'move-node-to-workspace dev --focus-follows-window'
-
 m                           = 'workspace main'
 ctrl-alt-shift-m            = 'move-node-to-workspace main'
 cmd-ctrl-alt-shift-m        = 'move-node-to-workspace main --focus-follows-window'
@@ -257,7 +249,7 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
 # Callbacks
 ###############################################################################
 
-#Move Zoom and focus to the video workspace
+#Move Zoom and focus to the workspace
 [[on-window-detected]]
     if.app-id = 'us.zoom.xos'
     check-further-callbacks = true
@@ -292,11 +284,11 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
 [[on-window-detected]]
     if.app-id = 'com.facebook.fbvscode'
     check-further-callbacks = true
-    run = ['move-node-to-workspace dev --focus-follows-window']
+    run = ['move-node-to-workspace task --focus-follows-window']
 [[on-window-detected]]
     if.app-id = 'com.vscodium'
     check-further-callbacks = true
-    run = ['move-node-to-workspace dev --focus-follows-window']
+    run = ['move-node-to-workspace task --focus-follows-window']
 
 #Move Vitamin-R and Omnifocus to main
 [[on-window-detected]]
