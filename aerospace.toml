@@ -298,7 +298,7 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
 [[on-window-detected]]
     if.app-id = 'net.publicspace.dist.vitaminr4'
     check-further-callbacks = true
-    run = ['move-node-to-workspace main --focus-follows-window']
+    run = ['layout floating', 'move-node-to-workspace main --focus-follows-window']
 [[on-window-detected]]
     if.app-id = 'com.omnigroup.OmniFocus4'
     check-further-callbacks = true
