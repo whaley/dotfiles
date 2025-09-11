@@ -181,10 +181,6 @@ e                           = 'workspace E'
 ctrl-alt-shift-e            = 'move-node-to-workspace E'
 cmd-ctrl-alt-shift-e        = 'move-node-to-workspace E --focus-follows-window'
 
-v                           = 'workspace V'
-ctrl-alt-shift-v            = 'move-node-to-workspace V'
-cmd-ctrl-alt-shift-v        = 'move-node-to-workspace V --focus-follows-window'
-
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
@@ -275,10 +271,10 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
 ###############################################################################
 
 #Move Zoom and focus to the video workspace
-[[on-window-detected]]
-    if.app-id = 'us.zoom.xos'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace V --focus-follows-window']
+# [[on-window-detected]]
+#     if.app-id = 'us.zoom.xos'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace V --focus-follows-window']
 
 # Float By Default
 [[on-window-detected]]
