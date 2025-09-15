@@ -325,13 +325,13 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-name-regex-substring = 'Google Voice'
     check-further-callbacks = true
     run = 'layout floating'
-[[on-window-detected]]
-    if.app-id = 'com.apple.mail'
-    # Don't float the main window, just message windows
-    # Main window title always contains  "N messages" do negative lookahead for this"
-    if.window-title-regex-substring = '^(?!.*\d+\smessages).*$'
-    check-further-callbacks = true
-    run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'com.apple.mail'
+#     # Don't float the main window, just message windows
+#     # Main window title always contains  "N messages" do negative lookahead for this"
+#     if.window-title-regex-substring = '^(?!.*\d+\smessages).*$'
+#     check-further-callbacks = true
+#     run = ['layout floating']
 
 # Fix Orion
 [[on-window-detected]]
