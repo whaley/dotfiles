@@ -139,7 +139,6 @@ ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
 
-ctrl-alt-shift-w            = 'close'
 ctrl-alt-shift-cmd-w        = 'close-all-windows-but-current'
 
 
