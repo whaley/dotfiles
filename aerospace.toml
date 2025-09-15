@@ -211,7 +211,7 @@ tell application "Arc"
 	make new window
 	activate
 end tell
-'
+', 'mode main'
 ''']
 
 #  Chrome if it's available (e.g. work machine) or Chromium (e.g. personal machine)
