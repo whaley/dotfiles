@@ -1,5 +1,5 @@
 # Setup Path
-export PATH="${HOME}/bin:${HOME}/homebrew/bin:${PATH}:"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/homebrew/bin:${PATH}:"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -53,7 +53,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(bgnotify brew fzf git gitignore starship z)
+plugins=(bgnotify brew fzf git gitignore starship uv z)
 
 # User configuration
 
