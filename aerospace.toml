@@ -17,7 +17,7 @@ after-startup-command = [
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers                         = true
+enable-normalization-flatten-containers                         = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
@@ -111,10 +111,10 @@ cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
 ctrl-alt-shift-esc          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-alt-shift-j            = 'focus left   --boundaries-action wrap-around-the-workspace --ignore-floating'
-ctrl-alt-shift-k            = 'focus down   --boundaries-action wrap-around-the-workspace --ignore-floating'
-ctrl-alt-shift-i            = 'focus up     --boundaries-action wrap-around-the-workspace --ignore-floating'
-ctrl-alt-shift-l            = 'focus right  --boundaries-action wrap-around-the-workspace --ignore-floating'
+ctrl-alt-shift-j            = 'focus left   --boundaries-action wrap-around-the-workspace'
+ctrl-alt-shift-k            = 'focus down   --boundaries-action wrap-around-the-workspace'
+ctrl-alt-shift-i            = 'focus up     --boundaries-action wrap-around-the-workspace'
+ctrl-alt-shift-l            = 'focus right  --boundaries-action wrap-around-the-workspace'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-ctrl-alt-shift-j        = 'move left'
@@ -139,12 +139,8 @@ ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
 
-ctrl-alt-shift-cmd-w        = 'close-all-windows-but-current'
-
 # Minimize without losing aerospace focus
 cmd-m                       = 'macos-native-minimize'
-
-
 
 
 ###############################################################################
