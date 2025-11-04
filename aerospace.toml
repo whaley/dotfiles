@@ -91,15 +91,6 @@ outer.right         = 20
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-comma        = 'layout accordion horizontal vertical'
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
@@ -133,69 +124,53 @@ ctrl-alt-shift-equal        = 'resize smart          +100'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
 
-# Move between workspaces in order, see [mode.workspaces.binding] for shortcuts
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-ctrl-alt-shift-tab          = 'workspace-back-and-forth'
-ctrl-alt-shift-left         = 'workspace --wrap-around prev'
-ctrl-alt-shift-right        = 'workspace --wrap-around next'
-
 # Minimize without losing aerospace focus
 cmd-m                       = 'macos-native-minimize'
+
+# Close windows properly
+ctrl-alt-shift-w            = 'close'
+
+
+# Workspaces
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+ctrl-alt-shift-1            = 'workspace 1'
+cmd-ctrl-alt-shift-1        = 'move-node-to-workspace 1'
+
+ctrl-alt-shift-2            = 'workspace 2'
+cmd-ctrl-alt-shift-2        = 'move-node-to-workspace 2'
+
+ctrl-alt-shift-3            = 'workspace 3'
+cmd-ctrl-alt-shift-3        = 'move-node-to-workspace 3'
+
+ctrl-alt-shift-4            = 'workspace 4'
+cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4'
+
+ctrl-alt-shift-5            = 'workspace 5'
+cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5'
+
+
+# Move between workspaces
+ctrl-alt-shift-tab          = 'workspace-back-and-forth'
+
+# ctrl-alt-shift-left         = 'workspace --wrap-around prev'
+# ctrl-alt-shift-right        = 'workspace --wrap-around next'
+
+# cmd-ctrl-alt-shift-right    = 'move-node-to-workspace --wrap-around --focus-follows-window next'
+# cmd-ctrl-alt-shift-left     = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
+
+# # Keep these here for moving focus between windows for organizing workspace without leaving mode
+# ctrl-alt-shift-j            = 'focus left  --boundaries-action wrap-around-the-workspace --ignore-floating'
+# ctrl-alt-shift-k            = 'focus down  --boundaries-action wrap-around-the-workspace --ignore-floating'
+# ctrl-alt-shift-i            = 'focus up    --boundaries-action wrap-around-the-workspace --ignore-floating'
+# ctrl-alt-shift-l            = 'focus right --boundaries-action wrap-around-the-workspace --ignore-floating'
 
 
 ###############################################################################
 # Modes
 ###############################################################################
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-alt-shift-w            = 'mode workspaces'
 ctrl-alt-shift-o            = 'mode open'
-
-#######################################
-# Workpaces
-#######################################
-[mode.workspaces.binding]
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-esc                         = 'mode main'
-
-# Workspaces
-a                           = 'workspace A'
-ctrl-alt-shift-a            = 'move-node-to-workspace A'
-cmd-ctrl-alt-shift-a        = 'move-node-to-workspace A --focus-follows-window'
-
-b                           = 'workspace B'
-ctrl-alt-shift-b            = 'move-node-to-workspace B'
-cmd-ctrl-alt-shift-b        = 'move-node-to-workspace B --focus-follows-window'
-
-c                           = 'workspace C'
-ctrl-alt-shift-c            = 'move-node-to-workspace C'
-cmd-ctrl-alt-shift-c        = 'move-node-to-workspace C --focus-follows-window'
-
-d                           = 'workspace D'
-ctrl-alt-shift-d            = 'move-node-to-workspace D'
-cmd-ctrl-alt-shift-d        = 'move-node-to-workspace D --focus-follows-window'
-
-e                           = 'workspace E'
-ctrl-alt-shift-e            = 'move-node-to-workspace E'
-cmd-ctrl-alt-shift-e        = 'move-node-to-workspace E --focus-follows-window'
-
-
-# Move between workspaces
-ctrl-alt-shift-tab          = 'workspace-back-and-forth'
-
-ctrl-alt-shift-left         = 'workspace --wrap-around prev'
-ctrl-alt-shift-right        = 'workspace --wrap-around next'
-
-cmd-ctrl-alt-shift-right    = 'move-node-to-workspace --wrap-around --focus-follows-window next'
-cmd-ctrl-alt-shift-left     = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
-
-# Keep these here for moving focus between windows for organizing workspace without leaving mode
-ctrl-alt-shift-j            = 'focus left  --boundaries-action wrap-around-the-workspace --ignore-floating'
-ctrl-alt-shift-k            = 'focus down  --boundaries-action wrap-around-the-workspace --ignore-floating'
-ctrl-alt-shift-i            = 'focus up    --boundaries-action wrap-around-the-workspace --ignore-floating'
-ctrl-alt-shift-l            = 'focus right --boundaries-action wrap-around-the-workspace --ignore-floating'
-
 
 
 #######################################
@@ -203,6 +178,15 @@ ctrl-alt-shift-l            = 'focus right --boundaries-action wrap-around-the-w
 #######################################
 [mode.open.binding]
 esc                         = 'mode main'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+# You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
+# alt-enter = '''exec-and-forget osascript -e '
+# tell application "Terminal"
+#     do script
+#     activate
+# end tell'
+# '''
 
 # Arc
 a = ['''exec-and-forget osascript -e '
