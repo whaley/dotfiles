@@ -65,8 +65,8 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal    = 40
 inner.vertical      = 40
-outer.left          = 40
-outer.right         = 40
+outer.left          = 20
+outer.right         = 20
 outer.bottom        = 20
 outer.top           = 20
 
