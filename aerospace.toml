@@ -10,14 +10,14 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0x5569FFB4 width=40.0'
+    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0x5569FFB4 width=20.0'
 ]
 
 # Start AeroSpace at login
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers                         = false
+enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
@@ -153,6 +153,18 @@ cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4 --focus-follows-window'
 
 ctrl-alt-shift-5            = 'workspace 5'
 cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5 --focus-follows-window'
+
+ctrl-alt-shift-6            = 'workspace 6'
+cmd-ctrl-alt-shift-6        = 'move-node-to-workspace 6 --focus-follows-window'
+
+ctrl-alt-shift-7            = 'workspace 7'
+cmd-ctrl-alt-shift-7        = 'move-node-to-workspace 7 --focus-follows-window'
+
+ctrl-alt-shift-8            = 'workspace 8'
+cmd-ctrl-alt-shift-8        = 'move-node-to-workspace 8 --focus-follows-window'
+
+ctrl-alt-shift-9            = 'workspace 9'
+cmd-ctrl-alt-shift-9        = 'move-node-to-workspace 9 --focus-follows-window'
 
 
 # Move between workspaces
