@@ -214,19 +214,12 @@ end tell
 '
 ''', 'mode main']
 
-#  Chrome if it's available (e.g. work machine) or Chromium (e.g. personal machine)
+#  Chrome (Work Machine)
 c = ['''exec-and-forget osascript -e '
-try
-    tell application "Chrome"
-        make new window
-        activate
-    end tell
-on error
-    tell application "Chromium"
-        make new window
-        activate
-    end tell
-end try
+tell application "Chrome"
+    make new window
+    activate
+end tell
 '
 ''', 'mode main']
 
@@ -244,6 +237,14 @@ end if
 '
 ''', 'mode main']
 
+# Open weechat in a screen session
+w =  ['''exec-and-forget osascript -e '
+tell application "iTerm"
+    create window with profile "weechat"
+end tell
+'
+''', 'mode main']
+
 # Open Omnifocus in a new window
 # Bit of a hack with keyboard shortcuts since 'make new document window' creates a new tab
 f = ['''exec-and-forget osascript -e '
@@ -258,19 +259,18 @@ end tell
 '
 ''', 'mode main']
 
-
 # Apps with only a single window or can't otherwise support applescript
+# e.g. PWA's or Electron apps
 # Obsidian
 o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
-# Workplace PWA
-w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_workspace.py', 'mode main']
 
 
 ###############################################################################
-# on-window-detected callbacks
+# On-window-detected callbacks
 ###############################################################################
 
-# Workspace Defaults
+# Workspace 1 - Omnifocus and Vitamin
+
 [[on-window-detected]]
     if.app-id = 'com.omnigroup.OmniFocus4'
     check-further-callbacks = true
@@ -279,18 +279,46 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'net.publicspace.dist.vitaminr4'
     check-further-callbacks = true
     run = ['move-node-to-workspace 1 --focus-follows-window']
+
+
+
+# Workspace 3 - Chats
 [[on-window-detected]]
-    if.app-id = 'md.obsidian'
+    if.app-id = 'com.apple.MobileSMS'
     check-further-callbacks = true
-    run = ['move-node-to-workspace 2 --focus-follows-window']
+    run = ['move-node-to-workspace 3 --focus-follows-window']
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 3 --focus-follows-window']
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 3 --focus-follows-window']
+[[on-window-detected]]
+    # weechat profile has sets window title to 'weechat' and runs
+    # `screen -raAd weechat || screen -S weechat weechat` as it's
+    # first command.
+    if.app-id = 'com.googlecode.iterm2'
+    if.window-title-regex-substring = '^.*weechat.*$' # in case "(screen)" is in the title
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 3 --focus-follows-window']
 
-
+# Workspace 4 - Mail
+[[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    # Main window title always contains  "N messages" do negative lookahead for this"
+    # Don't do anything so this will stay on the current workspace (only works if main window isn't on a workspace)
+    if.window-title-regex-substring = '^(?!.*\d+\smessages).*$'
+    check-further-callbacks = false
+    run = []
+[[on-window-detected]]
+    # Always launch the main window on the same workspace.
+    if.app-id = 'com.apple.mail'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 4 --focus-follows-window']
 
 # Float By Default
-# [[on-window-detected]]
-#     if.app-id = 'net.publicspace.dist.vitaminr4'
-#     check-further-callbacks = true
-#     run = ['layout floating']
 [[on-window-detected]]
     if.app-id = 'com.apple.Music'
     check-further-callbacks = true
@@ -311,6 +339,10 @@ w = ['exec-and-forget /Users/whaley/bin/aerospace_move_workchat_to_current_works
     if.app-id = 'com.cisco.secureclient.gui'
     check-further-callbacks = true
     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'net.publicspace.dist.vitaminr4'
+#     check-further-callbacks = true
+#     run = ['layout floating']
 # [[on-window-detected]]
 #     if.app-id = 'com.1password.1password'
 #     check-further-callbacks = true
