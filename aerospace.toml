@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0x5569FFB4 width=20.0'
+    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0x5569FFB4 width=10.0'
 ]
 
 # Start AeroSpace at login
@@ -62,13 +62,14 @@ preset = 'qwerty'
 #                 In this example, 24 is a default value when there is no match.
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-[gaps]
-inner.horizontal    = 40
-inner.vertical      = 40
-outer.left          = 20
-outer.right         = 20
-outer.bottom        = 20
-outer.top           = 20
+[gaps.inner]
+horizontal    = 10
+vertical      = 10
+[gaps.outer]
+left          = 10
+right         = 10
+bottom        = 10
+top           = 10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -124,10 +125,10 @@ cmd-ctrl-alt-shift-down     = 'join-with down'
 cmd-ctrl-alt-shift-up       = 'join-with up'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-minus        = 'resize smart          -100'
-ctrl-alt-shift-equal        = 'resize smart          +100'
-ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
-ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
+ctrl-alt-shift-minus        = 'resize smart          -25'
+ctrl-alt-shift-equal        = 'resize smart          +25'
+ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -25'
+ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +25'
 
 # Minimize without losing aerospace focus
 cmd-m                       = 'macos-native-minimize'
