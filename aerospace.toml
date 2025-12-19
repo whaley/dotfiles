@@ -234,14 +234,20 @@ end tell
 # Open Omnifocus in a new window
 # Bit of a hack with keyboard shortcuts since 'make new document window' creates a new tab
 f = ['''exec-and-forget osascript -e '
-tell application "OmniFocus"
-    activate
-    tell application "System Events"
-        tell process "OmniFocus"
-            keystroke "n" using {option down, command down}
+if application "Omnifocus" is running then
+    tell application "OmniFocus"
+        activate
+        tell application "System Events"
+            tell process "OmniFocus"
+                keystroke "n" using {option down, command down}
+            end tell
         end tell
     end tell
-end tell
+else
+    tell application "OmniFocus"
+        activate
+    end tell
+end if
 '
 ''', 'mode main']
 
