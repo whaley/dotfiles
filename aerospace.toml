@@ -157,17 +157,11 @@ cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5 --focus-follows-window'
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 
-# ctrl-alt-shift-left         = 'workspace --wrap-around prev'
-# ctrl-alt-shift-right        = 'workspace --wrap-around next'
+ctrl-alt-shift-p            = 'workspace --wrap-around prev'
+ctrl-alt-shift-n            = 'workspace --wrap-around next'
 
-# cmd-ctrl-alt-shift-right    = 'move-node-to-workspace --wrap-around --focus-follows-window next'
-# cmd-ctrl-alt-shift-left     = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
-
-# # Keep these here for moving focus between windows for organizing workspace without leaving mode
-# ctrl-alt-shift-j            = 'focus left  --boundaries-action wrap-around-the-workspace --ignore-floating'
-# ctrl-alt-shift-k            = 'focus down  --boundaries-action wrap-around-the-workspace --ignore-floating'
-# ctrl-alt-shift-i            = 'focus up    --boundaries-action wrap-around-the-workspace --ignore-floating'
-# ctrl-alt-shift-l            = 'focus right --boundaries-action wrap-around-the-workspace --ignore-floating'
+cmd-ctrl-alt-shift-p        = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
+cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-follows-window next'
 
 
 ###############################################################################
