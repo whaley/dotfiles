@@ -133,7 +133,7 @@ ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
 cmd-m                       = 'macos-native-minimize'
 
 # Close windows properly
-ctrl-alt-shift-w            = 'close'
+ctrl-alt-shift-w            = 'close --quit-if-last-window'
 
 
 # Workspaces
