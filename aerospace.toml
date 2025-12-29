@@ -103,26 +103,31 @@ cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
 ctrl-alt-shift-esc          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-alt-shift-j            = 'focus left'
-ctrl-alt-shift-k            = 'focus down'
-ctrl-alt-shift-i            = 'focus up'
-ctrl-alt-shift-l            = 'focus right'
+ctrl-alt-shift-j            = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+ctrl-alt-shift-k            = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+ctrl-alt-shift-i            = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+ctrl-alt-shift-l            = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
 
-ctrl-alt-shift-left         = 'swap left'
-ctrl-alt-shift-right        = 'swap right'
-ctrl-alt-shift-up           = 'swap up'
-ctrl-alt-shift-down         = 'swap down'
+# ctrl-alt-shift-left         = 'swap left'
+# ctrl-alt-shift-right        = 'swap right'
+# ctrl-alt-shift-up           = 'swap up'
+# ctrl-alt-shift-down         = 'swap down'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-ctrl-alt-shift-j        = 'move left'
-cmd-ctrl-alt-shift-k        = 'move down'
-cmd-ctrl-alt-shift-i        = 'move up'
-cmd-ctrl-alt-shift-l        = 'move right'
+cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-l        = 'move right --boundaries all-monitors-outer-frame'
 
 cmd-ctrl-alt-shift-left     = 'join-with left'
 cmd-ctrl-alt-shift-right    = 'join-with right'
 cmd-ctrl-alt-shift-down     = 'join-with down'
 cmd-ctrl-alt-shift-up       = 'join-with up'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#focus-monitor
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
+ctrl-alt-shift-m            = 'focus-monitor next --wrap-around'
+cmd-ctrl-alt-shift-m        = 'move-node-to-monitor next --wrap-around'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 ctrl-alt-shift-minus        = 'resize smart          -25'
