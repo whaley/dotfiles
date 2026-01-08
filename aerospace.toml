@@ -99,6 +99,7 @@ cmd-ctrl-alt-shift-f        = 'layout floating tiling' #toggle float for a windo
 ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
 cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
 
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
 ctrl-alt-shift-esc          = 'balance-sizes'
 
@@ -141,6 +142,10 @@ cmd-m                       = 'macos-native-minimize'
 # Close windows properly
 ctrl-alt-shift-w            = 'close --quit-if-last-window'
 
+# Modes
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+ctrl-alt-shift-o            = 'mode open'
+
 # Workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -159,6 +164,9 @@ cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-alt-shift-5            = 'workspace 5'
 cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5 --focus-follows-window'
 
+ctrl-alt-shift-z            = 'workspace Z'
+cmd-ctrl-alt-shift-z        = 'move-node-to-workspace Z --focus-follows-window'
+
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 
@@ -168,16 +176,17 @@ ctrl-alt-shift-n            = 'workspace --wrap-around next'
 cmd-ctrl-alt-shift-p        = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
 cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-follows-window next'
 
-
-###############################################################################
-# Modes
-###############################################################################
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-alt-shift-o            = 'mode open'
-
+# Assign workspaces to monitors
+[workspace-to-monitor-force-assignment]
+    1 = 'main'
+    2 = 'main'
+    3 = 'main'
+    4 = 'main'
+    5 = 'main'
+    Z = 'secondary'
 
 #######################################
-# Open Apps and Windows
+# Mode: Open Apps and Windows
 #######################################
 [mode.open.binding]
 esc                         = 'mode main'
@@ -200,7 +209,7 @@ end tell
 '
 ''', 'mode main']
 
-#  Chrome 
+#  Chrome
 c = ['''exec-and-forget osascript -e '
 if application "Google Chrome" is running then
     tell application "Google Chrome"
@@ -295,3 +304,17 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
     if.app-id = 'com.1password.1password'
     check-further-callbacks = true
     run = ['layout floating']
+
+# Move specific apps to workspace Z
+[[on-window-detected]]
+    if.app-id = 'com.omnigroup.OmniFocus4'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace Z']
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace Z']
+[[on-window-detected]]
+    if.app-name-regex-substring = 'Google Chat'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace Z']
