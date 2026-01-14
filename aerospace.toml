@@ -140,7 +140,7 @@ ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +25'
 cmd-m                       = 'macos-native-minimize'
 
 # Close windows properly
-ctrl-alt-shift-w            = 'close --quit-if-last-window'
+ctrl-alt-shift-w            = 'close'
 
 # Modes
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
@@ -164,8 +164,8 @@ cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-alt-shift-5            = 'workspace 5'
 cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5 --focus-follows-window'
 
-ctrl-alt-shift-z            = 'workspace Z'
-cmd-ctrl-alt-shift-z        = 'move-node-to-workspace Z --focus-follows-window'
+# ctrl-alt-shift-z            = 'workspace Z'
+# cmd-ctrl-alt-shift-z        = 'move-node-to-workspace Z --focus-follows-window'
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
@@ -183,7 +183,7 @@ cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-foll
     3 = 'main'
     4 = 'main'
     5 = 'main'
-    Z = 'secondary'
+    # Z = 'secondary'
 
 #######################################
 # Mode: Open Apps and Windows
@@ -305,16 +305,16 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
     check-further-callbacks = true
     run = ['layout floating']
 
-# Move specific apps to workspace Z
-[[on-window-detected]]
-    if.app-id = 'com.omnigroup.OmniFocus4'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace Z']
-[[on-window-detected]]
-    if.app-id = 'md.obsidian'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace Z']
-[[on-window-detected]]
-    if.app-name-regex-substring = 'Google Chat'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace Z']
+# # Move specific apps to workspace Z
+# [[on-window-detected]]
+#     if.app-id = 'com.omnigroup.OmniFocus4'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace Z']
+# [[on-window-detected]]
+#     if.app-id = 'md.obsidian'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace Z']
+# [[on-window-detected]]
+#     if.app-name-regex-substring = 'Google Chat'
+#     check-further-callbacks = true
+#     run = ['move-node-to-workspace Z']
