@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0xFFF88379 width=20.0'
+    'exec-and-forget /Users/whaley/homebrew/bin/borders active_color=0x66FFFFFF width=20.0'
 ]
 
 # Start AeroSpace at login
@@ -63,13 +63,13 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps.inner]
-horizontal    = 10
-vertical      = 10
+horizontal    = 40
+vertical      = 40
 [gaps.outer]
-left          = 10
-right         = 10
-bottom        = 10
-top           = 10
+left          = 20
+right         = 20
+bottom        = 20
+top           = 20
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
