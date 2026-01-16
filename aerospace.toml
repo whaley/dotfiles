@@ -250,11 +250,8 @@ end tell
 f = ['''exec-and-forget osascript -e '
 if application "Omnifocus" is running then
     tell application "OmniFocus"
-        activate
-        tell application "System Events"
-            tell process "OmniFocus"
-                keystroke "n" using {option down, command down}
-            end tell
+        tell default document
+            make new document window
         end tell
     end tell
 else
