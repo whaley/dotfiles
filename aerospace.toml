@@ -95,13 +95,14 @@ top           = 20
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-comma        = 'layout accordion horizontal vertical'
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
-cmd-ctrl-alt-shift-f        = 'layout floating tiling' #toggle float for a window
-ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
-cmd-ctrl-alt-shift-r        = 'flatten-workspace-tree' #reset layout
 
+ctrl-alt-shift-f            = 'fullscreen --no-outer-gaps' #toggle fullscreen for a window
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
+ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
-ctrl-alt-shift-esc          = 'balance-sizes'
+ctrl-alt-shift-b          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 ctrl-alt-shift-j            = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
