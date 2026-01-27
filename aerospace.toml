@@ -150,22 +150,22 @@ ctrl-alt-shift-o            = 'mode open'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 ctrl-alt-shift-1            = 'workspace 1'
-cmd-ctrl-alt-shift-1        = 'move-node-to-workspace 1 --focus-follows-window'
+cmd-ctrl-alt-shift-1        = 'move-node-to-workspace 1'
 
 ctrl-alt-shift-2            = 'workspace 2'
-cmd-ctrl-alt-shift-2        = 'move-node-to-workspace 2 --focus-follows-window'
+cmd-ctrl-alt-shift-2        = 'move-node-to-workspace 2'
 
 ctrl-alt-shift-3            = 'workspace 3'
-cmd-ctrl-alt-shift-3        = 'move-node-to-workspace 3 --focus-follows-window'
+cmd-ctrl-alt-shift-3        = 'move-node-to-workspace 3'
 
 ctrl-alt-shift-4            = 'workspace 4'
-cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4 --focus-follows-window'
+cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4'
 
 ctrl-alt-shift-5            = 'workspace 5'
-cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5 --focus-follows-window'
+cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5'
 
 # ctrl-alt-shift-z            = 'workspace Z'
-# cmd-ctrl-alt-shift-z        = 'move-node-to-workspace Z --focus-follows-window'
+# cmd-ctrl-alt-shift-z        = 'move-node-to-workspace Z'
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
