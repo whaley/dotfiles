@@ -109,10 +109,10 @@ ctrl-alt-shift-k            = 'focus down --boundaries all-monitors-outer-frame 
 ctrl-alt-shift-i            = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
 ctrl-alt-shift-l            = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
 
-# ctrl-alt-shift-left         = 'swap left'
-# ctrl-alt-shift-right        = 'swap right'
-# ctrl-alt-shift-up           = 'swap up'
-# ctrl-alt-shift-down         = 'swap down'
+ctrl-alt-shift-left         = 'swap left'
+ctrl-alt-shift-right        = 'swap right'
+ctrl-alt-shift-up           = 'swap up'
+ctrl-alt-shift-down         = 'swap down'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
@@ -131,10 +131,10 @@ ctrl-alt-shift-m            = 'focus-monitor next --wrap-around'
 cmd-ctrl-alt-shift-m        = 'move-node-to-monitor next --wrap-around'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-minus        = 'resize smart          -25'
-ctrl-alt-shift-equal        = 'resize smart          +25'
-ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -25'
-ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +25'
+ctrl-alt-shift-minus        = 'resize smart          -50'
+ctrl-alt-shift-equal        = 'resize smart          +50'
+ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -50'
+ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +50'
 
 # Minimize without losing aerospace focus
 cmd-m                       = 'macos-native-minimize'
@@ -272,35 +272,41 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
 # On-window-detected callbacks
 ###############################################################################
 
-# Float By Default
+# Just tile everything by default
 [[on-window-detected]]
-    if.app-id = 'com.electron.brain.fm'
+    if.app-name-regex-substring = '.*'
     check-further-callbacks = true
-    run = ['layout floating']
-[[on-window-detected]]
-    if.app-id = 'com.cisco.secureclient.gui'
-    check-further-callbacks = true
-    run = ['layout floating']
-[[on-window-detected]]
-    if.app-name-regex-substring = 'di.fm'
-    check-further-callbacks = true
-    run = ['layout floating']
-[[on-window-detected]]
-    if.app-id = 'com.apple.Music'
-    check-further-callbacks = true
-    run = ['layout floating']
-[[on-window-detected]]
-    if.app-id = 'com.dejal.timeout'
-    check-further-callbacks = true
-    run = ['layout floating']
-[[on-window-detected]]
-    if.app-id = 'net.publicspace.dist.vitaminr4'
-    check-further-callbacks = true
-    run = ['layout floating']
-[[on-window-detected]]
-    if.app-id = 'com.1password.1password'
-    check-further-callbacks = true
-    run = ['layout floating']
+    run = ['layout tiling']
+
+# [[on-window-detected]]
+#     if.app-id = 'com.dejal.timeout'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'com.cisco.secureclient.gui'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+
+# [[on-window-detected]]
+#     if.app-id = 'com.electron.brain.fm'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-name-regex-substring = 'di.fm'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'com.apple.Music'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'net.publicspace.dist.vitaminr4'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'com.1password.1password'
+#     check-further-callbacks = true
+#     run = ['layout floating']
 
 # # Move specific apps to workspace Z
 # [[on-window-detected]]
