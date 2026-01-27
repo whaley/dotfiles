@@ -137,8 +137,8 @@ ctrl-alt-shift-equal        = 'resize smart          +50'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -50'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +50'
 
-# Minimize without losing aerospace focus
-cmd-m                       = 'macos-native-minimize'
+# # Minimize without losing aerospace focus
+# cmd-m                       = 'macos-native-minimize'
 
 # Close windows properly
 ctrl-alt-shift-w            = 'close'
