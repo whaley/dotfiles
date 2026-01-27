@@ -23,7 +23,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 0
+accordion-padding = 500
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -63,13 +63,13 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps.inner]
-horizontal    = 40
-vertical      = 40
+horizontal    = 50
+vertical      = 50
 [gaps.outer]
-left          = 20
-right         = 20
-bottom        = 20
-top           = 20
+left          = 10
+right         = 10
+bottom        = 10
+top           = 10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -96,7 +96,7 @@ top           = 20
 ctrl-alt-shift-comma        = 'layout accordion horizontal vertical'
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
 
-ctrl-alt-shift-f            = 'fullscreen --no-outer-gaps' #toggle fullscreen for a window
+ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
 ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
