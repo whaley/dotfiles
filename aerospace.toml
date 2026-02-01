@@ -272,18 +272,6 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
-
-# Just tile everything by default
-[[on-window-detected]]
-    if.app-name-regex-substring = '.*'
-    check-further-callbacks = true
-    run = ['layout tiling']
-
-[[on-window-detected]]
-    if.app-id = 'net.publicspace.dist.vitaminr4'
-    check-further-callbacks = true
-    run = ['layout floating']
-
 # [[on-window-detected]]
 #     if.app-id = 'com.dejal.timeout'
 #     check-further-callbacks = true
@@ -292,7 +280,14 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
 #     if.app-id = 'com.cisco.secureclient.gui'
 #     check-further-callbacks = true
 #     run = ['layout floating']
-
+# [[on-window-detected]]
+#     if.app-id = 'net.publicspace.dist.vitaminr4'
+#     check-further-callbacks = true
+#     run = ['layout floating']
+# [[on-window-detected]]
+#     if.app-id = 'com.1password.1password'
+#     check-further-callbacks = true
+#     run = ['layout floating']
 # [[on-window-detected]]
 #     if.app-id = 'com.electron.brain.fm'
 #     check-further-callbacks = true
@@ -306,10 +301,6 @@ o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_works
 #     check-further-callbacks = true
 #     run = ['layout floating']
 
-# [[on-window-detected]]
-#     if.app-id = 'com.1password.1password'
-#     check-further-callbacks = true
-#     run = ['layout floating']
 
 # # Move specific apps to workspace Z
 # [[on-window-detected]]
