@@ -105,10 +105,10 @@ ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
 ctrl-alt-shift-b          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-alt-shift-j            = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-ctrl-alt-shift-k            = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-ctrl-alt-shift-i            = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-ctrl-alt-shift-l            = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+ctrl-alt-shift-j            = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
+ctrl-alt-shift-k            = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
+ctrl-alt-shift-i            = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
+ctrl-alt-shift-l            = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
 
 ctrl-alt-shift-left         = 'swap left'
 ctrl-alt-shift-right        = 'swap right'
@@ -192,15 +192,6 @@ cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-foll
 [mode.open.binding]
 esc                         = 'mode main'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
-
 # Arc
 a = ['''exec-and-forget osascript -e '
 tell application "Arc"
@@ -238,13 +229,13 @@ end if
 '
 ''', 'mode main']
 
-# Open weechat in a screen session
-w =  ['''exec-and-forget osascript -e '
-tell application "iTerm"
-    create window with profile "weechat"
-end tell
-'
-''', 'mode main']
+# # Open weechat in a screen session
+# w =  ['''exec-and-forget osascript -e '
+# tell application "iTerm"
+#     create window with profile "weechat"
+# end tell
+# '
+# ''', 'mode main']
 
 # Open Omnifocus in a new window
 # Bit of a hack with keyboard shortcuts since 'make new document window' creates a new tab
