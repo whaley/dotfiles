@@ -184,7 +184,6 @@ cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-foll
     3 = 'main'
     4 = 'main'
     5 = 'main'
-    # Z = 'secondary'
 
 #######################################
 # Mode: Open Apps and Windows
@@ -229,13 +228,6 @@ end if
 '
 ''', 'mode main']
 
-# # Open weechat in a screen session
-# w =  ['''exec-and-forget osascript -e '
-# tell application "iTerm"
-#     create window with profile "weechat"
-# end tell
-# '
-# ''', 'mode main']
 
 # Open Omnifocus in a new window
 # Bit of a hack with keyboard shortcuts since 'make new document window' creates a new tab
@@ -256,8 +248,18 @@ end if
 
 # Apps with only a single window or can't otherwise support applescript
 # e.g. PWA's or Electron apps
-# Obsidian
-o = ['exec-and-forget /Users/whaley/bin/aerospace_move_obsidian_to_current_workspace.py', 'mode main']
+
+#1Password
+1 = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "1Password" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+#Obsidian
+o = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py Obsidian --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+#Google Chat
+g = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+#Brain.fm
+b = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Brain.fm" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+#Apple Music
+m = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+
 
 
 ###############################################################################
