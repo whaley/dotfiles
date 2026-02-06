@@ -91,5 +91,6 @@ if __name__ == "__main__":
         active_workspace_name: str = aerospace.find_active_workspace_name()
         for window_id in window_ids:
               aerospace.move_node_to_workspace(window_id, active_workspace_name)
-    else:
-         subprocess.run(["open", args.app_path])
+
+    # open the app or otherwise give it focus
+    subprocess.run(["open", args.app_path]) 
