@@ -1,5 +1,5 @@
 # Setup Path
-export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/homebrew/bin:${PATH}:"
+export PATH="${HOME}/.local/bin:${PATH}:"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -10,6 +10,11 @@ export ZSH="${HOME}/.oh-my-zsh"
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="avit"  ##### Note: theme is the starship prompt, which is loaded as a plugin
 
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -18,11 +23,13 @@ export ZSH="${HOME}/.oh-my-zsh"
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -34,7 +41,7 @@ DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -43,7 +50,10 @@ DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -102,12 +112,3 @@ alias loadavg="uptime | cut -d':' -f4- | sed s/,//g"
 
 #iterm2 shell integration
 source ~/.iterm2_shell_integration.zsh
-
-# Other utility functions and environmental setup.
-
-#OSX
-# if [[ "$(uname)" == "Darwin" ]]
-# then
-#   #On OSX, actually repeat a key when holding it down instead of showing alternative characters
-#   defaults write -g ApplePressAndHoldEnabled 0
-# fi
