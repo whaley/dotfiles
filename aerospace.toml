@@ -44,7 +44,7 @@ on-focus-changed = ['move-mouse window-lazy-center']
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
-automatically-unhide-macos-hidden-apps = true
+automatically-unhide-macos-hidden-apps = false
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -105,10 +105,10 @@ ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
 ctrl-alt-shift-b          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-alt-shift-j            = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
-ctrl-alt-shift-k            = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
-ctrl-alt-shift-i            = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
-ctrl-alt-shift-l            = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors --ignore-floating'
+ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-l            = 'focus right  --boundaries all-monitors-outer-frame'
 
 ctrl-alt-shift-left         = 'swap left'
 ctrl-alt-shift-right        = 'swap right'
@@ -116,10 +116,10 @@ ctrl-alt-shift-up           = 'swap up'
 ctrl-alt-shift-down         = 'swap down'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-l        = 'move right --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-j        = 'move left'
+cmd-ctrl-alt-shift-k        = 'move down'
+cmd-ctrl-alt-shift-i        = 'move up'
+cmd-ctrl-alt-shift-l        = 'move right'
 
 cmd-ctrl-alt-shift-left     = 'join-with left'
 cmd-ctrl-alt-shift-right    = 'join-with right'
@@ -161,8 +161,8 @@ cmd-ctrl-alt-shift-4        = 'move-node-to-workspace 4'
 ctrl-alt-shift-5            = 'workspace 5'
 cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5'
 
-# ctrl-alt-shift-z            = 'workspace Z'
-# cmd-ctrl-alt-shift-z        = 'move-node-to-workspace Z'
+ctrl-alt-shift-s            = 'workspace S'
+cmd-ctrl-alt-shift-s        = 'move-node-to-workspace S'
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
@@ -178,19 +178,10 @@ cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-foll
 ctrl-alt-shift-o            = 'mode open'
 ctrl-alt-shift-u            = 'mode util'
 
-# Assign workspaces to monitors
-[workspace-to-monitor-force-assignment]
-    1 = 'main'
-    2 = 'main'
-    3 = 'main'
-    4 = 'main'
-    5 = 'main'
 
 #######################################
 # Mode: Open Apps and Windows
 #######################################
-
-
 [mode.open.binding]
 esc                         = 'mode main'
 
@@ -332,3 +323,13 @@ aerospace workspace "$currentWorkspace"
 #     if.app-name-regex-substring = 'Google Chat'
 #     check-further-callbacks = true
 #     run = ['move-node-to-workspace Z']
+
+
+# Assign workspaces to monitors
+[workspace-to-monitor-force-assignment]
+    1 = 'main'
+    2 = 'main'
+    3 = 'main'
+    4 = 'main'
+    5 = 'main'
+    S = 'secondary'
