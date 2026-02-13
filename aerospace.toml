@@ -257,7 +257,7 @@ end if
 #Obsidian
 o = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py Obsidian --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
 #Google Chat
-g = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+g = ['exec-and-forget exec > /tmp/aerospace.log 2>&1; echo $PATH ; env ;  $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" ', 'mode main']
 #Brain.fm
 b = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Brain.fm" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
 #Apple Music
@@ -270,16 +270,19 @@ r = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "
 [mode.util.binding]
 #Toggle fullscreen everything
 f = ['''exec-and-forget exec > /tmp/aerospace.log 2>&1;
-for id in $($HOME/homebrew/bin/aerospace list-windows --all | awk '{print $1}'); do
-    $HOME/homebrew/bin/aerospace macos-native-fullscreen --window-id $id
+for id in $(aerospace list-windows --all | awk '{print $1}'); do
+    aerospace macos-native-fullscreen --window-id $id
 done
 ''', 'mode main']
 
-#Toggle minimize everything
+#Toggle minimize everything on current workspace
+#Also restores focus back to the workspace we just minimized everything
 m = ['''exec-and-forget exec > /tmp/aerospace.log 2>&1;
-for id in $($HOME/homebrew/bin/aerospace list-windows --all | awk '{print $1}'); do
-    $HOME/homebrew/bin/aerospace macos-native-minimize --window-id "$id"
+currentWorkspace=$(aerospace list-workspaces --focused)
+for id in $(aerospace list-windows --workspace focused | awk '{print $1}'); do
+    aerospace macos-native-minimize --window-id "$id"
 done
+aerospace workspace "$currentWorkspace"
 ''', 'mode main']
 
 
