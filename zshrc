@@ -101,7 +101,6 @@ alias ln="ln -ni"
 alias ls="ls -Gh"
 alias mkdir="nocorrect mkdir -p"
 
-
 #Extra Git
 alias gmod="git merge origin/develop --no-ff"
 alias grbd="git rebase develop"
@@ -109,6 +108,8 @@ alias grbd="git rebase develop"
 #Misc
 alias dateutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
 alias loadavg="uptime | cut -d':' -f4- | sed s/,//g"
+alias wget="curl -O -J -L" #don't assume that wget exists, mimic behavior with curl
+
 
 #iterm2 shell integration
 source ~/.iterm2_shell_integration.zsh
