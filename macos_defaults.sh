@@ -29,3 +29,8 @@ defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 
+########################################
+# Mission Control
+########################################
+# Group windows by application in expose - required for this to work correctly with aerospace
+defaults write com.apple.dock expose-group-apps -bool true
