@@ -244,23 +244,23 @@ end if
 # e.g. PWA's or Electron apps
 
 #1Password
-1 = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "1Password" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+1 = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "1Password"', 'mode main']
 #Obsidian
-o = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py Obsidian --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+o = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
 #Google Chat
-g = ['exec-and-forget exec > /tmp/aerospace.log 2>&1; echo $PATH ; env ;  $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" ', 'mode main']
+g = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" ', 'mode main']
 #Brain.fm
-b = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Brain.fm" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+b = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 #Apple Music
-m = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+m = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 #Vitamin R
-r = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4" --aerospace-path $HOME/homebrew/bin/aerospace', 'mode main']
+r = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
 
 
 
 [mode.util.binding]
 #Toggle fullscreen everything
-f = ['''exec-and-forget exec > /tmp/aerospace.log 2>&1;
+f = ['''exec-and-forget
 for id in $(aerospace list-windows --all | awk '{print $1}'); do
     aerospace macos-native-fullscreen --window-id $id
 done
@@ -268,7 +268,7 @@ done
 
 #Toggle minimize everything on current workspace
 #Also restores focus back to the workspace we just minimized everything
-m = ['''exec-and-forget exec > /tmp/aerospace.log 2>&1;
+m = ['''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
 for id in $(aerospace list-windows --workspace focused | awk '{print $1}'); do
     aerospace macos-native-minimize --window-id "$id"
