@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0x66FFFFFF width=20.0'
+    'exec-and-forget borders width=10'
 ]
 
 # Start AeroSpace at login
@@ -44,7 +44,18 @@ on-focus-changed = ['move-mouse window-lazy-center']
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
-automatically-unhide-macos-hidden-apps = false
+automatically-unhide-macos-hidden-apps = true
+
+
+# Assign workspaces to monitors
+[workspace-to-monitor-force-assignment]
+    1 = 'main'
+    2 = 'main'
+    3 = 'main'
+    4 = 'main'
+    5 = 'main'
+    S = 'secondary'
+
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -93,7 +104,8 @@ top           = 10
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-ctrl-alt-shift-comma        = 'layout accordion horizontal vertical'
+ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling for a singlne window
+ctrl-alt-shift-period       = 'layout accordion horizontal vertical'
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
 
 ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
@@ -137,8 +149,8 @@ ctrl-alt-shift-equal        = 'resize smart          +50'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -50'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +50'
 
-# # Minimize without losing aerospace focus
-# cmd-m                       = 'macos-native-minimize'
+# Minimize without losing aerospace focus
+cmd-m                       = 'macos-native-minimize'
 
 # Close windows properly
 ctrl-alt-shift-w            = 'close'
@@ -255,19 +267,19 @@ b = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "
 m = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 #Vitamin R
 r = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
-
+#Janky Borders, in case it's closed
+j = ['exec-and-forget nohup borders width=10.0 &', 'mode main']
 
 
 [mode.util.binding]
-#Toggle fullscreen everything
-f = ['''exec-and-forget
-for id in $(aerospace list-windows --all | awk '{print $1}'); do
-    aerospace macos-native-fullscreen --window-id $id
-done
-''', 'mode main']
+esc = 'mode main'
 
-#Toggle minimize everything on current workspace
-#Also restores focus back to the workspace we just minimized everything
+r = ['reload-config', 'mode main']
+
+f = ['mode main', 'macos-native-fullscreen'] #make 'mode main' first, since native command must appear last in a list
+
+# Toggle minimize everything on current workspace
+# Also restores focus back to the workspace we just minimized everything
 m = ['''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
 for id in $(aerospace list-windows --workspace focused | awk '{print $1}'); do
@@ -275,6 +287,10 @@ for id in $(aerospace list-windows --workspace focused | awk '{print $1}'); do
 done
 aerospace workspace "$currentWorkspace"
 ''', 'mode main']
+
+
+
+
 
 
 ###############################################################################
@@ -323,13 +339,3 @@ aerospace workspace "$currentWorkspace"
 #     if.app-name-regex-substring = 'Google Chat'
 #     check-further-callbacks = true
 #     run = ['move-node-to-workspace Z']
-
-
-# Assign workspaces to monitors
-[workspace-to-monitor-force-assignment]
-    1 = 'main'
-    2 = 'main'
-    3 = 'main'
-    4 = 'main'
-    5 = 'main'
-    S = 'secondary'
