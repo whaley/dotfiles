@@ -291,11 +291,22 @@ aerospace workspace "$currentWorkspace"
 
 
 
-
-
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
+[[on-window-detected]]
+    if.app-id = 'com.electron.brain.fm'
+    check-further-callbacks = true
+    run = 'macos-native-fullscreen on'
+[[on-window-detected]]
+    if.app-name-regex-substring = 'di.fm'
+    check-further-callbacks = true
+    run = 'macos-native-fullscreen on'
+[[on-window-detected]]
+    if.app-id = 'com.apple.Music'
+    check-further-callbacks = true
+    run = 'macos-native-fullscreen on'
+
 # [[on-window-detected]]
 #     if.app-id = 'com.dejal.timeout'
 #     check-further-callbacks = true
@@ -310,18 +321,6 @@ aerospace workspace "$currentWorkspace"
 #     run = ['layout floating']
 # [[on-window-detected]]
 #     if.app-id = 'com.1password.1password'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-# [[on-window-detected]]
-#     if.app-id = 'com.electron.brain.fm'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-# [[on-window-detected]]
-#     if.app-name-regex-substring = 'di.fm'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-# [[on-window-detected]]
-#     if.app-id = 'com.apple.Music'
 #     check-further-callbacks = true
 #     run = ['layout floating']
 
