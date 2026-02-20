@@ -256,17 +256,17 @@ end if
 # e.g. PWA's or Electron apps
 
 #1Password
-1 = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "1Password"', 'mode main']
+1 = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "1Password"', 'mode main']
 #Obsidian
-o = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
+o = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
 #Google Chat
 g = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" ', 'mode main']
 #Brain.fm
-b = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
+b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 #Apple Music
-m = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
+m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 #Vitamin R
-r = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
+r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
 #Janky Borders, in case it's closed
 j = ['exec-and-forget nohup borders width=10.0 &', 'mode main']
 
