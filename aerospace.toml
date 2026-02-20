@@ -1,5 +1,9 @@
-# Place a copy of this config to ~/.aerospace.toml
-# After that, you can edit ~/.aerospace.toml to your liking
+# Whaley's config
+# I try to do as much with the keyboard as I can, so there's a few bespoke exec-and-forget items in modes as well
+
+# Tip: if you need to debug why an exec-and-forget command isn't working, try using 
+# ` exec > /tmp/aerospace.log 2>&1 ; env`
+# before your command to redirect all stdout/stderr to a log file and also dump your environment variables
 
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
@@ -45,6 +49,13 @@ on-focus-changed = ['move-mouse window-lazy-center']
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
 automatically-unhide-macos-hidden-apps = true
+
+# Setup environmental variables
+[exec]
+inherit-env-vars = true
+
+[exec.env-vars]
+PATH = "${HOME}/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
 
 
 # Assign workspaces to monitors
@@ -260,7 +271,7 @@ end if
 #Obsidian
 o = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
 #Google Chat
-g = ['exec-and-forget $HOME/bin/aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" ', 'mode main']
+g = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Google Chat" --app-path "$HOME/Applications/Chrome Apps.localized/Google Chat.app" ', 'mode main']
 #Brain.fm
 b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 #Apple Music
@@ -288,7 +299,12 @@ done
 aerospace workspace "$currentWorkspace"
 ''', 'mode main']
 
+# Toggle headpones being connected
+# NOTE: This requires giving Aerospace permission to use Bluetooth in System Settings > Privacy and Security > Bluetooth
+h = ['''exec-and-forget
 
+toggle_bt.sh "Grey WH-1000XM5"
+''', 'mode main']
 
 
 ###############################################################################
@@ -306,35 +322,3 @@ aerospace workspace "$currentWorkspace"
     if.app-id = 'com.apple.Music'
     check-further-callbacks = true
     run = 'macos-native-fullscreen on'
-
-# [[on-window-detected]]
-#     if.app-id = 'com.dejal.timeout'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-# [[on-window-detected]]
-#     if.app-id = 'com.cisco.secureclient.gui'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-# [[on-window-detected]]
-#     if.app-id = 'net.publicspace.dist.vitaminr4'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-# [[on-window-detected]]
-#     if.app-id = 'com.1password.1password'
-#     check-further-callbacks = true
-#     run = ['layout floating']
-
-
-# # Move specific apps to workspace Z
-# [[on-window-detected]]
-#     if.app-id = 'com.omnigroup.OmniFocus4'
-#     check-further-callbacks = true
-#     run = ['move-node-to-workspace Z']
-# [[on-window-detected]]
-#     if.app-id = 'md.obsidian'
-#     check-further-callbacks = true
-#     run = ['move-node-to-workspace Z']
-# [[on-window-detected]]
-#     if.app-name-regex-substring = 'Google Chat'
-#     check-further-callbacks = true
-#     run = ['move-node-to-workspace Z']
