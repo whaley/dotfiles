@@ -1,0 +1,19 @@
+syntax on                    " Enable syntax highlighting
+set number                   " Show line numbers
+filetype plugin indent on    " Enable file type detection and plugins
+
+" Tabs --> Spaces and use 4 by default
+set expandtab       " Convert tabs to spaces
+set tabstop=4       " Number of spaces a tab counts for
+set shiftwidth=4    " Number of spaces for auto-indent  
+set softtabstop=4   " Number of spaces a tab counts for while editing
+
+set autoindent      " Match indents on new lines
+set smartindent     " Intelligently dedent/indent new lines
+
+set ruler           " Show cursor position
+set showcmd         " Show incomplete commands
+set wildmenu        " Enhanced command completion
+set laststatus=2    " Always show status line
+
+set endofline       " Always added EOL
