@@ -1,7 +1,7 @@
 # Whaley's config
 # I try to do as much with the keyboard as I can, so there's a few bespoke exec-and-forget items in modes as well
 
-# Tip: if you need to debug why an exec-and-forget command isn't working, try using 
+# Tip: if you need to debug why an exec-and-forget command isn't working, try using
 # ` exec > /tmp/aerospace.log 2>&1 ; env`
 # before your command to redirect all stdout/stderr to a log file and also dump your environment variables
 
@@ -139,10 +139,10 @@ ctrl-alt-shift-up           = 'swap up'
 ctrl-alt-shift-down         = 'swap down'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-ctrl-alt-shift-j        = 'move left'
-cmd-ctrl-alt-shift-k        = 'move down'
-cmd-ctrl-alt-shift-i        = 'move up'
-cmd-ctrl-alt-shift-l        = 'move right'
+cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-l        = 'move right --boundaries all-monitors-outer-frame'
 
 cmd-ctrl-alt-shift-left     = 'join-with left'
 cmd-ctrl-alt-shift-right    = 'join-with right'
