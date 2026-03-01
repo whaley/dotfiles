@@ -290,7 +290,7 @@ r = ['reload-config', 'mode main']
 f = ['mode main', 'macos-native-fullscreen'] #make 'mode main' first, since native command must appear last in a list
 
 # Toggle minimize everything on current workspace
-# Also restores focus back to the workspace we just minimized everything
+# Also restores focus back to the workspace we just minimized everything on
 m = ['''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
 for id in $(aerospace list-windows --workspace focused | awk '{print $1}'); do
@@ -302,7 +302,6 @@ aerospace workspace "$currentWorkspace"
 # Toggle headpones being connected
 # NOTE: This requires giving Aerospace permission to use Bluetooth in System Settings > Privacy and Security > Bluetooth
 h = ['''exec-and-forget
-
 toggle_bt.sh "Grey WH-1000XM5"
 ''', 'mode main']
 
@@ -310,15 +309,15 @@ toggle_bt.sh "Grey WH-1000XM5"
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
-[[on-window-detected]]
-    if.app-id = 'com.electron.brain.fm'
-    check-further-callbacks = true
-    run = 'macos-native-fullscreen on'
-[[on-window-detected]]
-    if.app-name-regex-substring = 'di.fm'
-    check-further-callbacks = true
-    run = 'macos-native-fullscreen on'
-[[on-window-detected]]
-    if.app-id = 'com.apple.Music'
-    check-further-callbacks = true
-    run = 'macos-native-fullscreen on'
+# [[on-window-detected]]
+#     if.app-id = 'com.electron.brain.fm'
+#     check-further-callbacks = true
+#     run = 'macos-native-fullscreen on'
+# [[on-window-detected]]
+#     if.app-name-regex-substring = 'di.fm'
+#     check-further-callbacks = true
+#     run = 'macos-native-fullscreen on'
+# [[on-window-detected]]
+#     if.app-id = 'com.apple.Music'
+#     check-further-callbacks = true
+#     run = 'macos-native-fullscreen on'
