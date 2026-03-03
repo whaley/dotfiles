@@ -263,9 +263,12 @@ end if
 '
 ''', 'mode main']
 
+# Open a new Kitty OS Window.  Kitty needs allow_remote_control socket_only in its config
+k = ['''exec-and-forget osascript -e 'tell application "kitty" to activate' && kitten @ --to "unix:/tmp/kitty-socket-$(pgrep kitty)" launch --type os-window
+''', 'mode main']
+
 # Apps with only a single window or can't otherwise support applescript
 # e.g. PWA's or Electron apps
-
 #1Password
 1 = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "1Password"', 'mode main']
 #Obsidian
