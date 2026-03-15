@@ -128,6 +128,7 @@ ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
 ctrl-alt-shift-b          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
+ctrl-alt-shift-g            = 'focus --dfs-index 0' #first window
 ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
