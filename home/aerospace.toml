@@ -134,21 +134,17 @@ ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-fram
 ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-l            = 'focus right  --boundaries all-monitors-outer-frame'
 
-ctrl-alt-shift-left         = 'swap left'
-ctrl-alt-shift-right        = 'swap right'
-ctrl-alt-shift-up           = 'swap up'
-ctrl-alt-shift-down         = 'swap down'
+ctrl-alt-shift-left         = 'move left --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-down         = 'move down --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-up           = 'move up --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-right        = 'move right --boundaries all-monitors-outer-frame'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-l        = 'move right --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-j        = 'join-with left'
+cmd-ctrl-alt-shift-k        = 'join-with down'
+cmd-ctrl-alt-shift-i        = 'join-with up'
+cmd-ctrl-alt-shift-l        = 'join-with right'
 
-cmd-ctrl-alt-shift-left     = 'join-with left'
-cmd-ctrl-alt-shift-right    = 'join-with right'
-cmd-ctrl-alt-shift-down     = 'join-with down'
-cmd-ctrl-alt-shift-up       = 'join-with up'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus-monitor
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
