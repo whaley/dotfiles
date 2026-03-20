@@ -290,11 +290,18 @@ done
 aerospace workspace "$currentWorkspace"
 ''', 'mode main']
 
+t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
+
 # Toggle headpones being connected
 # NOTE: This requires giving Aerospace permission to use Bluetooth in System Settings > Privacy and Security > Bluetooth
 h = ['''exec-and-forget
 toggle_bt.sh "Grey WH-1000XM5"
 ''', 'mode main']
+
+left    = ['exec-and-forget aerospace_move_to_edge.py left', 'mode main']
+right   = ['exec-and-forget aerospace_move_to_edge.py right', 'mode main']
+up      = ['exec-and-forget aerospace_move_to_edge.py up', 'mode main']
+down    = ['exec-and-forget aerospace_move_to_edge.py down', 'mode main']
 
 
 ###############################################################################
