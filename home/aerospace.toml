@@ -180,8 +180,6 @@ cmd-ctrl-alt-shift-5        = 'move-node-to-workspace 5'
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 
-ctrl-alt-shift-p            = 'workspace --wrap-around prev'
-ctrl-alt-shift-n            = 'workspace --wrap-around next'
 
 cmd-ctrl-alt-shift-p        = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
 cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-follows-window next'
