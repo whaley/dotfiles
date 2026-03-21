@@ -1,30 +1,56 @@
 #!/usr/bin/env bash
 
+GRANDPARENT_PID=$(ps -p "$PPID" -o ppid=)
+GRANDPARENT_NAME=$(ps -p "$GRANDPARENT_PID" -o comm=)
+
+notify() {
+  if command -v terminal-notifier &>/dev/null; then
+    terminal-notifier -message "$@" -title "toggle_bt.sh ($GRANDPARENT_NAME)"
+  else
+    echo "$@"
+  fi
+}
+
 if ! command -v blueutil &> /dev/null; then
-    echo "Error: blueutil not found on PATH."
-    echo "Install it via Homebrew with: brew install blueutil"
+    msg="Error: blueutil not found on PATH.
+Install it via Homebrew with: brew install blueutil"
+    notify "$msg"
     exit 1
 fi
 
 if [ -z "$1" ]; then
-    echo "Usage: $(basename "$0") <device name>"
+    notify "Usage: $(basename "$0") <device name>"
     exit 1
 fi
 
 DEVICE_NAME="$1"
 
 # Check if device is paired
-STATUS=$(blueutil --paired | grep "\"$DEVICE_NAME\"")
+PAIRED_OUTPUT=$(blueutil --paired 2>&1)
+rc=$?
+if [ $rc -ne 0 ]; then
+    # Catch non-zero return codes from blueutil, useful for bluetooth access permissions
+    notify "blueutil error (exit $rc): $PAIRED_OUTPUT"
+    exit 1
+fi
+STATUS=$(echo "$PAIRED_OUTPUT" | grep "\"$DEVICE_NAME\"")
 
 if [ -z "$STATUS" ]; then
-    echo "Device not found: $DEVICE_NAME"
+    notify "Device not found: $DEVICE_NAME"
     exit 1
 fi
 
 if echo "$STATUS" | grep -q ", connected"; then
-    echo "Disconnecting $DEVICE_NAME..."
-    blueutil --disconnect "$DEVICE_NAME"
+    notify "Disconnecting $DEVICE_NAME..."
+    output=$(blueutil --disconnect "$DEVICE_NAME" 2>&1)
+    rc=$?
 else
-    echo "Connecting $DEVICE_NAME..."
-    blueutil --connect "$DEVICE_NAME"
+    notify "Connecting $DEVICE_NAME..."
+    output=$(blueutil --connect "$DEVICE_NAME" 2>&1)
+    rc=$?
+fi
+
+if [ $rc -ne 0 ]; then
+    notify "blueutil error (exit $rc): $output"
+    exit 1
 fi
