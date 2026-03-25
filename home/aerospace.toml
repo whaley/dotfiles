@@ -121,10 +121,10 @@ ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
 ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
-ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
+cmd-ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
-ctrl-alt-shift-b          = 'balance-sizes'
+ctrl-alt-shift-esc          = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 ctrl-alt-shift-g            = 'focus --dfs-index 0' #first window
@@ -188,6 +188,7 @@ cmd-ctrl-alt-shift-n        = 'move-node-to-workspace --wrap-around --focus-foll
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 ctrl-alt-shift-o            = 'mode open'
 ctrl-alt-shift-u            = 'mode util'
+ctrl-alt-shift-b            = 'mode borders'
 
 
 #######################################
@@ -269,8 +270,7 @@ b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"'
 m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 #Vitamin R
 r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
-#Janky Borders, in case it's closed
-j = ['exec-and-forget nohup borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20j &', 'mode main']
+
 
 
 [mode.util.binding]
@@ -302,6 +302,18 @@ left    = ['exec-and-forget aerospace_move_to_edge.py left', 'mode main']
 right   = ['exec-and-forget aerospace_move_to_edge.py right', 'mode main']
 up      = ['exec-and-forget aerospace_move_to_edge.py up', 'mode main']
 down    = ['exec-and-forget aerospace_move_to_edge.py down', 'mode main']
+
+[mode.borders.binding]
+#For changing janky borders colors - also restarts it
+
+# pink
+p = ['exec-and-forget nohup borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
+
+# green
+g = ['exec-and-forget nohup borders active_color="glow(0x88ADFF2F)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
+
+# blue
+b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
 
 
 ###############################################################################
