@@ -14,7 +14,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders width=10'
+    'exec-and-forget borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20'
 ]
 
 # Start AeroSpace at login
@@ -84,13 +84,13 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps.inner]
-horizontal    = 50
-vertical      = 50
+horizontal    = 40
+vertical      = 40
 [gaps.outer]
-left          = 10
-right         = 10
-bottom        = 10
-top           = 10
+left          = 20
+right         = 20
+bottom        = 20
+top           = 20
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -270,7 +270,7 @@ m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --a
 #Vitamin R
 r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
 #Janky Borders, in case it's closed
-j = ['exec-and-forget nohup borders width=10.0 &', 'mode main']
+j = ['exec-and-forget nohup borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20j &', 'mode main']
 
 
 [mode.util.binding]
