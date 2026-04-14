@@ -40,8 +40,7 @@ class Aerospace:
         ]
 
     def find_active_workspace_name(self) -> str:
-        stdout_lines = self._run_aerospace_command("list-workspaces --focused")
-        return stdout_lines[0]
+        return self._run_aerospace_command("list-workspaces --focused")
 
     def move_node_to_workspace(self, node_id: str, workspace_name: str) -> None:
         self._run_aerospace_command(

@@ -111,7 +111,7 @@ ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
 ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
-cmd-ctrl-alt-shift-esc          = 'flatten-workspace-tree' #reset layout
+cmd-ctrl-alt-shift-esc      = 'flatten-workspace-tree' #reset layout
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
 ctrl-alt-shift-esc          = 'balance-sizes'
@@ -184,6 +184,9 @@ ctrl-alt-shift-m            = 'move-node-to-workspace music --focus-follows-wind
 
 r                           = 'workspace research'
 ctrl-alt-shift-r            = 'move-node-to-workspace research --focus-follows-window'
+
+t                           = 'workspace task'
+ctrl-alt-shift-t            = 'move-node-to-workspace task --focus-follows-window'
 
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
