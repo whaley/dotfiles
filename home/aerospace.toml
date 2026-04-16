@@ -170,23 +170,23 @@ esc                         = 'mode main'
 # Workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-o                           = 'workspace organize'
-ctrl-alt-shift-o            = 'move-node-to-workspace organize --focus-follows-window'
+o                           = ['workspace organize', 'mode main' ]
+ctrl-alt-shift-o            = ['move-node-to-workspace organize', 'mode main' ]
 
-d                           = 'workspace dev'
-ctrl-alt-shift-d            = 'move-node-to-workspace dev --focus-follows-window'
+d                           = ['workspace dev', 'mode main' ]
+ctrl-alt-shift-d            = ['move-node-to-workspace dev', 'mode main' ]
 
-c                           = 'workspace communicate'
-ctrl-alt-shift-c            = 'move-node-to-workspace communicate --focus-follows-window'
+c                           = ['workspace communicate', 'mode main' ]
+ctrl-alt-shift-c            = ['move-node-to-workspace communicate', 'mode main' ]
 
-m                           = 'workspace music'    
-ctrl-alt-shift-m            = 'move-node-to-workspace music --focus-follows-window'
+m                           = ['workspace music', 'mode main' ]
+ctrl-alt-shift-m            = ['move-node-to-workspace music', 'mode main' ]
 
-r                           = 'workspace research'
-ctrl-alt-shift-r            = 'move-node-to-workspace research --focus-follows-window'
+r                           = ['workspace research', 'mode main' ]
+ctrl-alt-shift-r            = ['move-node-to-workspace research', 'mode main' ]
 
-t                           = 'workspace task'
-ctrl-alt-shift-t            = 'move-node-to-workspace task --focus-follows-window'
+t                           = ['workspace task', 'mode main' ]
+ctrl-alt-shift-t            = ['move-node-to-workspace task', 'mode main' ]
 
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
@@ -267,7 +267,19 @@ end if
 ''', 'mode main']
 
 # Open a new Kitty OS Window.  Kitty needs allow_remote_control socket_only in its config
-k = ['''exec-and-forget osascript -e 'tell application "kitty" to activate' && kitten @ --to "unix:/tmp/kitty-socket-$(pgrep kitty)" launch --type os-window
+k = ['''exec-and-forget osascript -e '
+if application "kitty" is not running then
+    tell application "kitty" to activate
+end if
+' && kitten @ --to "unix:/tmp/kitty-socket-$(pgrep kitty)" launch --type os-window
+''', 'mode main']
+
+# Open a new Kitty OS Window and connect it to weechat on screen on y remote host.
+w = ['''exec-and-forget osascript -e '
+if application "kitty" is not running then
+    tell application "kitty" to activate
+end if
+' && kitten @ --to "unix:/tmp/kitty-socket-$(pgrep kitty)" launch --type os-window --os-window-title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
 ''', 'mode main']
 
 # Apps with only a single window or can't otherwise support applescript
@@ -335,15 +347,30 @@ b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)" inactive_col
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
-# [[on-window-detected]]
-#     if.app-id = 'com.electron.brain.fm'
-#     check-further-callbacks = true
-#     run = 'macos-native-fullscreen on'
-# [[on-window-detected]]
-#     if.app-name-regex-substring = 'di.fm'
-#     check-further-callbacks = true
-#     run = 'macos-native-fullscreen on'
-# [[on-window-detected]]
-#     if.app-id = 'com.apple.Music'
-#     check-further-callbacks = true
-#     run = 'macos-native-fullscreen on'
+
+# dev workspace 
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace dev']
+
+# music workspace
+[[on-window-detected]]
+    if.app-id = 'com.electron.brain.fm'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace music']
+[[on-window-detected]]
+    if.app-name-regex-substring = 'di.fm'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace music']
+[[on-window-detected]]
+    if.app-id = 'com.apple.Music'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace music']
+
+
+# research workspace
+[[on-window-detected]]
+    if.app-id = 'com.anthropic.claudefordesktop'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace research']
