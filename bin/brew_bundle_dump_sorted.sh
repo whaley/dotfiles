@@ -8,6 +8,7 @@ BREW_TYPES=(
     brew
     cask
     mas
+    vscode
 )
 
 TMP_FILE=$(mktemp)
