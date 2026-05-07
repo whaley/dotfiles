@@ -116,6 +116,8 @@ cmd-ctrl-alt-shift-esc      = 'flatten-workspace-tree' #reset layout
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
 ctrl-alt-shift-esc          = 'balance-sizes'
 
+ctrl-alt-shift-w            = 'close' #close window
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 ctrl-alt-shift-g            = 'focus --dfs-index 0' #first window
 ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
@@ -158,7 +160,7 @@ ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 ctrl-alt-shift-o            = 'mode open'
 ctrl-alt-shift-u            = 'mode util'
 ctrl-alt-shift-b            = 'mode borders'
-ctrl-alt-shift-w            = 'mode workspaces' 
+ctrl-alt-shift-s            = 'mode workspaces'
 
 
 #######################################
@@ -171,22 +173,22 @@ esc                         = 'mode main'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 o                           = ['workspace organize', 'mode main' ]
-ctrl-alt-shift-o            = ['move-node-to-workspace organize', 'mode main' ]
+cmd-ctrl-alt-shift-o        = ['move-node-to-workspace organize', 'mode main' ]
 
 d                           = ['workspace dev', 'mode main' ]
-ctrl-alt-shift-d            = ['move-node-to-workspace dev', 'mode main' ]
+cmd-ctrl-alt-shift-d        = ['move-node-to-workspace dev', 'mode main' ]
 
 c                           = ['workspace communicate', 'mode main' ]
-ctrl-alt-shift-c            = ['move-node-to-workspace communicate', 'mode main' ]
+cmd-ctrl-alt-shift-c        = ['move-node-to-workspace communicate', 'mode main' ]
 
 m                           = ['workspace music', 'mode main' ]
-ctrl-alt-shift-m            = ['move-node-to-workspace music', 'mode main' ]
+cmd-ctrl-alt-shift-m        = ['move-node-to-workspace music', 'mode main' ]
 
 r                           = ['workspace research', 'mode main' ]
-ctrl-alt-shift-r            = ['move-node-to-workspace research', 'mode main' ]
+cmd-ctrl-alt-shift-r        = ['move-node-to-workspace research', 'mode main' ]
 
 t                           = ['workspace task', 'mode main' ]
-ctrl-alt-shift-t            = ['move-node-to-workspace task', 'mode main' ]
+cmd-ctrl-alt-shift-t        = ['move-node-to-workspace task', 'mode main' ]
 
 ctrl-alt-shift-left         = 'workspace --wrap-around prev'
 ctrl-alt-shift-right        = 'workspace --wrap-around next'
@@ -348,7 +350,7 @@ b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)" inactive_col
 # On-window-detected callbacks
 ###############################################################################
 
-# dev workspace 
+# dev workspace
 [[on-window-detected]]
     if.app-id = 'com.microsoft.VSCode'
     check-further-callbacks = true
