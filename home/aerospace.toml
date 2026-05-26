@@ -141,16 +141,29 @@ cmd-ctrl-alt-shift-down     = 'join-with down'
 cmd-ctrl-alt-shift-up       = 'join-with up'
 cmd-ctrl-alt-shift-right    = 'join-with right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus-monitor
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
-ctrl-alt-shift-m            = 'focus-monitor next --wrap-around'
-cmd-ctrl-alt-shift-m        = 'move-node-to-monitor next --wrap-around'
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 ctrl-alt-shift-minus        = 'resize smart          -100'
 ctrl-alt-shift-equal        = 'resize smart          +100'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
+
+
+
+
+# Workspaces
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+ctrl-alt-shift-m            = ['workspace Main', 'mode main' ]
+cmd-ctrl-alt-shift-m        = ['move-node-to-workspace Main', 'mode main' ]
+
+ctrl-alt-shift-1            = ['workspace 1', 'mode main' ]
+cmd-ctrl-alt-shift-1        = ['move-node-to-workspace 1', 'mode main' ]
+
+ctrl-alt-shift-2            = ['workspace 2', 'mode main' ]
+cmd-ctrl-alt-shift-2        = ['move-node-to-workspace 2', 'mode main' ]
+
+ctrl-alt-shift-3            = ['workspace 3', 'mode main' ]
+cmd-ctrl-alt-shift-3        = ['move-node-to-workspace 3', 'mode main' ]
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
@@ -160,50 +173,6 @@ ctrl-alt-shift-tab          = 'workspace-back-and-forth'
 ctrl-alt-shift-o            = 'mode open'
 ctrl-alt-shift-u            = 'mode util'
 ctrl-alt-shift-b            = 'mode borders'
-ctrl-alt-shift-s            = 'mode workspaces'
-
-
-#######################################
-# Mode: Workspace Manipulation
-#######################################
-[mode.workspaces.binding]
-esc                         = 'mode main'
-
-# Workspaces
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-o                           = ['workspace organize', 'mode main' ]
-cmd-ctrl-alt-shift-o        = ['move-node-to-workspace organize', 'mode main' ]
-
-d                           = ['workspace dev', 'mode main' ]
-cmd-ctrl-alt-shift-d        = ['move-node-to-workspace dev', 'mode main' ]
-
-c                           = ['workspace communicate', 'mode main' ]
-cmd-ctrl-alt-shift-c        = ['move-node-to-workspace communicate', 'mode main' ]
-
-m                           = ['workspace music', 'mode main' ]
-cmd-ctrl-alt-shift-m        = ['move-node-to-workspace music', 'mode main' ]
-
-r                           = ['workspace research', 'mode main' ]
-cmd-ctrl-alt-shift-r        = ['move-node-to-workspace research', 'mode main' ]
-
-t                           = ['workspace task', 'mode main' ]
-cmd-ctrl-alt-shift-t        = ['move-node-to-workspace task', 'mode main' ]
-
-ctrl-alt-shift-left         = 'workspace --wrap-around prev'
-ctrl-alt-shift-right        = 'workspace --wrap-around next'
-
-cmd-ctrl-alt-shift-left     = 'move-node-to-workspace --wrap-around --focus-follows-window prev'
-cmd-ctrl-alt-shift-right    = 'move-node-to-workspace --wrap-around --focus-follows-window next'
-
-# Move between workspaces
-ctrl-alt-shift-tab          = 'workspace-back-and-forth'
-
-# Still allow focus between windows with hjkl even when in workspace mode
-ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
-ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-frame'
-ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
-ctrl-alt-shift-l            = 'focus right  --boundaries all-monitors-outer-frame'
 
 
 #######################################
@@ -349,30 +318,4 @@ b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)" inactive_col
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
-
-# dev workspace
-[[on-window-detected]]
-    if.app-id = 'com.microsoft.VSCode'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace dev']
-
-# music workspace
-[[on-window-detected]]
-    if.app-id = 'com.electron.brain.fm'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace music']
-[[on-window-detected]]
-    if.app-name-regex-substring = 'di.fm'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace music']
-[[on-window-detected]]
-    if.app-id = 'com.apple.Music'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace music']
-
-
-# research workspace
-[[on-window-detected]]
-    if.app-id = 'com.anthropic.claudefordesktop'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace research']
+# None for now
