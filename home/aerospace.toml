@@ -5,55 +5,33 @@
 # ` exec > /tmp/aerospace.log 2>&1 ; env`
 # before your command to redirect all stdout/stderr to a log file and also dump your environment variables
 
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
+config-version = 2
 
-# You can use it to add commands that run after AeroSpace startup.
-# 'after-startup-command' is run after 'after-login-command'
-# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+# Startup Items
+start-at-login = true
+after-login-command = []
 after-startup-command = [
     'exec-and-forget borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20'
 ]
-
-# Start AeroSpace at login
-start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers                         = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
 accordion-padding = 0
-
-# Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
-
-# Possible values: horizontal|vertical|auto
-# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
-#               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
 
-# Mouse follows focus when focused monitor changes
-# Drop it from your config, if you don't like this behavior
-# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
-# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
-# Fallback value (if you omit the key): on-focused-monitor-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
-# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
-# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
-# Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
+
+persistent-workspaces = ['Main']
 
 # Setup environmental variables
 [exec]
 inherit-env-vars = true
-
 [exec.env-vars]
 PATH = "${HOME}/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
 
@@ -61,10 +39,6 @@ PATH = "${HOME}/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
 preset = 'qwerty'
-
-# [key-mapping.key-notation-to-key-code]
-# meh = 'ctr-alt-shift'
-# hyper = 'ctrl-alt-shift-cmd'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -82,26 +56,8 @@ right         = 20
 bottom        = 20
 top           = 20
 
-# 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented
-# Fallback value (if you omit the key): mode.main.binding = {}
+
 [mode.main.binding]
-
-# All possible keys
-# - Letters.        a, b, c, ..., z
-# - Numbers.        0, 1, 2, ..., 9
-# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-# - F-keys.         f1, f2, ..., f20
-# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-#                   keypadMinus, keypadMultiply, keypadPlus
-# - Arrows.         left, down, up, right
-
-# All possible modifiers: cmd, alt, ctrl, shift
-
-# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling for a singlne window
@@ -116,9 +72,10 @@ cmd-ctrl-alt-shift-esc      = 'flatten-workspace-tree' #reset layout
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
 ctrl-alt-shift-esc          = 'balance-sizes'
 
-ctrl-alt-shift-w            = 'close' #close window
+# Close window in an aerospace aware way
+ctrl-alt-shift-w            = 'close'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+
 ctrl-alt-shift-g            = 'focus --dfs-index 0' #first window
 ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-frame'
@@ -135,20 +92,15 @@ cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
 cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
 cmd-ctrl-alt-shift-l        = 'move right --boundaries all-monitors-outer-frame'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-ctrl-alt-shift-left     = 'join-with left'
 cmd-ctrl-alt-shift-down     = 'join-with down'
 cmd-ctrl-alt-shift-up       = 'join-with up'
 cmd-ctrl-alt-shift-right    = 'join-with right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
 ctrl-alt-shift-minus        = 'resize smart          -100'
 ctrl-alt-shift-equal        = 'resize smart          +100'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
-
-
-
 
 # Workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
@@ -167,8 +119,11 @@ cmd-ctrl-alt-shift-3        = ['move-node-to-workspace 3', 'mode main' ]
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
+ctrl-alt-shift-n            = 'workspace next'
+ctrl-alt-shift-p            = 'workspace prev'
 
-# Modes
+
+# Switch Modes
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 ctrl-alt-shift-o            = 'mode open'
 ctrl-alt-shift-u            = 'mode util'
@@ -180,7 +135,6 @@ ctrl-alt-shift-b            = 'mode borders'
 #######################################
 [mode.open.binding]
 esc                         = 'mode main'
-
 
 # Arc
 a = ['''exec-and-forget osascript -e '
@@ -221,7 +175,6 @@ end if
 
 
 # Open Omnifocus in a new window
-# Bit of a hack with keyboard shortcuts since 'make new document window' creates a new tab
 f = ['''exec-and-forget osascript -e '
 if application "Omnifocus" is running then
     tell application "OmniFocus"
@@ -271,7 +224,6 @@ r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 
 c = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Claude', 'mode main']
 
 
-
 [mode.util.binding]
 esc = 'mode main'
 
@@ -304,15 +256,11 @@ down    = ['exec-and-forget aerospace_move_to_edge.py down', 'mode main']
 
 [mode.borders.binding]
 esc = 'mode main'
-
 #For changing janky borders colors - also restarts it
-
 # pink
 p = ['exec-and-forget nohup borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
-
 # green
 g = ['exec-and-forget nohup borders active_color="glow(0x88ADFF2F)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
-
 # blue
 b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
 
