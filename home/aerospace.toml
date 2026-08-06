@@ -192,18 +192,18 @@ end tell
 ''', 'mode main']
 
 #  Chrome
-c = ['''exec-and-forget osascript -e '
-if application "Google Chrome" is running then
-    tell application "Google Chrome"
-        make new window
-    end tell
-else
-    tell application "Google Chrome"
-        activate
-    end tell
-end if
-'
-''', 'mode main']
+# c = ['''exec-and-forget osascript -e '
+# if application "Google Chrome" is running then
+#     tell application "Google Chrome"
+#         make new window
+#     end tell
+# else
+#     tell application "Google Chrome"
+#         activate
+#     end tell
+# end if
+# '
+# ''', 'mode main']
 
 # Open iTerm if needed, or create new window
 t =  ['''exec-and-forget osascript -e '
@@ -267,6 +267,8 @@ b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"'
 m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 #Vitamin R
 r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
+#Claude
+c = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Claude', 'mode main']
 
 
 
