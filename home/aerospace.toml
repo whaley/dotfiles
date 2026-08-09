@@ -82,11 +82,6 @@ ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-fram
 ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-l            = 'focus right  --boundaries all-monitors-outer-frame'
 
-ctrl-alt-shift-left         = 'swap left'
-ctrl-alt-shift-down         = 'swap down'
-ctrl-alt-shift-up           = 'swap up'
-ctrl-alt-shift-right        = 'swap right'
-
 cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
 cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
 cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
@@ -119,8 +114,9 @@ cmd-ctrl-alt-shift-3        = ['move-node-to-workspace 3', 'mode main' ]
 
 # Move between workspaces
 ctrl-alt-shift-tab          = 'workspace-back-and-forth'
-ctrl-alt-shift-n            = 'workspace next'
-ctrl-alt-shift-p            = 'workspace prev'
+ctrl-alt-shift-left         = 'workspace prev --wrap-around'
+ctrl-alt-shift-right        = 'workspace next --wrap-around'
+
 
 
 # Switch Modes
