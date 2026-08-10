@@ -76,11 +76,18 @@ ctrl-alt-shift-esc          = 'balance-sizes'
 ctrl-alt-shift-w            = 'close'
 
 
+# Navigation and moving windows
 ctrl-alt-shift-g            = 'focus --dfs-index 0' #first window
+ctrl-alt-shift-tab          = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
 ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
 ctrl-alt-shift-l            = 'focus right  --boundaries all-monitors-outer-frame'
+
+ctrl-alt-shift-left         = 'swap left'
+ctrl-alt-shift-down         = 'swap down'
+ctrl-alt-shift-up           = 'swap up'
+ctrl-alt-shift-right        = 'swap right'
 
 cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
 cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
@@ -92,6 +99,7 @@ cmd-ctrl-alt-shift-down     = 'join-with down'
 cmd-ctrl-alt-shift-up       = 'join-with up'
 cmd-ctrl-alt-shift-right    = 'join-with right'
 
+# Resize windows
 ctrl-alt-shift-minus        = 'resize smart          -100'
 ctrl-alt-shift-equal        = 'resize smart          +100'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
@@ -112,10 +120,14 @@ cmd-ctrl-alt-shift-2        = ['move-node-to-workspace 2', 'mode main' ]
 ctrl-alt-shift-3            = ['workspace 3', 'mode main' ]
 cmd-ctrl-alt-shift-3        = ['move-node-to-workspace 3', 'mode main' ]
 
+# Focus back and forth between previous windows
+
+
 # Move between workspaces
-ctrl-alt-shift-tab          = 'workspace-back-and-forth'
-ctrl-alt-shift-left         = 'workspace prev --wrap-around'
-ctrl-alt-shift-right        = 'workspace next --wrap-around'
+ctrl-alt-shift-n            = 'workspace next --wrap-around'
+ctrl-alt-shift-p            = 'workspace prev --wrap-around'
+cmd-ctrl-alt-shift-n        = 'move-node-to-workspace next --wrap-around'
+cmd-ctrl-alt-shift-p        = 'move-node-to-workspace prev --wrap-around'
 
 
 
