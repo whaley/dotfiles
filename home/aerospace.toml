@@ -197,20 +197,43 @@ end if
 '
 ''', 'mode main']
 
-# Open a new Kitty OS Window.  Kitty needs allow_remote_control socket_only in its config
-k = ['''exec-and-forget osascript -e '
-if application "kitty" is not running then
-    tell application "kitty" to activate
-end if
-' && kitten @ --to "unix:/tmp/kitty-socket-$(pgrep kitty)" launch --type os-window
+# Open a new Kitty OS Window.  Kitty needs allow_remote_control socket_only in its config.
+# If kitty is already running, ask it for another OS window over its remote control
+# socket.  If it isn't, launch it through LaunchServices (so macOS still keeps a single
+# kitty instance) and just take the window it opens on its own.
+k = ['''exec-and-forget kitty_pid=$(pgrep -x kitty | head -1)
+if [ -n "$kitty_pid" ]; then
+    osascript -e 'tell application "kitty" to activate'
+    kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window
+else
+    open -a kitty
+fi
 ''', 'mode main']
 
 # Open a new Kitty OS Window and connect it to weechat on screen on y remote host.
-w = ['''exec-and-forget osascript -e '
-if application "kitty" is not running then
-    tell application "kitty" to activate
-end if
-' && kitten @ --to "unix:/tmp/kitty-socket-$(pgrep kitty)" launch --type os-window --os-window-title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
+# If a weechat window is already open, pull it onto the current workspace and focus it.
+# Otherwise, if kitty is running, ask it for another OS window over its remote control
+# socket.  If it isn't, launch it through LaunchServices (so macOS still keeps a single
+# kitty instance) and let its very first window be the weechat one, instead of getting a
+# stray shell window plus a weechat window.  Both launch paths pin the OS window title so
+# the lookup can find it later.
+w = ['''exec-and-forget kitty_pid=$(pgrep -x kitty | head -1)
+if [ -n "$kitty_pid" ]; then
+    weechat_window=$(aerospace list-windows --monitor all --pid "$kitty_pid" --format '%{window-id}|%{workspace}|%{window-title}' | awk -F'|' '$3 == "weechat" { print $1, $2; exit }')
+    if [ -n "$weechat_window" ]; then
+        weechat_id=${weechat_window%% *}
+        weechat_workspace=${weechat_window#* }
+        current_workspace=$(aerospace list-workspaces --focused)
+        if [ "$weechat_workspace" != "$current_workspace" ]; then
+            aerospace move-node-to-workspace --window-id "$weechat_id" "$current_workspace"
+        fi
+        aerospace focus --window-id "$weechat_id"
+    else
+        kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window --os-window-title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
+    fi
+else
+    open -a kitty --args --title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
+fi
 ''', 'mode main']
 
 # Apps with only a single window or can't otherwise support applescript
