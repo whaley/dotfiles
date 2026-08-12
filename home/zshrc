@@ -1,5 +1,5 @@
 # Setup Path
-export PATH="${HOME}/.local/bin:$(brew --prefix rustup)/bin:${PATH}"
+export PATH="${XDG_BIN_HOME:-${HOME}/.local/bin}:$(brew --prefix rustup)/bin:${PATH}"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"

@@ -26,13 +26,35 @@ ${SCRIPT_DIR}/macos_defaults.sh
 ###############################################################################
 for file in ${SCRIPT_DIR}/home/*; do
     fileName=$(basename $file)
+    # config/ is handled below, per-directory, so we don't clobber ~/.config
+    [ "$fileName" = "config" ] && continue
     ln -nsf "${file}" "${HOME}/.${fileName}"
 done
 
 ###############################################################################
-# Symlink the scripts to $HOME/.local/bin
+# Symlink to $XDG_CONFIG_HOME (~/.config)
 ###############################################################################
-TARGET_DIR="$HOME/.local/bin"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
+mkdir -p "${CONFIG_DIR}"
+
+for dir in "${SCRIPT_DIR}/home/config"/*; do
+    dirName=$(basename "$dir")
+    target="${CONFIG_DIR}/${dirName}"
+
+    # Move an existing real directory out of the way before linking
+    if [ -d "$target" ] && [ ! -L "$target" ]; then
+        mv "$target" "${target}.bak.$(date +%Y%m%d%H%M%S)"
+    fi
+    ln -nsf "$dir" "$target"
+done
+
+###############################################################################
+# Symlink the scripts to $HOME/.local/bin
+#
+# Note: XDG defines no variable for the user bin dir (only XDG_DATA_HOME etc.),
+# so XDG_BIN_HOME is a convention, not spec. Falls back to the standard path.
+###############################################################################
+TARGET_DIR="${XDG_BIN_HOME:-$HOME/.local/bin}"
 
 # Create target directory if it doesn't exist
 mkdir -p "$TARGET_DIR"
