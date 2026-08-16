@@ -34,3 +34,8 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 ########################################
 # Group windows by application in expose - required for this to work correctly with aerospace
 defaults write com.apple.dock expose-group-apps -bool true
+
+########################################
+# Screenshots and Screen Recordings
+########################################
+defaults write com.apple.screencapture location ~/Documents/Screenshots
