@@ -75,9 +75,9 @@ ctrl-alt-shift-esc          = 'balance-sizes'
 # Close window in an aerospace aware way
 ctrl-alt-shift-w            = 'close'
 
-# Minimize without making AeroSpace lose track of the workspace.  This is a bit of a hack, but it works.  
-# When a window is minimized, MacOS immediately focuses on the next window of that app, which may be on another workspace.  
-# This command remembers the current workspace, minimizes the window, then re-asserts the remembered workspace.  
+# Minimize without making AeroSpace lose track of the workspace.  This is a bit of a hack, but it works.
+# When a window is minimized, MacOS immediately focuses on the next window of that app, which may be on another workspace.
+# This command remembers the current workspace, minimizes the window, then re-asserts the remembered workspace.
 # The delayed second check catches the case where macOS moves focus later than we do.
 cmd-m = '''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
@@ -215,7 +215,7 @@ end if
 # kitty instance) and just take the window it opens on its own.
 k = ['''exec-and-forget kitty_pid=$(pgrep -x kitty | head -1)
 if [ -n "$kitty_pid" ]; then
-    kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window --os-window-title kitty
+    kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window
 else
     open -a kitty
 fi
@@ -238,7 +238,13 @@ if [ -n "$kitty_pid" ]; then
         kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window --os-window-title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
     fi
 else
-    open -a kitty --args --title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
+    # launch kitty untitled and title just this window over remote control instead
+    # using --title
+    open -a kitty --args mosh prisoner.morninghacks.com -- screen -raAd weechat
+    sleep 2
+    kitty_pid=$(pgrep -x kitty | head -1)
+    kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" set-window-title weechat
+    #fi
 fi
 ''', 'mode main']
 
