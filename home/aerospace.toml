@@ -300,15 +300,16 @@ right   = ['exec-and-forget aerospace_move_to_edge.py right', 'mode main']
 up      = ['exec-and-forget aerospace_move_to_edge.py up', 'mode main']
 down    = ['exec-and-forget aerospace_move_to_edge.py down', 'mode main']
 
+
 [mode.borders.binding]
 esc = 'mode main'
 #For changing janky borders colors - also restarts it
 # pink
-p = ['exec-and-forget nohup borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
+p = ['exec-and-forget nohup borders active_color="glow(0x88FF69B4)"  width=40 &', 'mode main']
 # green
-g = ['exec-and-forget nohup borders active_color="glow(0x88ADFF2F)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
+g = ['exec-and-forget nohup borders active_color="glow(0x88ADFF2F)"  width=40 &', 'mode main']
 # blue
-b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)" inactive_color="glow(0x88FFFFF0)" width=20 &', 'mode main']
+b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)"  width=40 &', 'mode main']
 
 
 ###############################################################################
