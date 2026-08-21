@@ -248,6 +248,12 @@ else
 fi
 ''', 'mode main']
 
+# VS Code
+# `code -n` forces a new window out of the running instance (starting it first if
+# needed).  A truly separate instance would need --user-data-dir, which would give
+# it its own settings and extensions, so a new window is what we want here.
+v = ['exec-and-forget code -n', 'mode main']
+
 # Apps with only a single window or can't otherwise support applescript
 # e.g. PWA's or Electron apps
 #1Password
