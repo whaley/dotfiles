@@ -312,7 +312,18 @@ g = ['exec-and-forget nohup borders active_color="glow(0x88ADFF2F)"  width=40 &'
 b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)"  width=40 &', 'mode main']
 
 
+
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
-# None for now
+
+
+# Brain.fm
+[[on-window-detected]]
+if.app-id = 'com.electron.brain.fm'
+run = 'move-node-to-workspace Music'
+
+# Music
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace Music'
