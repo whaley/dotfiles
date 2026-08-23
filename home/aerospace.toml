@@ -22,12 +22,13 @@ accordion-padding = 0
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = ['move-mouse window-lazy-center']
-
 automatically-unhide-macos-hidden-apps = false
 
 persistent-workspaces = ['Main']
+
+# Callbacks
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center', 'run-callback --for-every-window on-window-detected']
+on-focus-changed = ['move-mouse window-lazy-center', 'run-callback --for-every-window on-window-detected']
 
 
 
@@ -317,7 +318,7 @@ b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)"  width=40 &'
 
 
 ###############################################################################
-# On-window-detected callbacks
+# On Window Detected Callbacks
 ###############################################################################
 # Music
 [[on-window-detected]]
