@@ -11,7 +11,7 @@ config-version = 2
 start-at-login = true
 after-login-command = []
 after-startup-command = [
-    'exec-and-forget borders active_color="glow(0x88CFF69B4)" inactive_color="glow(0x88FFFFF0)" width=20'
+    'exec-and-forget borders active_color="glow(0x44FFFFFF)"  width=40'
 ]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -48,8 +48,8 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps.inner]
-horizontal    = 40
-vertical      = 40
+horizontal    = 20
+vertical      = 20
 [gaps.outer]
 left          = 20
 right         = 20
@@ -155,29 +155,6 @@ ctrl-alt-shift-b            = 'mode borders'
 [mode.open.binding]
 esc                         = 'mode main'
 
-# Arc
-a = ['''exec-and-forget osascript -e '
-tell application "Arc"
-	make new window
-	activate
-end tell
-'
-''', 'mode main']
-
-#  Chrome
-# c = ['''exec-and-forget osascript -e '
-# if application "Google Chrome" is running then
-#     tell application "Google Chrome"
-#         make new window
-#     end tell
-# else
-#     tell application "Google Chrome"
-#         activate
-#     end tell
-# end if
-# '
-# ''', 'mode main']
-
 # Open iTerm if needed, or create new window
 t =  ['''exec-and-forget osascript -e '
 if application "iTerm" is running then
@@ -248,13 +225,12 @@ else
 fi
 ''', 'mode main']
 
+
+
 # Apps with only a single window or can't otherwise support applescript
 # e.g. PWA's or Electron apps
 #1Password
 1 = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "1Password"', 'mode main']
-
-#Brain.fm
-b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 
 #Claude
 c = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Claude', 'mode main']
@@ -262,12 +238,46 @@ c = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Claude', 'm
 #Apple Music
 m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 
+#Brain.fm
+n = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
+
 #Obsidian
 o = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
 
 #Vitamin R
 r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
 
+# Browsers
+#Arc
+b = ['''exec-and-forget osascript -e '
+tell application "Arc"
+	make new window
+	activate
+end tell
+'
+''', 'mode main']
+
+# Orion
+# b = ['''exec-and-forget osascript -e '
+# tell application "Orion"
+#     make new document
+# end tell
+# '
+# ''', 'mode main']
+
+#  Chrome
+# b = ['''exec-and-forget osascript -e '
+# if application "Google Chrome" is running then
+#     tell application "Google Chrome"
+#         make new window
+#     end tell
+# else
+#     tell application "Google Chrome"
+#         activate
+#     end tell
+# end if
+# '
+# ''', 'mode main']
 
 
 [mode.util.binding]
@@ -287,32 +297,47 @@ done
 aerospace workspace "$currentWorkspace"
 ''', 'mode main']
 
-t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
-
 # Toggle headpones being connected
 # NOTE: This requires giving Aerospace permission to use Bluetooth in System Settings > Privacy and Security > Bluetooth
 h = ['''exec-and-forget
 toggle_bt.sh "Grey WH-1000XM5"
 ''', 'mode main']
 
+# Move focused window the edge of the screen so it takes up the full height or width of the screen based on direction
 left    = ['exec-and-forget aerospace_move_to_edge.py left', 'mode main']
 right   = ['exec-and-forget aerospace_move_to_edge.py right', 'mode main']
 up      = ['exec-and-forget aerospace_move_to_edge.py up', 'mode main']
 down    = ['exec-and-forget aerospace_move_to_edge.py down', 'mode main']
 
+# Retile all windows on the current workspace so all windows are the same size (unless an odd number)
+t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
+
 
 [mode.borders.binding]
-esc = 'mode main'
 #For changing janky borders colors - also restarts it
-# pink
-p = ['exec-and-forget nohup borders active_color="glow(0x88FF69B4)"  width=40 &', 'mode main']
-# green
-g = ['exec-and-forget nohup borders active_color="glow(0x88ADFF2F)"  width=40 &', 'mode main']
-# blue
-b = ['exec-and-forget nohup borders active_color="glow(0x8887CEFA)"  width=40 &', 'mode main']
 
+# red/pink
+r = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x44FF69B4)" width=40 &', 'mode main']
+# green
+g = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x44ADFF2F)" width=40 &', 'mode main']
+# blue
+b = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x4487CEFA)" width=40 &', 'mode main']
+# purple
+p = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x44B069DB)" width=40 &', 'mode main']
+# yellow
+y = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x44FBEC5D)" width=40 &', 'mode main']
+# orange
+o = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x44E86100)" width=40 &', 'mode main']
+# white
+w = ['exec-and-forget killall borders ; nohup borders active_color="glow(0x44FFFFFF)" width=40 &', 'mode main']
+
+# no borders
+k = ['exec-and-forget killall borders', 'mode main']
+
+esc = 'mode main'
 
 ###############################################################################
 # On-window-detected callbacks
 ###############################################################################
+
 # None for now
