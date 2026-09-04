@@ -72,19 +72,23 @@ cmd-ctrl-alt-shift-esc      = 'flatten-workspace-tree' #reset layout
 # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
 ctrl-alt-shift-esc          = 'balance-sizes'
 
-# Close window in an aerospace aware way
-ctrl-alt-shift-w            = 'close'
+# Close window in an aerospace aware way.  
+# Run focus-back-and-forth twice to handle weird condition with floating windows
+ctrl-alt-shift-w            = ['focus-back-and-forth', 'focus-back-and-forth', 'close']
 
 # Minimize without making AeroSpace lose track of the workspace.  This is a bit of a hack, but it works.
 # When a window is minimized, MacOS immediately focuses on the next window of that app, which may be on another workspace.
 # This command remembers the current workspace, minimizes the window, then re-asserts the remembered workspace.
 # The delayed second check catches the case where macOS moves focus later than we do.
+#
+# Run focus-back-and-forth twice beforehand to handle weird condition with floating windows
 cmd-m = '''exec-and-forget
+aerospace focus-back-and-forth ; aerospace focus-back-and-forth
 currentWorkspace=$(aerospace list-workspaces --focused)
 aerospace macos-native-minimize
 aerospace workspace "$currentWorkspace"
 sleep 0.2
-[ "$(aerospace list-workspaces --focused)" = "$currentWorkspace" ] || aerospace workspace "$currentWorkspace"
+[ "$(aerospace list-workspaces --focused)" = "$currentWorkspace" ] || aerospace workspace "$cuerrentWorkspace"
 '''
 
 
