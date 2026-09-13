@@ -11,7 +11,7 @@ config-version = 2
 start-at-login = true
 after-login-command = []
 after-startup-command = [
-    'exec-and-forget borders active_color="glow(0x44FFFFFF)"  width=20'
+    'exec-and-forget borders active_color="glow(0xFFFFFFFF)"  width=20'
 ]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -302,19 +302,19 @@ t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
 #For changing janky borders colors - also restarts it
 
 # red/pink
-r = ['exec-and-forget borders active_color="glow(0x44FF69B4)" width=20', 'mode main']
+r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" width=20', 'mode main']
 # green
-g = ['exec-and-forget borders active_color="glow(0x44ADFF2F)" width=20', 'mode main']
+g = ['exec-and-forget borders active_color="glow(0xFFADFF2F)" width=20', 'mode main']
 # blue
-b = ['exec-and-forget borders active_color="glow(0x4487CEFA)" width=20', 'mode main']
+b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" width=20', 'mode main']
 # purple
-p = ['exec-and-forget borders active_color="glow(0x44B069DB)" width=20', 'mode main']
+p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" width=20', 'mode main']
 # yellow
-y = ['exec-and-forget borders active_color="glow(0x44FBEC5D)" width=20', 'mode main']
+y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" width=20', 'mode main']
 # orange
-o = ['exec-and-forget borders active_color="glow(0x44E86100)" width=20', 'mode main']
+o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" width=20', 'mode main']
 # white
-w = ['exec-and-forget borders active_color="glow(0x44FFFFFF)" width=20', 'mode main']
+w = ['exec-and-forget borders active_color="glow(0xFFFFFFFF)" width=20', 'mode main']
 
 # no borders
 k = ['exec-and-forget killall borders', 'mode main']
