@@ -87,7 +87,7 @@ sleep 0.2
 # Close window in an aerospace aware way, and without losing track of the current workspace.  This is a bit of a hack, but it works.
 ctrl-alt-shift-w = '''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
-aerospace close
+aerospace close --quit-if-last-window
 aerospace workspace "$currentWorkspace"
 sleep 0.2
 [ "$(aerospace list-workspaces --focused)" = "$currentWorkspace" ] || aerospace workspace "$currentWorkspace"
