@@ -228,7 +228,7 @@ c = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Claude', 'm
 m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --app-path "System/Applications/Music.app"', 'mode main']
 
 #Brain.fm
-n = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
+b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 
 #Obsidian
 o = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
@@ -237,36 +237,21 @@ o = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Obsidian', 
 r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
 
 # Browsers
-#Arc
-b = ['''exec-and-forget osascript -e '
-tell application "Arc"
-	make new window
-	activate
-end tell
+
+#Safari
+s = ['''exec-and-forget osascript -e '
+if application "Safari" is running then
+    tell application "Safari"
+        make new document at end of documents
+        activate
+    end tell
+else
+    tell application "Safari"
+        activate
+    end tell
+end if 
 '
 ''', 'mode main']
-
-# Orion
-# b = ['''exec-and-forget osascript -e '
-# tell application "Orion"
-#     make new document
-# end tell
-# '
-# ''', 'mode main']
-
-#  Chrome
-# b = ['''exec-and-forget osascript -e '
-# if application "Google Chrome" is running then
-#     tell application "Google Chrome"
-#         make new window
-#     end tell
-# else
-#     tell application "Google Chrome"
-#         activate
-#     end tell
-# end if
-# '
-# ''', 'mode main']
 
 
 [mode.util.binding]
