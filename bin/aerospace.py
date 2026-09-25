@@ -42,6 +42,13 @@ class Aerospace:
     def find_active_workspace_name(self) -> str:
         return self._run_aerospace_command("list-workspaces --focused")
 
+    def focus_first_window_for_app(self, app: str):
+        all_app_windows_ids = self.find_all_windows_for_app(app);
+        if all_app_windows_ids:
+            id = all_app_windows_ids[0]
+            self._run_aerospace_command(f"focus --window-id {id}")
+
+
     def move_node_to_workspace(self, node_id: str, workspace_name: str) -> None:
         self._run_aerospace_command(
             f"move-node-to-workspace --window-id {node_id} {workspace_name}"

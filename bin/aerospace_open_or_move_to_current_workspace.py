@@ -8,6 +8,7 @@ app, or brings it back from being minimized or hidden.
 
 import argparse
 import subprocess
+import time
 from typing import List
 
 from aerospace import Aerospace
@@ -55,5 +56,11 @@ if __name__ == "__main__":
         for window_id in window_ids:
               aerospace.move_node_to_workspace(window_id, active_workspace_name)
 
-    # open the app or otherwise give it focus
+    # open the app and ensure it gets focus
+    # the sleep here is due to `open` returning immediately
+    # aerospace doesn't immediately track focus of previously minimized/hidden windows
+    # brought back with the open command
     subprocess.run(["open", args.app_path])
+
+    time.sleep(2)
+    aerospace.focus_first_window_for_app(args.app)
