@@ -27,7 +27,12 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
-persistent-workspaces = ['Home', 'Scratch']
+# Workspace Setup
+persistent-workspaces = ['Chat', 'Main', 'Organize']
+[workspace-to-monitor-force-assignment]
+    Main      = 'main'
+    Organize  = 'secondary'
+    Chat      = 'secondary'
 
 # Setup environmental variables
 [exec]
@@ -75,24 +80,22 @@ ctrl-alt-shift-esc          = 'balance-sizes'
 # Minimize without making AeroSpace lose track of the workspace.  This is a bit of a hack, but it works.
 # When a window is minimized, MacOS immediately focuses on the next window of that app, which may be on another workspace.
 # This command remembers the current workspace, minimizes the window, then re-asserts the remembered workspace.
-# The delayed second check catches the case where macOS moves focus later than we do.
+# This also keeps focus on the current workspace even if the minimized window was the last window in the workspace.
+# The sleep check is to handle a timing issue with MacOS
 cmd-m = '''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
 aerospace macos-native-minimize
-aerospace workspace "$currentWorkspace"
 sleep 0.2
 [ "$(aerospace list-workspaces --focused)" = "$currentWorkspace" ] || aerospace workspace "$currentWorkspace"
 '''
 
-# Close window in an aerospace aware way, and without losing track of the current workspace.  This is a bit of a hack, but it works.
+# Close window in an aerospace aware way; same as minimize above, but for closing a window
 ctrl-alt-shift-w = '''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
 aerospace close --quit-if-last-window
-aerospace workspace "$currentWorkspace"
 sleep 0.2
 [ "$(aerospace list-workspaces --focused)" = "$currentWorkspace" ] || aerospace workspace "$currentWorkspace"
 '''
-
 
 # Navigation and moving windows
 ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
@@ -121,14 +124,9 @@ ctrl-alt-shift-equal        = 'resize smart          +100'
 ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
 ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
 
-# Focus back and forth between workspaces
+# Workspaces
 cmd-ctrl-alt-shift-tab      = 'workspace-back-and-forth'
-
-# Move between workspaces
-ctrl-alt-shift-n            = 'workspace next --wrap-around'
-ctrl-alt-shift-p            = 'workspace prev --wrap-around'
-cmd-ctrl-alt-shift-n        = 'move-node-to-workspace next --wrap-around --focus-follows-window'
-cmd-ctrl-alt-shift-p        = 'move-node-to-workspace prev --wrap-around --focus-follows-window'
+ctrl-alt-shift-n            = 'move-workspace-to-monitor next --wrap-around'
 
 
 # Switch Modes
@@ -136,6 +134,7 @@ cmd-ctrl-alt-shift-p        = 'move-node-to-workspace prev --wrap-around --focus
 ctrl-alt-shift-o            = 'mode open'
 ctrl-alt-shift-u            = 'mode util'
 ctrl-alt-shift-b            = 'mode borders'
+
 
 
 #######################################
@@ -196,9 +195,6 @@ if [ -n "$kitty_pid" ]; then
         weechat_id=${weechat_window%% *}
         weechat_workspace=${weechat_window#* }
         current_workspace=$(aerospace list-workspaces --focused)
-        if [ "$weechat_workspace" != "$current_workspace" ]; then
-            aerospace move-node-to-workspace --window-id "$weechat_id" "$current_workspace"
-        fi
         aerospace focus --window-id "$weechat_id"
     else
         kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window --os-window-title weechat mosh prisoner.morninghacks.com -- screen -raAd weechat
@@ -210,7 +206,6 @@ else
     sleep 2
     kitty_pid=$(pgrep -x kitty | head -1)
     kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" set-window-title weechat
-    #fi
 fi
 ''', 'mode main']
 
@@ -249,7 +244,7 @@ else
     tell application "Safari"
         activate
     end tell
-end if 
+end if
 '
 ''', 'mode main']
 
@@ -312,4 +307,33 @@ esc = 'mode main'
 # On-window-detected callbacks
 ###############################################################################
 
-# None for now
+# Chat workspace
+
+# WeeChat runs in a kitty window, so match on the window title (regex is case insensitive)
+[[on-window-detected]]
+    if.window-title-regex-substring = '^weechat$'
+    run = ['move-node-to-workspace --focus-follows-window Chat']
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = ['move-node-to-workspace --focus-follows-window Chat']
+[[on-window-detected]]
+    if.app-id = 'com.hnc.Discord'
+    run = ['move-node-to-workspace --focus-follows-window Chat']
+[[on-window-detected]]
+    if.app-id = 'com.apple.MobileSMS'
+    run = ['move-node-to-workspace --focus-follows-window Chat']
+
+# Organize workspace
+[[on-window-detected]]
+    if.app-id = 'com.omnigroup.OmniFocus4'
+    run = ['move-node-to-workspace --focus-follows-window Organize']
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = ['move-node-to-workspace --focus-follows-window Organize']
+[[on-window-detected]]
+    if.app-id = 'net.publicspace.dist.vitaminr4'
+    run = ['move-node-to-workspace --focus-follows-window Organize']
+[[on-window-detected]]
+    if.app-name-regex-substring = '^skylight$'
+    run = ['move-node-to-workspace --focus-follows-window Organize']
+
