@@ -23,7 +23,8 @@ default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = ['move-mouse window-lazy-center']
+# don't move on focus change, this messes with multiple monitors and switching workspaces quickly
+# on-focus-changed = ['move-mouse window-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
@@ -98,42 +99,50 @@ sleep 0.2
 '''
 
 # Navigation and moving windows
-ctrl-alt-shift-j            = 'focus left   --boundaries all-monitors-outer-frame'
-ctrl-alt-shift-k            = 'focus down   --boundaries all-monitors-outer-frame'
-ctrl-alt-shift-i            = 'focus up     --boundaries all-monitors-outer-frame'
-ctrl-alt-shift-l            = 'focus right  --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-j                = 'focus left   --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-k                = 'focus down   --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-i                = 'focus up     --boundaries all-monitors-outer-frame'
+ctrl-alt-shift-l                = 'focus right  --boundaries all-monitors-outer-frame'
 
-ctrl-alt-shift-left         = 'swap left'
-ctrl-alt-shift-down         = 'swap down'
-ctrl-alt-shift-up           = 'swap up'
-ctrl-alt-shift-right        = 'swap right'
+ctrl-alt-shift-left             = 'swap left'
+ctrl-alt-shift-down             = 'swap down'
+ctrl-alt-shift-up               = 'swap up'
+ctrl-alt-shift-right            = 'swap right'
 
-cmd-ctrl-alt-shift-j        = 'move left --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-k        = 'move down --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-i        = 'move up --boundaries all-monitors-outer-frame'
-cmd-ctrl-alt-shift-l        = 'move right --boundaries all-monitors-outer-frame'
+cmd-ctrl-alt-shift-j            = 'move left'
+cmd-ctrl-alt-shift-k            = 'move down'
+cmd-ctrl-alt-shift-i            = 'move up'
+cmd-ctrl-alt-shift-l            = 'move right'
 
-cmd-ctrl-alt-shift-left     = 'join-with left'
-cmd-ctrl-alt-shift-down     = 'join-with down'
-cmd-ctrl-alt-shift-up       = 'join-with up'
-cmd-ctrl-alt-shift-right    = 'join-with right'
+cmd-ctrl-alt-shift-left         = 'join-with left'
+cmd-ctrl-alt-shift-down         = 'join-with down'
+cmd-ctrl-alt-shift-up           = 'join-with up'
+cmd-ctrl-alt-shift-right        = 'join-with right'
 
 # Resize windows
-ctrl-alt-shift-minus        = 'resize smart          -100'
-ctrl-alt-shift-equal        = 'resize smart          +100'
-ctrl-alt-shift-cmd-minus    = 'resize smart-opposite -100'
-ctrl-alt-shift-cmd-equal    = 'resize smart-opposite +100'
+ctrl-alt-shift-minus            = 'resize smart          -100'
+ctrl-alt-shift-equal            = 'resize smart          +100'
+ctrl-alt-shift-cmd-minus        = 'resize smart-opposite -100'
+ctrl-alt-shift-cmd-equal        = 'resize smart-opposite +100'
 
 # Workspaces
-cmd-ctrl-alt-shift-tab      = 'workspace-back-and-forth'
-ctrl-alt-shift-n            = 'move-workspace-to-monitor next --wrap-around'
+cmd-ctrl-alt-shift-tab          = 'workspace-back-and-forth'
+ctrl-alt-shift-n                = 'workspace next --wrap-around'
+ctrl-alt-shift-p                = 'workspace prev --wrap-around'
+cmd-ctrl-alt-shift-n            = 'move-node-to-workspace next --wrap-around --focus-follows-window'
+cmd-ctrl-alt-shift-p            = 'move-node-to-workspace prev --wrap-around --focus-follows-window'
+
+# Monitors
+ctrl-alt-shift-m                = 'focus-monitor next --wrap-around'
+cmd-ctrl-alt-shift-m            = 'move-node-to-monitor next --wrap-around --focus-follows-window'
+cmd-ctrl-alt-shift-backslash    = 'move-workspace-to-monitor next --wrap-around'
 
 
 # Switch Modes
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-alt-shift-o            = 'mode open'
-ctrl-alt-shift-u            = 'mode util'
-ctrl-alt-shift-b            = 'mode borders'
+ctrl-alt-shift-o                = 'mode open'
+ctrl-alt-shift-u                = 'mode util'
+ctrl-alt-shift-b                = 'mode borders'
 
 
 
