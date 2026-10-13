@@ -93,7 +93,7 @@ sleep 0.2
 # Close window in an aerospace aware way; same as minimize above, but for closing a window
 ctrl-alt-shift-w = '''exec-and-forget
 currentWorkspace=$(aerospace list-workspaces --focused)
-aerospace close --quit-if-last-window
+aerospace close
 sleep 0.2
 [ "$(aerospace list-workspaces --focused)" = "$currentWorkspace" ] || aerospace workspace "$currentWorkspace"
 '''
