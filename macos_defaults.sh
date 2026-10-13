@@ -17,7 +17,7 @@ defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Show file extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write -g AppleShowAllExtensions -bool true
 
 # Show path bar
 defaults write com.apple.finder ShowPathbar -bool true
@@ -28,6 +28,11 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Use list view by default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
+########################################
+# Keyboard
+########################################
+# Disable press-and-hold for accented characters (needed for vim)
+defaults write -g "ApplePressAndHoldEnabled" -bool false
 
 ########################################
 # Mission Control

@@ -126,7 +126,7 @@ ctrl-alt-shift-cmd-minus        = 'resize smart-opposite -100'
 ctrl-alt-shift-cmd-equal        = 'resize smart-opposite +100'
 
 # Workspaces
-cmd-ctrl-alt-shift-tab          = 'workspace-back-and-forth'
+ctrl-alt-shift-tab              = 'workspace-back-and-forth'
 ctrl-alt-shift-n                = 'workspace next --wrap-around'
 ctrl-alt-shift-p                = 'workspace prev --wrap-around'
 cmd-ctrl-alt-shift-n            = 'move-node-to-workspace next --wrap-around --focus-follows-window'
