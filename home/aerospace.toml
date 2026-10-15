@@ -254,7 +254,15 @@ d = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Calendar" 
 b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 
 #Obsidian
-o = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Obsidian', 'mode main']
+# If Obsidian already has a window on Organize, focus it.  Otherwise let `open -a` launch
+# or activate Obsidian and bring its window forward on its own.
+o = ['''exec-and-forget obsidian_id=$(aerospace list-windows --workspace Organize --app-bundle-id md.obsidian --format '%{window-id}' | head -1)
+if [ -n "$obsidian_id" ]; then
+    aerospace focus --window-id "$obsidian_id"
+else
+    open -a Obsidian
+fi
+''', 'mode main']
 
 #Vitamin R
 r = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Vitamin-R 4"', 'mode main']
