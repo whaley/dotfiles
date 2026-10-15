@@ -189,7 +189,23 @@ end if
 # kitty instance) and just take the window it opens on its own.
 k = ['''exec-and-forget kitty_pid=$(pgrep -x kitty | head -1)
 if [ -n "$kitty_pid" ]; then
+    # kitty often hands focus back to its previous key window right after creating the
+    # new one, so find the new window and focus it explicitly.  The trailing "none"
+    # keeps grep from excluding everything when kitty has no windows open.
+    known_ids=$(aerospace list-windows --monitor all --pid "$kitty_pid" --format '%{window-id}'; echo none)
     kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window
+    for _ in 1 2 3 4 5 6 7 8 9 10; do
+        new_id=$(aerospace list-windows --monitor all --pid "$kitty_pid" --format '%{window-id}' | grep -vxF "$known_ids" | head -1)
+        [ -n "$new_id" ] && break
+        sleep 0.1
+    done
+    # kitty can steal focus back a moment after we take it, so check again before giving up
+    for _ in 1 2 3 4 5; do
+        [ -n "$new_id" ] || break
+        aerospace focus --window-id "$new_id"
+        sleep 0.3
+        [ "$(aerospace list-windows --focused --format '%{window-id}')" = "$new_id" ] && break
+    done
 else
     open -a kitty
 fi
