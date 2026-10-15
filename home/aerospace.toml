@@ -337,28 +337,28 @@ esc = 'mode main'
 # WeeChat runs in a kitty window, so match on the window title (regex is case insensitive)
 [[on-window-detected]]
     if.window-title-regex-substring = '^weechat$'
-    run = ['move-node-to-workspace --focus-follows-window Chat']
+    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
-    run = ['move-node-to-workspace --focus-follows-window Chat']
+    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
 [[on-window-detected]]
     if.app-id = 'com.hnc.Discord'
-    run = ['move-node-to-workspace --focus-follows-window Chat']
+    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
 [[on-window-detected]]
     if.app-id = 'com.apple.MobileSMS'
-    run = ['move-node-to-workspace --focus-follows-window Chat']
+    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
 
 # Organize workspace
 [[on-window-detected]]
     if.app-id = 'com.omnigroup.OmniFocus4'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
+    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
 [[on-window-detected]]
     if.app-id = 'md.obsidian'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
+    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
 [[on-window-detected]]
     if.app-id = 'net.publicspace.dist.vitaminr4'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
+    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
 [[on-window-detected]]
     if.app-name-regex-substring = '^skylight$'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
+    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
 
