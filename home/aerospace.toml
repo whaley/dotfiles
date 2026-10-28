@@ -189,23 +189,20 @@ end if
 # kitty instance) and just take the window it opens on its own.
 k = ['''exec-and-forget kitty_pid=$(pgrep -x kitty | head -1)
 if [ -n "$kitty_pid" ]; then
+    current_workspace=$(aerospace list-workspaces --focused)
     # kitty often hands focus back to its previous key window right after creating the
     # new one, so find the new window and focus it explicitly.  The trailing "none"
     # keeps grep from excluding everything when kitty has no windows open.
     known_ids=$(aerospace list-windows --monitor all --pid "$kitty_pid" --format '%{window-id}'; echo none)
     kitten @ --to "unix:/tmp/kitty-socket-$kitty_pid" launch --type os-window
-    for _ in 1 2 3 4 5 6 7 8 9 10; do
+    for _ in {1..50}; do
         new_id=$(aerospace list-windows --monitor all --pid "$kitty_pid" --format '%{window-id}' | grep -vxF "$known_ids" | head -1)
         [ -n "$new_id" ] && break
         sleep 0.1
     done
-    # kitty can steal focus back a moment after we take it, so check again before giving up
-    for _ in 1 2 3 4 5; do
-        [ -n "$new_id" ] || break
-        aerospace focus --window-id "$new_id"
-        sleep 0.3
-        [ "$(aerospace list-windows --focused --format '%{window-id}')" = "$new_id" ] && break
-    done
+    # kitty may open the window on its previous key window's workspace, so pull it back
+    # to the workspace we started on before focusing it
+    [ -n "$new_id" ] && aerospace move-node-to-workspace --focus-follows-window --window-id "$new_id""$current_workspace"
 else
     open -a kitty
 fi
@@ -284,6 +281,8 @@ end if
 '
 ''', 'mode main']
 
+# Zen
+z = ['exec-and-forget Applications/Zen.app/Contents/MacOS/zen --new-window', 'mode main']
 
 [mode.util.binding]
 esc = 'mode main'
