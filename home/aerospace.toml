@@ -66,7 +66,7 @@ top           = 20
 [mode.main.binding]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling for a singlne window
+ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling for a single window
 ctrl-alt-shift-period       = 'layout accordion horizontal vertical'
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
 
@@ -347,28 +347,28 @@ esc = 'mode main'
 # WeeChat runs in a kitty window, so match on the window title (regex is case insensitive)
 [[on-window-detected]]
     if.window-title-regex-substring = '^weechat$'
-    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Chat']
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
-    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Chat']
 [[on-window-detected]]
     if.app-id = 'com.hnc.Discord'
-    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Chat']
 [[on-window-detected]]
     if.app-id = 'com.apple.MobileSMS'
-    run = ['move-node-to-workspace --focus-follows-window Chat', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Chat']
 
 # Organize workspace
 [[on-window-detected]]
     if.app-id = 'com.omnigroup.OmniFocus4'
-    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Organize']
 [[on-window-detected]]
     if.app-id = 'md.obsidian'
-    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Organize']
 [[on-window-detected]]
     if.app-id = 'net.publicspace.dist.vitaminr4'
-    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Organize']
 [[on-window-detected]]
     if.app-name-regex-substring = '^skylight$'
-    run = ['move-node-to-workspace --focus-follows-window Organize', 'layout accordion']
+    run = ['move-node-to-workspace --focus-follows-window Organize']
 
