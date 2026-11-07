@@ -239,7 +239,16 @@ fi
 1 = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "1Password"', 'mode main']
 
 #Claude
-c = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py Claude', 'mode main']
+# Always bring Claude to the workspace visible on the main monitor, even if focus is on
+# another monitor.  Switch to that workspace first so a freshly launched Claude opens there too.
+c = ['''exec-and-forget main_monitor=$(aerospace list-monitors --format '%{monitor-id}|%{monitor-is-main}' | awk -F'|' '$2 == "true" { print $1; exit }')
+main_workspace=$(aerospace list-workspaces --monitor "$main_monitor" --visible)
+for id in $(aerospace list-windows --monitor all --app-bundle-id com.anthropic.claudefordesktop --format '%{window-id}'); do
+    aerospace move-node-to-workspace --window-id "$id" "$main_workspace"
+done
+aerospace workspace "$main_workspace"
+open -a Claude
+''', 'mode main']
 
 #Apple Music
 m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --app-path "/System/Applications/Music.app"', 'mode main']
@@ -371,4 +380,9 @@ esc = 'mode main'
 [[on-window-detected]]
     if.app-name-regex-substring = '^skylight$'
     run = ['move-node-to-workspace --focus-follows-window Organize']
+
+# Floating windows
+[[on-window-detected]]
+    if.app-id = 'com.anthropic.claudefordesktop'
+    run = ['layout floating']
 
