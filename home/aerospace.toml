@@ -11,7 +11,7 @@ config-version = 2
 start-at-login = true
 after-login-command = []
 after-startup-command = [
-    'exec-and-forget borders active_color="glow(0xFFFFFFFF)" order="above"  width=4 style="uniform"'
+    'exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above"  width=2 style="uniform"'
 ]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -389,19 +389,19 @@ ctrl-alt-shift-minus        = 'exec-and-forget aerospace_adjust_floating.sh 25 2
 #######################################
 [mode.borders.binding]
 # red/pink
-r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" order="above" width=4 style="uniform"', 'mode main']
+r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 # green
-g = ['exec-and-forget borders active_color="glow(0xFFADFF2F)" order="above" width=4 style="uniform"', 'mode main']
+g = ['exec-and-forget borders active_color="glow(0xFFADFF2F)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 # blue
-b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" order="above" width=4 style="uniform"', 'mode main']
+b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 # purple
-p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" order="above" width=4 style="uniform"', 'mode main']
+p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 # yellow
-y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" order="above" width=4 style="uniform"', 'mode main']
+y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 # orange
-o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" order="above" width=4 style="uniform"', 'mode main']
+o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 # white
-w = ['exec-and-forget borders active_color="glow(0xFFFFFFFF)" order="above" width=4 style="uniform"', 'mode main']
+w = ['exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
 
 # no borders
 k = ['exec-and-forget killall borders', 'mode main']
