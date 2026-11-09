@@ -72,7 +72,12 @@ top           = 2
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling for a single window
 ctrl-alt-shift-period       = 'layout accordion horizontal vertical'
-ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
+
+# Show the apps open on the focused workspace in a notification, each listed once.  Floating windows are marked with (F).
+ctrl-alt-shift-slash        = '''exec-and-forget ws=$(aerospace list-workspaces --focused)
+apps=$(aerospace list-windows --workspace focused --format '%{window-layout}|%{app-name}' | awk -F'|' '{ app = $0; sub(/^[^|]*\|/, "", app); if ($1 == "floating") app = app " (F)"; if (!seen[app]++) print app }' | paste -sd ',' - | sed 's/,/, /g')
+terminal-notifier -title "Workspace: $ws" -message "${apps:-None}"
+'''
 
 cmd-ctrl-alt-shift-f        = 'fullscreen' #toggle fullscreen for a window
 
