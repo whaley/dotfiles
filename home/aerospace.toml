@@ -23,6 +23,9 @@ default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Bring sticky windows (toggled in floating mode) along to the new workspace, if it's on the main monitor
+exec-on-workspace-change = ['/bin/bash', '-c', 'aerospace_move_stickies.sh']
 # don't move on focus change, this messes with multiple monitors and switching workspaces quickly
 # on-focus-changed = ['move-mouse window-lazy-center']
 
@@ -71,7 +74,7 @@ ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling
 ctrl-alt-shift-period       = 'layout accordion horizontal vertical'
 ctrl-alt-shift-slash        = 'layout tiles horizontal vertical'
 
-ctrl-alt-shift-f            = 'fullscreen' #toggle fullscreen for a window
+cmd-ctrl-alt-shift-f        = 'fullscreen' #toggle fullscreen for a window
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
 cmd-ctrl-alt-shift-esc      = 'flatten-workspace-tree' #reset layout
@@ -100,10 +103,10 @@ sleep 0.2
 '''
 
 # Navigation and moving windows
-ctrl-alt-shift-j                = 'focus left'
-ctrl-alt-shift-k                = 'focus down'
-ctrl-alt-shift-i                = 'focus up'
-ctrl-alt-shift-l                = 'focus right'
+ctrl-alt-shift-j                = 'focus --ignore-floating left'
+ctrl-alt-shift-k                = 'focus --ignore-floating down'
+ctrl-alt-shift-i                = 'focus --ignore-floating up'
+ctrl-alt-shift-l                = 'focus --ignore-floating right'
 
 ctrl-alt-shift-left             = 'swap left'
 ctrl-alt-shift-down             = 'swap down'
@@ -144,6 +147,7 @@ cmd-ctrl-alt-shift-backslash    = 'move-workspace-to-monitor next --wrap-around'
 ctrl-alt-shift-o                = 'mode open'
 ctrl-alt-shift-u                = 'mode util'
 ctrl-alt-shift-b                = 'mode borders'
+ctrl-alt-shift-f                = ['mode floating', 'exec-and-forget aerospace_floating_mode.sh enter']
 
 
 
@@ -327,6 +331,57 @@ down    = ['exec-and-forget aerospace_move_to_edge.py down', 'mode main']
 t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
 
 
+#######################################
+# Mode: Floating Window Management
+# aerospace's move/resize don't support floating windows, so these go through a script
+# that takes <dx> <dy> <dw> <dh> (dx/dy are top left corner, dw/dw are width and height of window
+#######################################
+[mode.floating.binding]
+# Raise the tiled windows back over the floating ones and refocus the window from before floating mode
+esc                         = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
+
+# Cycle focus through the floating windows on this workspace
+ctrl-alt-shift-j            = 'exec-and-forget aerospace_cycle_floating.sh prev'
+ctrl-alt-shift-i            = 'exec-and-forget aerospace_cycle_floating.sh prev'
+ctrl-alt-shift-k            = 'exec-and-forget aerospace_cycle_floating.sh next'
+ctrl-alt-shift-l            = 'exec-and-forget aerospace_cycle_floating.sh next'
+
+# Show every floating window, and its workspace, in a notification.  The title is the last field
+# and is taken from everything after the third "|" in case the title has a "|" in it.
+shift-slash                 = '''exec-and-forget windows=$(aerospace list-windows --all --format '%{window-layout}|%{workspace}|%{app-name}|%{window-title}' | awk -F'|' '$1 == "floating" { title = $0; sub(/^[^|]*\|[^|]*\|[^|]*\|/, "", title); print $2 ": " $3 " — " title }')
+terminal-notifier -title "Floating windows" -message "${windows:-None}"
+'''
+
+# Toggle whether the focused window is sticky (follows you between workspaces on the main monitor)
+ctrl-alt-shift-s            = '''exec-and-forget aerospace_toggle_sticky.sh --notify "$(aerospace list-windows --focused --format '%{window-id}')"'''
+
+# Move by 100px
+left                        = 'exec-and-forget aerospace_adjust_floating.sh -100 0 0 0'
+down                        = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 0'
+up                          = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 0'
+right                       = 'exec-and-forget aerospace_adjust_floating.sh 100 0 0 0'
+
+# Grow 100px in a direction (that edge moves out, the opposite edge stays put)
+ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 100 0'
+ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 100'
+ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 100'
+ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 0 0 100 0'
+
+# Shrink 100px to a direction, That edge stays put. The opposite edge moves in.
+# e.g. left shrinks the right edge
+cmd-ctrl-alt-shift-left     = 'exec-and-forget aerospace_adjust_floating.sh 0 0 -100 0'
+cmd-ctrl-alt-shift-down     = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 -100'
+cmd-ctrl-alt-shift-up       = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 -100'
+cmd-ctrl-alt-shift-right    = 'exec-and-forget aerospace_adjust_floating.sh 100 0 -100 0'
+
+# Grow / shrink every edge by 25px
+ctrl-alt-shift-equal        = 'exec-and-forget aerospace_adjust_floating.sh -25 -25 50 50'
+ctrl-alt-shift-minus        = 'exec-and-forget aerospace_adjust_floating.sh 25 25 -50 -50'
+
+
+#######################################
+# Mode: Janky borders!
+#######################################
 [mode.borders.binding]
 # red/pink
 r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" order="above" width=4 style="uniform"', 'mode main']
@@ -337,7 +392,7 @@ b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" order="above" widt
 # purple
 p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" order="above" width=4 style="uniform"', 'mode main']
 # yellow
-y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" order="above" width=4 style="uniform"',  'mode main']
+y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" order="above" width=4 style="uniform"', 'mode main']
 # orange
 o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" order="above" width=4 style="uniform"', 'mode main']
 # white
