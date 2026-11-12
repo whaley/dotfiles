@@ -338,12 +338,11 @@ t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
 
 #######################################
 # Mode: Floating Window Management
-# aerospace's move/resize don't support floating windows, so these go through a script
-# that takes <dx> <dy> <dw> <dh> (dx/dy are top left corner, dw/dw are width and height of window
 #######################################
 [mode.floating.binding]
 # Raise the tiled windows back over the floating ones and refocus the window from before floating mode
-esc                         = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
+ctrl-alt-shift-esc          = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
+ctrl-alt-shift-f            = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
 
 # Cycle focus through the floating windows on this workspace
 ctrl-alt-shift-j            = 'exec-and-forget aerospace_cycle_floating.sh prev'
@@ -360,24 +359,25 @@ terminal-notifier -title "Floating windows" -message "${windows:-None}"
 # Toggle whether the focused window is sticky (follows you between workspaces on the main monitor)
 ctrl-alt-shift-s            = '''exec-and-forget aerospace_toggle_sticky.sh --notify "$(aerospace list-windows --focused --format '%{window-id}')"'''
 
-# Move by 100px
-left                        = 'exec-and-forget aerospace_adjust_floating.sh -100 0 0 0'
-down                        = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 0'
-up                          = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 0'
-right                       = 'exec-and-forget aerospace_adjust_floating.sh 100 0 0 0'
+# Note: just use the mouse/trackpad you dolt
+# # Move by 100px
+# ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 0 0'
+# ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 0'
+# ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 0'
+# ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 100 0 0 0'
 
-# Grow 100px in a direction (that edge moves out, the opposite edge stays put)
-ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 100 0'
-ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 100'
-ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 100'
-ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 0 0 100 0'
+# # Grow 100px in a direction (that edge moves out, the opposite edge stays put)
+# ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 100 0'
+# ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 100'
+# ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 100'
+# ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 0 0 100 0'
 
-# Shrink 100px to a direction, That edge stays put. The opposite edge moves in.
-# e.g. left shrinks the right edge
-cmd-ctrl-alt-shift-left     = 'exec-and-forget aerospace_adjust_floating.sh 0 0 -100 0'
-cmd-ctrl-alt-shift-down     = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 -100'
-cmd-ctrl-alt-shift-up       = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 -100'
-cmd-ctrl-alt-shift-right    = 'exec-and-forget aerospace_adjust_floating.sh 100 0 -100 0'
+# # Shrink 100px to a direction, That edge stays put. The opposite edge moves in.
+# # e.g. left shrinks the right edge
+# cmd-ctrl-alt-shift-left     = 'exec-and-forget aerospace_adjust_floating.sh 0 0 -100 0'
+# cmd-ctrl-alt-shift-down     = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 -100'
+# cmd-ctrl-alt-shift-up       = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 -100'
+# cmd-ctrl-alt-shift-right    = 'exec-and-forget aerospace_adjust_floating.sh 100 0 -100 0'
 
 # Grow / shrink every edge by 25px
 ctrl-alt-shift-equal        = 'exec-and-forget aerospace_adjust_floating.sh -25 -25 50 50'
