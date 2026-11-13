@@ -413,11 +413,10 @@ esc = 'mode main'
 ###############################################################################
 
 # Chat workspace
-
-# WeeChat runs in a kitty window, so match on the window title (regex is case insensitive)
 [[on-window-detected]]
+    # WeeChat runs in a kitty window, so match on the window title (regex is case insensitive)
     if.window-title-regex-substring = '^weechat$'
-    run = ['move-node-to-workspace --focus-follows-window Chat']
+    run = ['layout floating']
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = ['move-node-to-workspace --focus-follows-window Chat']
@@ -428,22 +427,14 @@ esc = 'mode main'
     if.app-id = 'com.apple.MobileSMS'
     run = ['move-node-to-workspace --focus-follows-window Chat']
 
-# Organize workspace
-[[on-window-detected]]
-    if.app-id = 'com.omnigroup.OmniFocus4'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
-[[on-window-detected]]
-    if.app-id = 'md.obsidian'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
-[[on-window-detected]]
-    if.app-id = 'net.publicspace.dist.vitaminr4'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
-[[on-window-detected]]
-    if.app-name-regex-substring = '^skylight$'
-    run = ['move-node-to-workspace --focus-follows-window Organize']
 
 # Floating windows
 [[on-window-detected]]
     if.app-id = 'com.anthropic.claudefordesktop'
     run = ['layout floating']
-
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = ['layout floating']
+[[on-window-detected]]
+    if.app-id = 'net.publicspace.dist.vitaminr4'
+    run = ['layout floating']
