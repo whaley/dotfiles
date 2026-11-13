@@ -212,7 +212,7 @@ if [ -n "$kitty_pid" ]; then
     done
     # kitty may open the window on its previous key window's workspace, so pull it back
     # to the workspace we started on before focusing it
-    [ -n "$new_id" ] && aerospace move-node-to-workspace --focus-follows-window --window-id "$new_id""$current_workspace"
+    [ -n "$new_id" ] && aerospace move-node-to-workspace --focus-follows-window --window-id "$new_id" "$current_workspace"
 else
     open -a kitty
 fi
@@ -267,7 +267,7 @@ m = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Music" --a
 d = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Calendar" --app-path "/System/Applications/Calendar.app"', 'mode main']
 
 #Brain.fm
-b = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
+n = ['exec-and-forget aerospace_open_or_move_to_current_workspace.py "Brain.fm"', 'mode main']
 
 #Obsidian
 # If Obsidian already has a window on Organize, focus it.  Otherwise let `open -a` launch
@@ -300,8 +300,25 @@ end if
 '
 ''', 'mode main']
 
-# Zen
-z = ['exec-and-forget Applications/Zen.app/Contents/MacOS/zen --new-window', 'mode main']
+#Orion
+# Using applescript with make new document results in a weird edge case bug with Aerospace.
+# Resorted to File > New Window hack instead, which requires keeping track of workspace
+b = ['''exec-and-forget current_workspace=$(aerospace list-workspaces --focused)
+if pgrep -xq Orion; then
+    # The trailing "none" keeps grep from excluding everything when Orion has no windows open.
+    known_ids=$(aerospace list-windows --monitor all --app-bundle-id com.kagi.kagimacOS --format '%{window-id}'; echo none)
+    osascript -e 'tell application "Orion" to activate' \
+        -e 'tell application "System Events" to tell process "Orion" to click menu item "New Window" of menu "File" of menu bar 1'
+    for _ in {1..50}; do
+        new_id=$(aerospace list-windows --monitor all --app-bundle-id com.kagi.kagimacOS --format '%{window-id}' | grep -vxF "$known_ids" | head -1)
+        [ -n "$new_id" ] && break
+        sleep 0.1
+    done
+    [ -n "$new_id" ] && aerospace move-node-to-workspace --focus-follows-window --window-id "$new_id" "$current_workspace"
+else
+    open -a Orion
+fi
+''', 'mode main']
 
 [mode.util.binding]
 esc = 'mode main'
