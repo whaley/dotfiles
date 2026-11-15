@@ -113,6 +113,9 @@ ctrl-alt-shift-k                = 'focus --ignore-floating down'
 ctrl-alt-shift-i                = 'focus --ignore-floating up'
 ctrl-alt-shift-l                = 'focus --ignore-floating right'
 
+# Cycle through the tiled windows on this workspace.  Works even when a floating window is focused.
+ctrl-alt-shift-enter            = 'exec-and-forget aerospace_cycle_tiled.sh next'
+
 ctrl-alt-shift-left             = 'swap left'
 ctrl-alt-shift-down             = 'swap down'
 ctrl-alt-shift-up               = 'swap up'
