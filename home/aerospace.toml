@@ -32,11 +32,11 @@ exec-on-workspace-change = ['/bin/bash', '-c', 'aerospace_move_stickies.sh']
 automatically-unhide-macos-hidden-apps = false
 
 # Workspace Setup
-persistent-workspaces = ['Chat', 'Main', 'Organize']
-[workspace-to-monitor-force-assignment]
-    Main      = 'main'
-    Organize  = 'secondary'
-    Chat      = 'secondary'
+persistent-workspaces = ['Main']
+# [workspace-to-monitor-force-assignment]
+#     Main      = 'main'
+#     Organize  = 'secondary'
+#     Chat      = 'secondary'
 
 # Setup environmental variables
 [exec]
