@@ -11,7 +11,8 @@ config-version = 2
 start-at-login = true
 after-login-command = []
 after-startup-command = [
-    'exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above"  width=2 style="uniform"'
+    'exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above"  width=20 style="square"',
+    'layout h_tiles'
 ]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -58,20 +59,18 @@ preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 # Kept just wide enough to fit the borders width (set in the borders commands)
 [gaps.inner]
-horizontal    = 2
-vertical      = 2
+horizontal    = 20
+vertical      = 20
 [gaps.outer]
-left          = 2
-right         = 2
-bottom        = 2
-top           = 2
+left          = 20
+right         = 20
+bottom        = 20
+top           = 20
 
 
 [mode.main.binding]
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-shift-comma        = 'layout floating tiling' #toggle floating / tiling for a single window
-ctrl-alt-shift-period       = 'layout accordion horizontal vertical'
 
 # Show the apps open on the focused workspace in a notification, each listed once.  Floating windows are marked with (F).
 ctrl-alt-shift-slash        = '''exec-and-forget ws=$(aerospace list-workspaces --focused)
@@ -409,19 +408,19 @@ ctrl-alt-shift-minus        = 'exec-and-forget aerospace_adjust_floating.sh 25 2
 #######################################
 [mode.borders.binding]
 # red/pink
-r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 # green
-g = ['exec-and-forget borders active_color="glow(0xFFADFF2F)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+g = ['exec-and-forget borders active_color="glow(0xFFADFF2F)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 # blue
-b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 # purple
-p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 # yellow
-y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 # orange
-o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 # white
-w = ['exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above" width=2 style="uniform"', 'mode main']
+w = ['exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above" width=20 style="square"', 'mode main']
 
 # no borders
 k = ['exec-and-forget killall borders', 'mode main']
