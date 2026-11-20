@@ -11,7 +11,7 @@ config-version = 2
 start-at-login = true
 after-login-command = []
 after-startup-command = [
-    'exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above"  width=20 style="uniform"',
+    'exec-and-forget borders active_color="glow(0x66FFFFFF)" order="above"  width=20 style="uniform"',
     'layout h_tiles'
 ]
 
@@ -57,15 +57,15 @@ preset = 'qwerty'
 #                 In this example, 24 is a default value when there is no match.
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-# Kept just wide enough to fit the borders width (set in the borders commands)
+# Twice the borders width (set in the borders commands)
 [gaps.inner]
-horizontal    = 20
-vertical      = 20
+horizontal    = 40
+vertical      = 40
 [gaps.outer]
-left          = 20
-right         = 20
-bottom        = 20
-top           = 20
+left          = 40
+right         = 40
+bottom        = 40
+top           = 40
 
 
 [mode.main.binding]
@@ -406,19 +406,19 @@ t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
 #######################################
 [mode.borders.binding]
 # red/pink
-r = ['exec-and-forget borders active_color="glow(0xFFFF69B4)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+r = ['exec-and-forget borders active_color="glow(0x66FF69B4)" order="above" width=20 style="uniform"', 'mode main']
 # green
-g = ['exec-and-forget borders active_color="glow(0xFFADFF2F)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+g = ['exec-and-forget borders active_color="glow(0x66ADFF2F)" order="above" width=20 style="uniform"', 'mode main']
 # blue
-b = ['exec-and-forget borders active_color="glow(0xFF87CEFA)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+b = ['exec-and-forget borders active_color="glow(0x6687CEFA)" order="above" width=20 style="uniform"', 'mode main']
 # purple
-p = ['exec-and-forget borders active_color="glow(0xFFB069DB)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+p = ['exec-and-forget borders active_color="glow(0x66B069DB)" order="above" width=20 style="uniform"', 'mode main']
 # yellow
-y = ['exec-and-forget borders active_color="glow(0xFFFBEC5D)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+y = ['exec-and-forget borders active_color="glow(0x66FBEC5D)" order="above" width=20 style="uniform"', 'mode main']
 # orange
-o = ['exec-and-forget borders active_color="glow(0xFFFFE4B5)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+o = ['exec-and-forget borders active_color="glow(0x66FFE4B5)" order="above" width=20 style="uniform"', 'mode main']
 # white
-w = ['exec-and-forget borders active_color="glow(0xFFFFFFFF)" inactive_color="glow(0xFF000000)" order="above" width=20 style="uniform"', 'mode main']
+w = ['exec-and-forget borders active_color="glow(0x66FFFFFF)" order="above" width=20 style="uniform"', 'mode main']
 
 # no borders
 k = ['exec-and-forget killall borders', 'mode main']
