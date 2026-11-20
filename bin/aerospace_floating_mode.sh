@@ -32,7 +32,9 @@ case "$action" in
         aerospace_cycle_floating.sh all
         ;;
     exit)
-        return_id=$(cat "$return_file" 2> /dev/null || true)
+        # Without a remembered window (exit run on its own), keep focus on the focused window
+        return_id=$(cat "$return_file" 2> /dev/null \
+            || aerospace list-windows --focused --format '%{window-id}' 2> /dev/null || true)
         rm -f "$return_file"
 
         tiled_ids=()

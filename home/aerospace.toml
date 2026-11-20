@@ -78,8 +78,6 @@ apps=$(aerospace list-windows --workspace focused --format '%{window-layout}|%{a
 terminal-notifier -title "Workspace: $ws" -message "${apps:-None}"
 '''
 
-cmd-ctrl-alt-shift-f        = 'fullscreen' #toggle fullscreen for a window
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
 cmd-ctrl-alt-shift-esc      = 'flatten-workspace-tree' #reset layout
 
@@ -144,12 +142,19 @@ ctrl-alt-shift-p                = 'workspace prev --wrap-around'
 cmd-ctrl-alt-shift-n            = 'move-node-to-workspace next --wrap-around --focus-follows-window'
 cmd-ctrl-alt-shift-p            = 'move-node-to-workspace prev --wrap-around --focus-follows-window'
 
+# Floating windows
+# Bring every floating window on this workspace to the front
+ctrl-alt-shift-f                = 'exec-and-forget aerospace_cycle_floating.sh all'
+# Raise the tiled windows back over the floating ones, keeping focus where it is if it's on a tiled window
+cmd-ctrl-alt-shift-f            = 'exec-and-forget aerospace_floating_mode.sh exit'
+# Toggle whether the focused window is sticky (follows you between workspaces on the main monitor)
+ctrl-alt-shift-s                = '''exec-and-forget aerospace_toggle_sticky.sh --notify "$(aerospace list-windows --focused --format '%{window-id}')"'''
+
 # Switch Modes
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 ctrl-alt-shift-o                = 'mode open'
 ctrl-alt-shift-u                = 'mode util'
 ctrl-alt-shift-b                = 'mode borders'
-ctrl-alt-shift-f                = ['mode floating', 'exec-and-forget aerospace_floating_mode.sh enter']
 
 
 
@@ -353,49 +358,47 @@ t = ['''exec-and-forget  aerospace_retile_windows.py''', 'mode main']
 #######################################
 # Mode: Floating Window Management
 #######################################
-[mode.floating.binding]
-# Raise the tiled windows back over the floating ones and refocus the window from before floating mode
-ctrl-alt-shift-esc          = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
-ctrl-alt-shift-f            = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
+# Disabled for now: floating windows are handled from main mode instead
+# [mode.floating.binding]
+# # Raise the tiled windows back over the floating ones and refocus the window from before floating mode
+# ctrl-alt-shift-esc          = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
+# ctrl-alt-shift-f            = ['exec-and-forget aerospace_floating_mode.sh exit', 'mode main']
 
-# Cycle focus through the floating windows on this workspace
-ctrl-alt-shift-j            = 'exec-and-forget aerospace_cycle_floating.sh prev'
-ctrl-alt-shift-i            = 'exec-and-forget aerospace_cycle_floating.sh prev'
-ctrl-alt-shift-k            = 'exec-and-forget aerospace_cycle_floating.sh next'
-ctrl-alt-shift-l            = 'exec-and-forget aerospace_cycle_floating.sh next'
+# # Cycle focus through the floating windows on this workspace
+# ctrl-alt-shift-j            = 'exec-and-forget aerospace_cycle_floating.sh prev'
+# ctrl-alt-shift-i            = 'exec-and-forget aerospace_cycle_floating.sh prev'
+# ctrl-alt-shift-k            = 'exec-and-forget aerospace_cycle_floating.sh next'
+# ctrl-alt-shift-l            = 'exec-and-forget aerospace_cycle_floating.sh next'
 
-# Show every floating window, and its workspace, in a notification.  The title is the last field
-# and is taken from everything after the third "|" in case the title has a "|" in it.
-shift-slash                 = '''exec-and-forget windows=$(aerospace list-windows --all --format '%{window-layout}|%{workspace}|%{app-name}|%{window-title}' | awk -F'|' '$1 == "floating" { title = $0; sub(/^[^|]*\|[^|]*\|[^|]*\|/, "", title); print $2 ": " $3 " — " title }')
-terminal-notifier -title "Floating windows" -message "${windows:-None}"
-'''
+# # Show every floating window, and its workspace, in a notification.  The title is the last field
+# # and is taken from everything after the third "|" in case the title has a "|" in it.
+# shift-slash                 = '''exec-and-forget windows=$(aerospace list-windows --all --format '%{window-layout}|%{workspace}|%{app-name}|%{window-title}' | awk -F'|' '$1 == "floating" { title = $0; sub(/^[^|]*\|[^|]*\|[^|]*\|/, "", title); print $2 ": " $3 " — " title }')
+# terminal-notifier -title "Floating windows" -message "${windows:-None}"
+# '''
 
-# Toggle whether the focused window is sticky (follows you between workspaces on the main monitor)
-ctrl-alt-shift-s            = '''exec-and-forget aerospace_toggle_sticky.sh --notify "$(aerospace list-windows --focused --format '%{window-id}')"'''
+# # Note: just use the mouse/trackpad you dolt
+# # # Move by 100px
+# # ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 0 0'
+# # ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 0'
+# # ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 0'
+# # ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 100 0 0 0'
 
-# Note: just use the mouse/trackpad you dolt
-# # Move by 100px
-# ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 0 0'
-# ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 0'
-# ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 0'
-# ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 100 0 0 0'
+# # # Grow 100px in a direction (that edge moves out, the opposite edge stays put)
+# # ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 100 0'
+# # ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 100'
+# # ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 100'
+# # ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 0 0 100 0'
 
-# # Grow 100px in a direction (that edge moves out, the opposite edge stays put)
-# ctrl-alt-shift-left         = 'exec-and-forget aerospace_adjust_floating.sh -100 0 100 0'
-# ctrl-alt-shift-down         = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 100'
-# ctrl-alt-shift-up           = 'exec-and-forget aerospace_adjust_floating.sh 0 -100 0 100'
-# ctrl-alt-shift-right        = 'exec-and-forget aerospace_adjust_floating.sh 0 0 100 0'
+# # # Shrink 100px to a direction, That edge stays put. The opposite edge moves in.
+# # # e.g. left shrinks the right edge
+# # cmd-ctrl-alt-shift-left     = 'exec-and-forget aerospace_adjust_floating.sh 0 0 -100 0'
+# # cmd-ctrl-alt-shift-down     = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 -100'
+# # cmd-ctrl-alt-shift-up       = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 -100'
+# # cmd-ctrl-alt-shift-right    = 'exec-and-forget aerospace_adjust_floating.sh 100 0 -100 0'
 
-# # Shrink 100px to a direction, That edge stays put. The opposite edge moves in.
-# # e.g. left shrinks the right edge
-# cmd-ctrl-alt-shift-left     = 'exec-and-forget aerospace_adjust_floating.sh 0 0 -100 0'
-# cmd-ctrl-alt-shift-down     = 'exec-and-forget aerospace_adjust_floating.sh 0 100 0 -100'
-# cmd-ctrl-alt-shift-up       = 'exec-and-forget aerospace_adjust_floating.sh 0 0 0 -100'
-# cmd-ctrl-alt-shift-right    = 'exec-and-forget aerospace_adjust_floating.sh 100 0 -100 0'
-
-# Grow / shrink every edge by 25px
-ctrl-alt-shift-equal        = 'exec-and-forget aerospace_adjust_floating.sh -25 -25 50 50'
-ctrl-alt-shift-minus        = 'exec-and-forget aerospace_adjust_floating.sh 25 25 -50 -50'
+# # Grow / shrink every edge by 25px
+# ctrl-alt-shift-equal        = 'exec-and-forget aerospace_adjust_floating.sh -25 -25 50 50'
+# ctrl-alt-shift-minus        = 'exec-and-forget aerospace_adjust_floating.sh 25 25 -50 -50'
 
 
 #######################################
